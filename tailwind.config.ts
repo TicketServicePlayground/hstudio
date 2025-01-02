@@ -26,6 +26,14 @@ export default {
     },
   },
   plugins: [],
+  safelist: [
+    'bg-blue',
+    'bg-lime',
+    'bg-liliac',
+    'bg-orange',
+    'bg-card',
+    'bg-cardDark',
+  ],
 } satisfies Config
 
 // border-radius: 32px;

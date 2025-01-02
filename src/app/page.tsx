@@ -1,103 +1,174 @@
 import Image from 'next/image'
 
+interface CardData {
+  heading: string
+  benefits?: string
+  stack?: string[]
+}
+
+type BackgroundColor =
+  | 'liliac'
+  | 'orange'
+  | 'card'
+  | 'blue'
+  | 'lime'
+  | 'cardDark'
+
+interface SolutionCardData {
+  bg: BackgroundColor
+  pic: string
+  title: string
+  card: CardData
+}
+
+interface SolutionCardProps {
+  bg: BackgroundColor
+  pic: string
+  title: string
+  card: CardData
+  index: number
+}
+
+const cards: SolutionCardData[] = [
+  {
+    bg: 'liliac',
+    pic: './cover.png',
+    title: 'Backend Solutions Development',
+    card: {
+      heading: 'Default Heading',
+      benefits: 'Default Benefits',
+      stack: ['Jenkins', 'Kubernetes'],
+    },
+  },
+  {
+    bg: 'orange',
+    pic: './cover-1.png',
+    title: 'Default Title',
+    card: {
+      heading: 'Default Heading',
+      benefits: 'Default Benefits',
+      stack: ['Jenkins', 'Kubernetes'],
+    },
+  },
+  {
+    bg: 'card',
+    pic: './cover-2.png',
+    title: 'Default Title',
+    card: {
+      heading: 'Default Heading',
+      benefits: 'Default Benefits',
+      stack: ['Jenkins', 'Kubernetes'],
+    },
+  },
+  {
+    bg: 'blue',
+    pic: './cover-3.png',
+    title: 'Default Title',
+    card: {
+      heading: 'Default Heading',
+      benefits: 'Default Benefits',
+      stack: ['Jenkins', 'Kubernetes'],
+    },
+  },
+  {
+    bg: 'lime',
+    pic: './cover-4.png',
+    title: 'Default Title',
+    card: {
+      heading: 'Default Heading',
+      benefits: 'Default Benefits',
+      stack: ['Jenkins', 'Kubernetes'],
+    },
+  },
+  {
+    bg: 'cardDark',
+    pic: './cover-5.png',
+    title: 'Default Title',
+    card: {
+      heading: 'Default Heading',
+      benefits: 'Default Benefits',
+      stack: ['Jenkins', 'Kubernetes'],
+    },
+  },
+]
+
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+    <div className="flex flex-col w-screen min-h-screen bg-background">
+      {cards.map((i, index) => (
+        <SolutionCard
+          key={`${index}.${i.bg}`}
+          index={index}
+          bg={i.bg}
+          pic={i.pic}
+          title={i.title}
+          card={i.card}
         />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-host text-blue">
-          <li className="mb-2">
-            Get started by editing{' '}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold text-lime">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="font-space text-liliac">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="font-climate text-orange"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      ))}
+      <span>yo</span>
     </div>
   )
 }
+
+const SolutionCard = ({
+  bg = 'blue',
+  pic = 'default-pic',
+  title = 'Default Title',
+  card = {
+    heading: 'Default Heading',
+    benefits: 'Default Benefits',
+    stack: ['Jenkins', 'Kubernetes'],
+  },
+  index,
+}: SolutionCardProps) => {
+  return (
+    <div
+      className={`w-[calc(100%-60px)] m-[30px] min-h-[700px] mb-0 h-64 flex justify-between items-end bg-${bg} rounded-[32px] relative`}
+    >
+      <img src={`/img/desktop-covers/${pic}`} />
+      <Title dark={bg === 'cardDark'}>{title}</Title>
+      <Number number={index + 1} />
+      <CTA />
+    </div>
+  )
+}
+
+const CTA = () => (
+  <button
+    className={`
+    px-[35px] py-[21px]
+    font-host text-[20px] leading-none font-medium
+    bg-black rounded-[32px]
+    absolute bottom-[27px] right-[27px]
+    bg-black
+    rounded-full
+    shadow-none
+    transition-all duration-300 ease-in-out
+    hover:bg-white hover:text-black
+    hover:shadow-xl hover:-translate-y-2
+    hover:shadow-black/20
+  `}
+  >
+    explore the case study
+  </button>
+)
+
+// const CTA = () => (
+//   <button className="px-[35px] py-[21px] font-host text-[20px] leading-none font-medium bg-black rounded-[32px] absolute bottom-[27px] right-[27px]">
+//     explore the case study
+//   </button>
+// )
+
+const Title = ({ children, dark }: { children?: string; dark?: boolean }) => (
+  <div
+    className={`${dark ? 'text-white' : 'text-black'} text-6xl font-medium not-italic leading-none font-host absolute left-[38px] bottom-[40px]`}
+  >
+    {children}
+  </div>
+)
+
+const Number = ({ number = 0 }: { number: number }) => (
+  <div className="absolute top-0 left-0 w-[100px] h-[100px] flex items-center justify-center font-medium font-host text-[40px] bg-black rounded-[32px]">
+    {number}
+  </div>
+)
