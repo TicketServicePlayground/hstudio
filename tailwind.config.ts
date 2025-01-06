@@ -23,6 +23,9 @@ export default {
         liliac: '#E6D2FF',
         orange: '#FF6E00',
       },
+      boxShadow: {
+        footer: '0px -1px 40.6px 0px #EAE9EF',
+      },
     },
   },
   plugins: [],
@@ -35,8 +38,3 @@ export default {
     'bg-cardDark',
   ],
 } satisfies Config
-
-// border-radius: 32px;
-// border: 1px solid rgba(255, 255, 255, 0.60);
-// background: rgba(255, 255, 255, 0.20);
-// backdrop-filter: blur(75px);
