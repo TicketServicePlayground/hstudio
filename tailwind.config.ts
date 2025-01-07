@@ -25,6 +25,7 @@ export default {
       },
       boxShadow: {
         footer: '0px -1px 40.6px 0px #EAE9EF',
+        contact: '0px 4px 92.2px 0px #EAE9EF',
       },
     },
   },
