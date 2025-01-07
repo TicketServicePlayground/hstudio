@@ -3,6 +3,8 @@ import React from 'react'
 import { motion, useInView } from 'motion/react'
 import ImageCarousel from '@/components/image-carousel'
 
+import Footer from '@/components/footer'
+
 const AboutPage = () => {
   const lyrics = [
     'We focus on delivering',
@@ -35,8 +37,8 @@ const AboutPage = () => {
           <ImageCarousel />
         </section>
 
-        <section className="h-[600px] w-full flex items-center justify-center snap-start bg-black/10 rounded-t-[64px]">
-          <h2 className="text-6xl">wtf</h2>
+        <section className="snap-start">
+          <Footer />
         </section>
       </div>
     </main>

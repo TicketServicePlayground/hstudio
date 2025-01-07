@@ -2,6 +2,9 @@ import type { Metadata } from 'next'
 import { Host_Grotesk, Space_Grotesk, Climate_Crisis } from 'next/font/google'
 import './globals.css'
 
+import Header from '@/components/header'
+import Footer from '@/components/footer'
+
 // 1. Header
 // 2. Footer
 
@@ -35,7 +38,10 @@ export default function RootLayout({
       <body
         className={`${hostGrotesk.variable} ${spaceGrotesk.variable} ${climateCrisis.variable} antialiased`}
       >
-        {children}
+        <div className="flex flex-col w-screen min-h-screen bg-background">
+          <Header />
+          {children}
+        </div>
       </body>
     </html>
   )
