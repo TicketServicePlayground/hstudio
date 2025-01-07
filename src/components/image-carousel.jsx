@@ -1,0 +1,360 @@
+// 'use client'
+// import { useState, useEffect } from 'react'
+// import { motion } from 'framer-motion'
+// import Image from 'next/image'
+
+// const ImageCarousel = () => {
+//   const [currentIndex, setCurrentIndex] = useState(2)
+//   const [isMounted, setIsMounted] = useState(false)
+//   const [isMobile, setIsMobile] = useState(false)
+//   const [touchStart, setTouchStart] = useState(0)
+
+//   useEffect(() => {
+//     const checkMobile = () => {
+//       setIsMobile(window.innerWidth < 768)
+//     }
+
+//     checkMobile()
+//     setIsMounted(true)
+
+//     window.addEventListener('resize', checkMobile)
+//     return () => window.removeEventListener('resize', checkMobile)
+//   }, [])
+
+//   const handleTouchStart = (e) => {
+//     setTouchStart(e.touches[0].clientX)
+//   }
+
+//   const handleTouchEnd = (e) => {
+//     const touchEnd = e.changedTouches[0].clientX
+//     const diff = touchStart - touchEnd
+
+//     if (Math.abs(diff) > 50) {
+//       if (diff > 0 && currentIndex < teamMembers.length - 1) {
+//         setCurrentIndex(currentIndex + 1)
+//       } else if (diff < 0 && currentIndex > 0) {
+//         setCurrentIndex(currentIndex - 1)
+//       }
+//     }
+//   }
+
+//   const teamMembers = [
+//     {
+//       name: 'David',
+//       experience: 'Over 5 years of experience in frontend development.',
+//       image: '/img/team/photo-0.png',
+//     },
+//     {
+//       name: 'Michael',
+//       experience: 'Over 4 years of experience in mobile development.',
+//       image: '/img/team/photo-1.png',
+//     },
+//     {
+//       name: 'Alexander',
+//       experience:
+//         'Over 7 years of experience in fintech, specializing in high-load system development.',
+//       image: '/img/team/photo-2.png',
+//     },
+//     {
+//       name: 'James',
+//       experience: 'Over 6 years of experience in cloud architecture.',
+//       image: '/img/team/photo-3.png',
+//     },
+//     {
+//       name: 'Robert',
+//       experience: 'Over 5 years of experience in DevOps.',
+//       image: '/img/team/photo-4.png',
+//     },
+//   ]
+
+//   const activeMember = teamMembers[currentIndex]
+
+//   // Hide content until mounted to prevent flash
+//   if (!isMounted) {
+//     return <div className="w-full px-4 min-h-[800px]" />
+//   }
+
+//   const getImageDimensions = (isActive) => {
+//     return isMobile
+//       ? isActive
+//         ? { width: 240, height: 340 }
+//         : { width: 200, height: 280 }
+//       : isActive
+//         ? { width: 380, height: 540 }
+//         : { width: 310, height: 440 }
+//   }
+
+//   const getSpacing = () => {
+//     return isMobile ? 220 : 350
+//   }
+
+//   return (
+//     <div className="w-full px-4 overflow-hidden">
+//       <h1 className="text-center text-[24px] md:text-[48px] font-medium leading-[83%] font-host mb-[60px] md:mb-[80px]">
+//         Meet the team
+//       </h1>
+
+//       <div
+//         className={`relative ${isMobile ? 'h-[340px]' : 'h-[540px]'} flex justify-center items-center mb-[28px] md:mb-[42px]`}
+//         onTouchStart={handleTouchStart}
+//         onTouchEnd={handleTouchEnd}
+//       >
+//         <div
+//           className={`relative ${isMobile ? 'w-[240px]' : 'w-[380px]'} h-full`}
+//         >
+//           {teamMembers.map((member, index) => {
+//             const position = index - currentIndex
+//             const isActive = index === currentIndex
+//             const dimensions = getImageDimensions(isActive)
+
+//             return (
+//               <motion.div
+//                 key={index}
+//                 className="absolute top-1/2 left-1/2 cursor-pointer origin-center"
+//                 style={{
+//                   width: dimensions.width,
+//                   height: dimensions.height,
+//                 }}
+//                 initial={{
+//                   x: `calc(${position * getSpacing()}px - 50%)`,
+//                   y: '-50%',
+//                   scale: isActive ? 1 : 0.815,
+//                   opacity: isActive ? 1 : 0.6,
+//                   zIndex: isActive ? 2 : 1,
+//                 }}
+//                 animate={{
+//                   x: `calc(${position * getSpacing()}px - 50%)`,
+//                   y: '-50%',
+//                   scale: isActive ? 1 : 0.815,
+//                   opacity: isActive ? 1 : 0.6,
+//                   zIndex: isActive ? 2 : 1,
+//                 }}
+//                 transition={{
+//                   duration: 0.5,
+//                   ease: 'easeInOut',
+//                 }}
+//                 onClick={() => setCurrentIndex(index)}
+//               >
+//                 <div
+//                   className={`relative w-full h-full rounded-3xl overflow-hidden ${
+//                     !isActive ? 'blur-sm' : ''
+//                   }`}
+//                 >
+//                   <Image
+//                     src={member.image}
+//                     alt={member.name}
+//                     className="object-cover grayscale"
+//                     fill
+//                     sizes={`(max-width: 768px) ${dimensions.width}px, ${dimensions.width}px`}
+//                     priority={isActive}
+//                   />
+//                 </div>
+//               </motion.div>
+//             )
+//           })}
+//         </div>
+//       </div>
+
+//       <motion.div
+//         key={currentIndex}
+//         initial={{ opacity: 0, y: 20 }}
+//         animate={{ opacity: 1, y: 0 }}
+//         exit={{ opacity: 0, y: 20 }}
+//         className="text-center"
+//       >
+//         <h2 className="text-[24px] md:text-[36px] font-medium font-host leading-none mb-[16px] md:mb-[24px]">
+//           {activeMember.name}
+//         </h2>
+//         <p className="text-[14px] md:text-[24px] font-medium font-host leading-none pb-2 max-w-[240px] md:max-w-[380px] mx-auto">
+//           {activeMember.experience}
+//         </p>
+//       </motion.div>
+//     </div>
+//   )
+// }
+
+// export default ImageCarousel
+
+'use client'
+import { useState, useEffect } from 'react'
+import { motion, useAnimation, AnimatePresence } from 'motion/react'
+import Image from 'next/image'
+
+const ImageCarousel = () => {
+  const [currentIndex, setCurrentIndex] = useState(2)
+  const [isMounted, setIsMounted] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+  const [dragStartX, setDragStartX] = useState(0)
+  const controls = useAnimation()
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+
+    checkMobile()
+    setIsMounted(true)
+
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  const handleDragStart = (event, info) => {
+    setDragStartX(info.point.x)
+  }
+
+  const handleDragEnd = (event, info) => {
+    const dragEndX = info.point.x
+    const diff = dragStartX - dragEndX
+
+    if (Math.abs(diff) > 30) {
+      // Reduced threshold for more responsive feel
+      if (diff > 0 && currentIndex < teamMembers.length - 1) {
+        setCurrentIndex(currentIndex + 1)
+      } else if (diff < 0 && currentIndex > 0) {
+        setCurrentIndex(currentIndex - 1)
+      }
+    }
+  }
+
+  const teamMembers = [
+    {
+      name: 'David',
+      experience: 'Over 5 years of experience in frontend development.',
+      image: '/img/team/photo-0.png',
+    },
+    {
+      name: 'Michael',
+      experience: 'Over 4 years of experience in mobile development.',
+      image: '/img/team/photo-1.png',
+    },
+    {
+      name: 'Alexander',
+      experience:
+        'Over 7 years of experience in fintech, specializing in high-load system development.',
+      image: '/img/team/photo-2.png',
+    },
+    {
+      name: 'James',
+      experience: 'Over 6 years of experience in cloud architecture.',
+      image: '/img/team/photo-3.png',
+    },
+    {
+      name: 'Robert',
+      experience: 'Over 5 years of experience in DevOps.',
+      image: '/img/team/photo-4.png',
+    },
+  ]
+
+  const activeMember = teamMembers[currentIndex]
+
+  if (!isMounted) {
+    return <div className="w-full px-4 min-h-[800px]" />
+  }
+
+  const getImageDimensions = (isActive) => {
+    return isMobile
+      ? isActive
+        ? { width: 240, height: 340 }
+        : { width: 200, height: 280 }
+      : isActive
+        ? { width: 380, height: 540 }
+        : { width: 310, height: 440 }
+  }
+
+  const getSpacing = () => {
+    return isMobile ? 220 : 350
+  }
+
+  return (
+    <div className="w-full px-4 overflow-hidden">
+      <h1 className="text-center text-[24px] md:text-[48px] font-medium leading-[83%] font-host mb-[60px] md:mb-[80px]">
+        Meet the team
+      </h1>
+
+      <motion.div
+        className={`relative ${isMobile ? 'h-[340px]' : 'h-[540px]'} flex justify-center items-center mb-[28px] md:mb-[42px]`}
+        drag={isMobile ? 'x' : false}
+        dragConstraints={{ left: 0, right: 0 }}
+        dragElastic={0.2}
+        onDragStart={handleDragStart}
+        onDragEnd={handleDragEnd}
+        dragMomentum={false}
+      >
+        <div
+          className={`relative ${isMobile ? 'w-[240px]' : 'w-[380px]'} h-full`}
+        >
+          {teamMembers.map((member, index) => {
+            const position = index - currentIndex
+            const isActive = index === currentIndex
+            const dimensions = getImageDimensions(isActive)
+
+            return (
+              <motion.div
+                key={index}
+                className="absolute top-1/2 left-1/2 cursor-pointer origin-center"
+                style={{
+                  width: dimensions.width,
+                  height: dimensions.height,
+                }}
+                initial={{
+                  x: `calc(${position * getSpacing()}px - 50%)`,
+                  y: '-50%',
+                  scale: isActive ? 1 : 0.815,
+                  opacity: isActive ? 1 : 0.6,
+                  zIndex: isActive ? 2 : 1,
+                }}
+                animate={{
+                  x: `calc(${position * getSpacing()}px - 50%)`,
+                  y: '-50%',
+                  scale: isActive ? 1 : 0.815,
+                  opacity: isActive ? 1 : 0.6,
+                  zIndex: isActive ? 2 : 1,
+                }}
+                transition={{
+                  // duration: 0.5, // Changed from 0.3 to 0.5 for smoother feel
+                  // ease: [0.16, 1, 0.3, 1], // Modified easing curve for gentler motion
+                  duration: 0.5,
+                  ease: isMobile ? [0.16, 1, 0.3, 1] : 'easeInOut',
+                }}
+                onClick={() => !isMobile && setCurrentIndex(index)}
+              >
+                <div
+                  className={`relative w-full h-full rounded-3xl overflow-hidden ${
+                    !isActive ? 'blur-sm' : ''
+                  }`}
+                >
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    className="object-cover grayscale"
+                    fill
+                    sizes={`(max-width: 768px) ${dimensions.width}px, ${dimensions.width}px`}
+                    priority={isActive}
+                  />
+                </div>
+              </motion.div>
+            )
+          })}
+        </div>
+      </motion.div>
+
+      <motion.div
+        key={currentIndex}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 20 }}
+        className="text-center"
+      >
+        <h2 className="text-[24px] md:text-[36px] font-medium font-host leading-none mb-[16px] md:mb-[24px]">
+          {activeMember.name}
+        </h2>
+        <p className="text-[14px] md:text-[24px] font-medium font-host leading-none pb-2 max-w-[240px] md:max-w-[380px] mx-auto">
+          {activeMember.experience}
+        </p>
+      </motion.div>
+    </div>
+  )
+}
+
+export default ImageCarousel

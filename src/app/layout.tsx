@@ -2,6 +2,9 @@ import type { Metadata } from 'next'
 import { Host_Grotesk, Space_Grotesk, Climate_Crisis } from 'next/font/google'
 import './globals.css'
 
+// 1. Header
+// 2. Footer
+
 // * FONTS * //
 const hostGrotesk = Host_Grotesk({
   variable: '--font-host-grotesk',

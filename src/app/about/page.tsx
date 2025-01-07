@@ -1,60 +1,85 @@
 'use client'
-import { motion, useScroll, useTransform } from 'motion/react'
+import React from 'react'
+import { motion, useInView } from 'motion/react'
+import ImageCarousel from '@/components/image-carousel'
 
-const ScrollCards = () => {
-  const { scrollYProgress } = useScroll({
-    offset: ['start start', 'end end'],
-  })
-
-  const cards = [
-    { id: 1, title: 'First Card', color: 'bg-blue-500' },
-    { id: 2, title: 'Second Card', color: 'bg-green-500' },
-    { id: 3, title: 'Third Card', color: 'bg-purple-500' },
-    { id: 4, title: 'Fourth Card', color: 'bg-red-500' },
+const AboutPage = () => {
+  const lyrics = [
+    'We focus on delivering',
+    'scalable, secure, and',
+    'innovative solutions',
   ]
 
+  // return (
+  //   <div className="pt-12">
+  //     <ImageCarousel />
+  //   </div>
+  // )
+
   return (
-    <div className="relative h-[400vh] bg-white">
-      <div className="sticky top-0 h-screen">
-        {cards.map((card, index) => {
-          // Calculate ranges for sliding in and expanding
-          const slideRange = [index * 0.33, index * 0.33 + 0.15] // Slide in first
-          const expandRange = [index * 0.33 + 0.15, index * 0.33 + 0.33] // Then expand
+    <main>
+      {/* Container for all sections including animations and content */}
+      <div className="snap-y snap-mandatory overflow-y-auto h-screen">
+        {/* Animated text sections */}
+        {lyrics.map((text, index) => (
+          <section
+            key={index}
+            className="h-screen w-full flex items-center justify-center snap-start"
+          >
+            <AnimatedText text={text} />
+          </section>
+        ))}
 
-          // Transform for sliding
-          const y = useTransform(scrollYProgress, slideRange, ['100vh', '0vh'])
+        {/* Regular content sections */}
+        <section className="h-screen w-full snap-start pt-28 md:pt-12">
+          <ImageCarousel />
+        </section>
 
-          // Transform for margin and expansion
-          const margin = useTransform(scrollYProgress, expandRange, [
-            '30px',
-            '0px',
-          ])
-
-          // Transform for inner padding
-          const padding = useTransform(scrollYProgress, expandRange, [
-            '0px',
-            '30px',
-          ])
-
-          return (
-            <motion.div
-              key={card.id}
-              style={{
-                y,
-                margin,
-                padding,
-              }}
-              className={`absolute inset-0 ${card.color} mb-8`}
-            >
-              <div className="h-full w-full flex items-center justify-center">
-                <h2 className="text-4xl font-bold text-white">{card.title}</h2>
-              </div>
-            </motion.div>
-          )
-        })}
+        <section className="h-[600px] w-full flex items-center justify-center snap-start bg-black/10 rounded-t-[64px]">
+          <h2 className="text-6xl">wtf</h2>
+        </section>
       </div>
-    </div>
+    </main>
   )
 }
 
-export default ScrollCards
+const AnimatedText = ({ text }) => {
+  const ref = React.useRef(null)
+  const isInView = useInView(ref, {
+    once: false,
+    amount: 0.8,
+  })
+
+  return (
+    <motion.div
+      ref={ref}
+      className="w-full max-w-[90vw] text-center"
+      initial={{ scale: 0.5, opacity: 0 }}
+      animate={{
+        scale: isInView ? 1 : 0.5,
+        opacity: isInView ? 1 : 0,
+      }}
+      transition={{
+        type: 'spring',
+        stiffness: 200,
+        damping: 20,
+        mass: 1,
+      }}
+    >
+      <div
+        className="gradient-text text-[56px] leading-[79.68px] md:text-[96px] font-medium font-host font-extrabold"
+        style={
+          {
+            // fontSize: 'clamp(2rem, 8vw, 8rem)',
+            // lineHeight: '1.1',
+            // whiteSpace: 'nowrap',
+          }
+        }
+      >
+        {text}
+      </div>
+    </motion.div>
+  )
+}
+
+export default AboutPage

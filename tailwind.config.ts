@@ -36,5 +36,17 @@ export default {
     'bg-orange',
     'bg-card',
     'bg-cardDark',
+
+    'top-[390px]',
+    'top-[432px]',
+    'top-[348px]',
+
+    'mt-[324px]',
+    'mt-[366px]',
+    'mt-[282px]',
+
+    'mt-[390px]',
+    'mt-[432px]',
+    'mt-[348px]',
   ],
 } satisfies Config

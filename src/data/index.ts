@@ -21,6 +21,7 @@ export const cards: SolutionCardData[] = [
         'ClickHouse',
       ],
     },
+    mobileTitleOffset: 390,
   },
   {
     bg: 'orange',
@@ -35,6 +36,7 @@ export const cards: SolutionCardData[] = [
       ],
       stack: ['React', 'Next.js', 'Vue', 'TypeScript'],
     },
+    mobileTitleOffset: 390,
   },
   {
     bg: 'card',
@@ -44,6 +46,7 @@ export const cards: SolutionCardData[] = [
       heading:
         'We create clean, intuitive designs that enhance user experience. From websites to apps, we focus on aesthetics, functionality, and accessibility for a seamless user journey.',
     },
+    mobileTitleOffset: 432,
   },
   {
     bg: 'blue',
@@ -59,6 +62,7 @@ export const cards: SolutionCardData[] = [
       ],
       stack: ['Jenkins', 'Kubernetes', 'Docker', 'GitHub Actions'],
     },
+    mobileTitleOffset: 432,
   },
   {
     bg: 'lime',
@@ -74,6 +78,7 @@ export const cards: SolutionCardData[] = [
       ],
       stack: ['Kotlin', 'Blockchain', 'TON', 'Web3'],
     },
+    mobileTitleOffset: 390,
   },
   {
     bg: 'cardDark',
@@ -83,5 +88,7 @@ export const cards: SolutionCardData[] = [
       heading:
         'Ensuring efficient integration across any platform, service, or technology stack. From legacy systems to modern APIs, cloud services, and third-party tools, we cover all your business needs',
     },
+    mobileTitleOffset: 348,
   },
 ]
+// .filter((i, index) => index < 1)

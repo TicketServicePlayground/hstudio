@@ -3,6 +3,7 @@ export interface SolutionCardData {
   pic: string
   title: string
   card: CardData
+  mobileTitleOffset: number
 }
 
 export interface CardData {

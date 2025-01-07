@@ -58,3 +58,17 @@ body {
 /*   mask-composite: exclude; */
 /*   pointer-events: none; /1* So it doesn't interfere with card interactions *1/ */
 /* } */
+
+.gradient-text {
+  background: linear-gradient(
+    90deg,
+    #dcff1e 6.5%,
+    #ff6e00 35.5%,
+    #e6d2ff 62.5%,
+    #96c8ff 91%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding-bottom: 0.2em;
+}
