@@ -18,11 +18,11 @@ import {
 } from '@/components/home/solution-card'
 
 export default function Home() {
+  // {/*
+  //  */}
   return (
     <div className="flex flex-col">
       <Hero />
-      {/*
-       */}
       {cards.map((i, index) => (
         <SolutionCard
           key={`${index}.${i.bg}`}
@@ -35,9 +35,9 @@ export default function Home() {
         />
       ))}
       <RayScreen />
-      {/*
       <Footer />
-      */}
+      {/*
+       */}
     </div>
   )
 }

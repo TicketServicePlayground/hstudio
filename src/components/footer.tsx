@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 
 const Footer = () => {
   const services = [
@@ -23,18 +24,20 @@ const Footer = () => {
 
         rounded-t-[20px] 
         md:rounded-t-[62px] 
+
+        w-full
       `}
     >
       <div className="flex md:hidden w-full justify-between items-center mb-[83.76px]">
         <div className="block font-climate">
-          <a href="/" className="text-[20px]">
+          <Link href="/" className="text-[20px]">
             H.STUDIO
-          </a>
+          </Link>
         </div>
 
         {/* Social Icons */}
         <div className="flex gap-x-[10px]">
-          <a
+          <Link
             href="#"
             target="_blank"
             className="bg-black rounded-[10px] w-[36px] h-[36px] p-[8px] cursor-pointer hover:bg-black/80"
@@ -44,8 +47,8 @@ const Footer = () => {
               alt="X.com logo"
               className="w-[20px] h-[20px]"
             />
-          </a>
-          <a
+          </Link>
+          <Link
             href="#"
             target="_blank"
             className="bg-black rounded-[10px] w-[36px] h-[36px] p-[8px] cursor-pointer hover:bg-black/80"
@@ -55,7 +58,7 @@ const Footer = () => {
               alt="Instagram logo"
               className="w-[20px] h-[20px]"
             />
-          </a>
+          </Link>
         </div>
       </div>
       <div className="mb-[48px] md:mb-[60px] flex w-full justify-between">
@@ -67,7 +70,7 @@ const Footer = () => {
 
         {/* Social Icons */}
         <div className="hidden md:flex gap-x-[10px]">
-          <a
+          <Link
             href="#"
             target="_blank"
             className="bg-black rounded-[10px] w-[36px] h-[36px] p-[8px] cursor-pointer hover:bg-black/80"
@@ -77,8 +80,8 @@ const Footer = () => {
               alt="X.com logo"
               className="w-[20px] h-[20px]"
             />
-          </a>
-          <a
+          </Link>
+          <Link
             href="#"
             target="_blank"
             className="bg-black rounded-[10px] w-[36px] h-[36px] p-[8px] cursor-pointer hover:bg-black/80"
@@ -88,7 +91,7 @@ const Footer = () => {
               alt="Instagram logo"
               className="w-[20px] h-[20px]"
             />
-          </a>
+          </Link>
         </div>
       </div>
 
@@ -116,36 +119,36 @@ const Footer = () => {
       `}
       >
         <div className="hidden md:block font-climate">
-          <a href="/" className="text-[20px]">
+          <Link href="/" className="text-[20px]">
             H.STUDIO
-          </a>
+          </Link>
         </div>
 
         {/* Links */}
-        <a
+        <Link
           href="/about"
           className="text-black hover:text-black/80 hover:underline text-[14px] leading-none"
         >
           About
-        </a>
-        <a
+        </Link>
+        <Link
           href="/blog"
           className="text-black hover:text-black/80 hover:underline text-[14px] leading-none"
         >
           Blog
-        </a>
-        <a
+        </Link>
+        <Link
           href="/terms"
           className="text-black hover:text-black/80 hover:underline text-[14px] leading-none"
         >
           Terms of Service
-        </a>
-        <a
+        </Link>
+        <Link
           href="/privacy"
           className="text-black hover:text-black/80 hover:underline text-[14px] leading-none"
         >
           Privacy Policy
-        </a>
+        </Link>
       </div>
     </footer>
   )

@@ -2,7 +2,12 @@ import React, { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 
-const Tabs = ({ items }) => {
+const Tabs = ({
+  items,
+  onReady,
+  selectedBgColor = 'black',
+  selectedTextColor,
+}) => {
   const [activeTab, setActiveTab] = useState(
     items.find((item) => item.active)?.text || items[0]?.text
   )
@@ -22,12 +27,12 @@ const Tabs = ({ items }) => {
       setActiveTabWidth(width)
       setActiveTabLeft(left - parentLeft - 2)
 
-      // Only show the component when we have the initial measurements
       if (!isReady) {
         setIsReady(true)
+        onReady?.() // Notify parent when ready
       }
     }
-  }, [activeTab, items, isReady])
+  }, [activeTab, items, isReady, onReady])
 
   const getTransition = () => ({
     type: 'spring',
@@ -36,8 +41,8 @@ const Tabs = ({ items }) => {
   })
 
   const renderTabItem = (item, index) => {
-    const commonClasses = `relative px-3.5 py-2.5 text-sm font-medium z-10 rounded-full whitespace-nowrap
-      mix-blend-difference text-white`
+    const commonClasses = `relative px-[14px] py-[10px] text-[16px] font-semibold font-host z-10 rounded-full whitespace-nowrap
+    ${selectedTextColor ? `text-${selectedTextColor}` : 'mix-blend-difference text-white'}`
 
     if (item.type === 'link') {
       return (
@@ -74,7 +79,7 @@ const Tabs = ({ items }) => {
 
   return (
     <div className="relative" style={{ opacity: isReady ? 1 : 0 }}>
-      <div className="relative flex gap-3 rounded-full bg-gray-100 p-0.5 w-fit">
+      <div className="relative flex gap-3 rounded-full bg-white p-[2px] w-fit">
         <motion.div
           className="absolute h-full top-0"
           initial={false}
@@ -86,7 +91,7 @@ const Tabs = ({ items }) => {
             isFirstInteraction.current ? { duration: 0 } : getTransition()
           }
         >
-          <div className="h-full w-full rounded-full bg-black" />
+          <div className={`h-full w-full rounded-full bg-${selectedBgColor}`} />
         </motion.div>
         {items.map((item, index) => renderTabItem(item, index))}
       </div>

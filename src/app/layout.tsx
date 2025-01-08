@@ -5,9 +5,6 @@ import './globals.css'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 
-// 1. Header
-// 2. Footer
-
 // * FONTS * //
 const hostGrotesk = Host_Grotesk({
   variable: '--font-host-grotesk',
@@ -41,6 +38,9 @@ export default function RootLayout({
         <div className="flex flex-col w-screen min-h-screen bg-background">
           <Header />
           {children}
+          {/*
+          <Footer />
+          */}
         </div>
       </body>
     </html>

@@ -37,6 +37,7 @@ export default {
     'bg-orange',
     'bg-card',
     'bg-cardDark',
+    'bg-[#ECEBF1]',
 
     'top-[390px]',
     'top-[432px]',
