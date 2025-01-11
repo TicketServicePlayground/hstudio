@@ -1,6 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
+import { X } from 'lucide-react'
 import { clients } from '@/data/clients'
 
 import Tabs from '@/components/tabs'
@@ -23,7 +24,7 @@ const ClientsPage: React.FC = () => {
     <div className="flex flex-col w-full items-center pt-[196px] md:pt-[190px]">
       <Title>Examples of our expertise in action</Title>
 
-      <div className="pl-[25px] md:pl-unset max-w-[100%] overflow-x-scroll">
+      <div className="pl-[25px] md:pl-unset max-w-[100%] overflow-x-auto">
         <Tabs
           selectedBgColor="blue"
           selectedTextColor="black"
@@ -68,51 +69,6 @@ const ClientsPage: React.FC = () => {
     </div>
   )
 }
-
-// <div className="grid grid-cols-2 w-full gap-2">
-//   {clients.map((client) => (
-//     <div key={client.name} className="aspect-square w-full">
-//       <div
-//         className={`w-full h-full rounded-[32px] overflow-hidden relative `}
-//       >
-//         {/* Card Content */}
-//         <div className="absolute inset-0 p-6 flex flex-col">
-//           {/* Logo */}
-//           <div className="bg-black text-white w-12 h-12 rounded-full flex items-center justify-center font-climate mb-auto">
-//             {client.logo}
-//           </div>
-
-//           {/* Bottom Content */}
-//           <div>
-//             <h3 className="text-2xl font-host mb-4">{client.name}</h3>
-//             <div className="flex flex-wrap gap-2">
-//               {client.tags.map((tag, index) => (
-//                 <span
-//                   key={index}
-//                   className={`px-4 py-1 rounded-full text-sm
-//                     bg-${tag.bgColor} text-${tag.textColor}
-//                   `}
-//                 >
-//                   {tag.name}
-//                 </span>
-//               ))}
-//             </div>
-//           </div>
-//         </div>
-
-//         {/*
-//         <ProjectModal
-//           logo={project.logo}
-//           title={project.title}
-//           description={project.description}
-//           tags={project.tags}
-//           backgroundImage={`/api/placeholder/800/800?text=${project.title}`}
-//         />
-// */}
-//       </div>
-//     </div>
-//   ))}
-// </div>
 
 const ClientCard = ({ client }) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -202,8 +158,8 @@ const ClientCard = ({ client }) => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="relative w-full max-w-3xl bg-white rounded-[32px] overflow-hidden">
-                  <div className="flex flex-col md:flex-row">
+                <Dialog.Panel className="relative w-[calc(100vw-1rem)] md:w-[calc(100vw-64px)] min-h-[calc(100vh-80px)] md:h-[calc(100vh-70px)] bg-white rounded-[32px] mt-20 md:mt-0 overflow-auto mx-auto">
+                  <div className="flex flex-col md:flex-row h-full">
                     {/* Left Side - Image */}
                     <div className="w-full md:w-1/2 relative aspect-square md:aspect-auto">
                       {client.contentImg ? (
@@ -222,9 +178,12 @@ const ClientCard = ({ client }) => {
                           }
                         />
                       )}
-                      <div className="absolute top-4 left-4 bg-black text-white w-12 h-12 rounded-full flex items-center justify-center font-climate">
-                        {client.logo}
-                      </div>
+
+                      <img
+                        className="absolute top-0 left-0 w-[66px] h-[66px] md:w-[100px] md:h-[100px]"
+                        src={client.logo}
+                        alt={client.name + ' logo'}
+                      />
                     </div>
 
                     {/* Right Side - Content */}
@@ -232,24 +191,29 @@ const ClientCard = ({ client }) => {
                       {/* Close Button */}
                       <button
                         onClick={() => setIsOpen(false)}
-                        className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+                        className="absolute hover:opacity-60 top-[21.8px] right-[21.8px] md:top-[28.8px] md:right-[28.8px]"
                       >
-                        <div>close</div>
+                        <X className="w-[22px] text-black" />
                       </button>
 
                       {/* Content */}
-                      <div className="space-y-6">
-                        <Dialog.Title as="h2" className="text-3xl font-host">
+                      <div className="">
+                        <Dialog.Title
+                          as="h2"
+                          className="font-host font-medium text-[24px] md:text-[42px] leading-none mb-[30px] md:mb-[40px]"
+                        >
                           {client.name}
                         </Dialog.Title>
 
-                        <div>
-                          <h3 className="text-lg mb-2">Technology Stack</h3>
-                          <div className="flex flex-wrap gap-2">
+                        <div className="mb-[30px] md:mb-[40px]">
+                          <h3 className="text-[14px] md:text-[18px] font-host font-bold mb-[16px]">
+                            Technology Stack
+                          </h3>
+                          <div className="flex flex-wrap gap-[4px]">
                             {client.tags.map((tag, index) => (
                               <span
                                 key={index}
-                                className={`px-4 py-1 rounded-full text-sm bg-${tag.bgColor} text-${tag.textColor}`}
+                                className={`font-space font-medium leading-none px-[12px] py-[8px] rounded-[9px] text-[12px] bg-${tag.bgColor} text-${tag.textColor}`}
                               >
                                 {tag.text}
                               </span>
@@ -257,16 +221,20 @@ const ClientCard = ({ client }) => {
                           </div>
                         </div>
 
-                        <p className="text-black/80">{client.bio}</p>
+                        <p className="mb-[30px] md:mb-[40px] font-host font-medium leading-none text-[18px] md:text-[24px]">
+                          {client.bio}
+                        </p>
 
                         {client.stats && (
-                          <div className="flex gap-12">
+                          <div className="flex gap-[24px] mb-[30px] md:mb-[40px]">
                             {client.stats.map((stat, index) => (
                               <div key={index}>
-                                <div className="text-black/60 text-sm">
+                                <div className="font-host font-medium text-black text-[14px] mb-[6px] leading-none">
                                   {stat.label}:
                                 </div>
-                                <div>{stat.value}</div>
+                                <div className="text-[18px] font-host font-bold text-black leading-none">
+                                  {stat.value}
+                                </div>
                               </div>
                             ))}
                           </div>
@@ -277,7 +245,7 @@ const ClientCard = ({ client }) => {
                             href={client.href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-block bg-black text-white px-8 py-3 rounded-full hover:bg-black/80 transition-colors"
+                            className="block py-[21px] px-[65.5px] font-host text-[20px] text-center font-medium leading-none bg-black rounded-full text-white w-full lg:w-max"
                           >
                             visit the website
                           </a>
@@ -302,23 +270,5 @@ const Title = () => (
     expertise in action
   </h2>
 )
-
-// - cards
-//     - bg
-//     - logo
-//     - name
-//     - tag
-
-// 	+ popup
-//
-//     - bg
-//     - logo
-//     - name
-//     - tag
-//
-//     - image
-//     - bio
-//     - stats
-//     - button
 
 export default ClientsPage

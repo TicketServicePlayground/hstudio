@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react'
-// import Header from '@/components/header'
-// {/*
-// <Header />
-//  */}
 
 const Hero = () => (
-  <div className="relative h-auto md:min-h-[971px] _overflow-x-hidden">
+  <div className="relative h-auto min-h-[825px] md:min-h-[971px] overflow-x-hidden">
     <Circle />
     {/*
     <ParallaxCircle />
@@ -185,7 +181,7 @@ const LogoMarquee = () => {
   ]
 
   return (
-    <div className="w-full overflow-hidden absolute top-[841.78px]">
+    <div className="w-full overflow-hidden absolute top-[717px] md:top-[841.78px]">
       <div className="relative flex items-center mx-[0px] md:mx-[30px]">
         {/* Desktop static version */}
         <div className="hidden md:flex w-full items-center justify-between">

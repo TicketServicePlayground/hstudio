@@ -81,7 +81,7 @@ const Tabs = ({
     <div className="relative" style={{ opacity: isReady ? 1 : 0 }}>
       <div className="relative flex gap-3 rounded-full bg-white p-[2px] w-fit">
         <motion.div
-          className="absolute h-full top-0"
+          className="absolute h-[calc(100%-4px)] top-[2px]"
           initial={false}
           animate={{
             x: activeTabLeft,

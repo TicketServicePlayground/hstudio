@@ -1,6 +1,6 @@
 export const clients = [
   {
-    logo: '/img/clients/logos/logo-0.png',
+    logo: '/img/clients/logos_x2/logo-0.png',
     name: 'EventStripe',
     bgImg: '/img/clients/gradients/1.jpeg',
     contentImg: '',
@@ -30,7 +30,7 @@ export const clients = [
     href: 'https://google.com', // defines whethere there's cta
   },
   {
-    logo: '/img/clients/logos/logo-1.png',
+    logo: '/img/clients/logos_x2/logo-1.png',
     name: 'VTB — Data Streaming System',
     bgImg: '/img/clients/gradients/2.jpeg',
     tags: [
@@ -58,7 +58,7 @@ export const clients = [
     ],
   },
   {
-    logo: '/img/clients/logos/logo-2.png',
+    logo: '/img/clients/logos_x2/logo-2.png',
     name: 'Sber — Microservice Architecture and Biometric Authorization',
     bgImg: '/img/clients/gradients/3.jpeg',
     tags: [
@@ -91,7 +91,7 @@ export const clients = [
     ],
   },
   {
-    logo: '/img/clients/logos/logo-3.png',
+    logo: '/img/clients/logos_x2/logo-3.png',
     name: 'Societe Generale — Personalized Advertising Banner Service',
     bgImg: '/img/clients/bg/bg-4.png',
     contentImg: '',
@@ -125,7 +125,7 @@ export const clients = [
     ],
   },
   {
-    logo: '/img/clients/logos/logo-4.png',
+    logo: '/img/clients/logos_x2/logo-4.png',
     name: 'Architectural bureau MIR',
     bgImg: '/img/clients/gradients/5.jpeg',
     contentImg: '',
@@ -151,7 +151,7 @@ export const clients = [
     href: 'https://google.com',
   },
   {
-    logo: '/img/clients/logos/logo-5.png',
+    logo: '/img/clients/logos_x2/logo-5.png',
     name: 'KClub Group',
     bgImg: '/img/clients/gradients/6.jpeg',
     contentImg: '',
@@ -171,7 +171,7 @@ export const clients = [
     href: 'https://google.com',
   },
   {
-    logo: '/img/clients/logos/logo-6.png',
+    logo: '/img/clients/logos_x2/logo-6.png',
     name: 'Matahari Hills',
     bgImg: '/img/clients/bg/bg-7.png',
     contentImg: '',
@@ -196,7 +196,7 @@ export const clients = [
     href: 'https://google.com',
   },
   {
-    logo: '/img/clients/logos/logo-7.png',
+    logo: '/img/clients/logos_x2/logo-7.png',
     name: 'Mirage Flash',
     bgImg: '/img/clients/gradients/8.jpeg',
     contentImg: '',
@@ -221,7 +221,7 @@ export const clients = [
     href: 'https://google.com',
   },
   {
-    logo: '/img/clients/logos/logo-8.png',
+    logo: '/img/clients/logos_x2/logo-8.png',
     name: 'Frigate Surfboards',
     bgImg: '/img/clients/gradients/9.jpeg',
     contentImg: '',
@@ -251,7 +251,7 @@ export const clients = [
     href: 'https://google.com',
   },
   {
-    logo: '/img/clients/logos/logo-9.png',
+    logo: '/img/clients/logos_x2/logo-9.png',
     name: 'Ntainers',
     bgImg: '/img/clients/bg/bg-10.png',
     contentImg: '',
