@@ -91,7 +91,11 @@ const Cards = ({ cards }) => {
                   margin: isMobile ? 0 : margin,
                 }}
               >
-                <CardContent card={card} isMobile={isMobile} />
+                <CardContent
+                  card={card}
+                  isMobile={isMobile}
+                  padding={padding}
+                />
               </motion.div>
             )
           }
@@ -140,7 +144,7 @@ const Cards = ({ cards }) => {
                 zIndex: i,
               }}
             >
-              <CardContent card={card} isMobile={isMobile} />
+              <CardContent card={card} isMobile={isMobile} padding={padding} />
             </motion.div>
           )
         })}
@@ -149,35 +153,47 @@ const Cards = ({ cards }) => {
   )
 }
 
-const CardContent = ({ card, isMobile }) => {
+const CardContent = ({ card, isMobile, padding }) => {
   return (
     <motion.div
       className="w-full h-full flex items-center justify-center"
       style={{
-        padding: isMobile ? 16 : padding,
+        padding: isMobile ? 0 : padding,
       }}
     >
       <div className="w-full h-full border border-white flex flex-col items-center justify-center">
         <h2
           className="
 
-  mt-64 
+  mt-96 
   text-4xl font-bold text-white
   "
         >
           {card.title}
         </h2>
-        <div
+        <motion.div
           className={`
-      relative mt-8
-      md:mt-0
-      md:absolute md:top-0 md:right-0 md:h-64 md:w-64
-      border border-white
-          text-white
-      `}
+            w-full h-full relative
+            relative mt-8
+            md:mt-0
+            md:absolute md:h-64 md:w-64
+            border border-white
+            text-white
+            bg-black/20
+          `}
+          style={
+            isMobile
+              ? {
+                  //
+                }
+              : {
+                  top: padding,
+                  right: padding,
+                }
+          }
         >
           inner content
-        </div>
+        </motion.div>
       </div>
     </motion.div>
   )
