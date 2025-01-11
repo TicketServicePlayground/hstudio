@@ -1,5 +1,3 @@
-// https://claude.ai/chat/a90cad66-b0f6-40c9-9c6f-231b53a1d820
-// TODO LATER IM TIRED;
 'use client'
 
 import React from 'react'
@@ -7,10 +5,10 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 
 const Page = () => {
   const cards = [
-    { id: 1, title: 'First Card', color: 'bg-cyan-500', innerHeight: 550 },
-    { id: 2, title: 'Second Card', color: 'bg-green-500', innerHeight: 350 },
-    { id: 3, title: 'Third Card', color: 'bg-purple-500', innerHeight: 650 },
-    { id: 4, title: 'Fourth Card', color: 'bg-red-500', innerHeight: 550 },
+    { id: 1, title: 'First Card', color: 'bg-cyan-500' },
+    { id: 2, title: 'Second Card', color: 'bg-green-500' },
+    { id: 3, title: 'Third Card', color: 'bg-purple-500' },
+    { id: 4, title: 'Fourth Card', color: 'bg-red-500' },
   ]
 
   return (
@@ -48,9 +46,9 @@ const Cards = ({ cards }) => {
 
   const totalScrollHeight = React.useMemo(() => {
     if (isMobile) {
-      return cards.length * 100 // One viewport height per card
+      return cards.length * 100 // One viewport height per card on mobile
     } else {
-      return (0.1 + (cards.length - 1)) * 100
+      return (0.1 + (cards.length - 1)) * 100 // Keep desktop calculation exactly the same
     }
   }, [isMobile, cards.length])
 
@@ -65,7 +63,7 @@ const Cards = ({ cards }) => {
       className="relative"
       style={{ height: `${totalScrollHeight}vh` }}
     >
-      <div className="sticky top-0 h-screen overflow-hidden">
+      <div className="sticky top-0 h-screen">
         {cards.map((card, i) => {
           if (i === 0) {
             // First card animations (desktop only)
@@ -81,8 +79,11 @@ const Cards = ({ cards }) => {
               ['0px', '30px']
             )
 
-            // For mobile, slide up inner content
-            const y = useTransform(scrollYProgress, [0, 0.4], ['100%', '0%'])
+            const marginTop = useTransform(
+              scrollYProgress,
+              [0, 0.4],
+              ['384px', '0px']
+            )
 
             return (
               <motion.div
@@ -96,7 +97,7 @@ const Cards = ({ cards }) => {
                   card={card}
                   isMobile={isMobile}
                   padding={isMobile ? 0 : padding}
-                  y={isMobile ? y : 0}
+                  marginTop={isMobile ? marginTop : 0}
                 />
               </motion.div>
             )
@@ -113,38 +114,36 @@ const Cards = ({ cards }) => {
 
           const cardEnd = cardStart + segmentSize
 
-          // Calculate when inner content should be fully visible
-          const contentDuration = segmentSize * 0.6
-          const slideInDuration = segmentSize * 0.2
+          // Mobile animation timing
+          const slideStart = cardStart
+          const slideEnd = isMobile
+            ? cardStart + segmentSize * 0.4 // Card enters in first 40%
+            : cardStart + segmentSize * 0.5 // Desktop timing unchanged
 
-          // Card entry
-          const cardY = useTransform(
+          const y = useTransform(
             scrollYProgress,
-            [
-              cardStart + contentDuration,
-              cardStart + contentDuration + slideInDuration,
-            ],
+            [slideStart, slideEnd],
             ['100vh', '0vh']
           )
 
-          // Inner content slide up
-          const contentY = useTransform(
-            scrollYProgress,
-            [cardStart, cardStart + contentDuration],
-            ['100%', '0%']
-          )
-
-          // Desktop animations (unchanged)
+          // Desktop expand animations (unchanged)
           const margin = useTransform(
             scrollYProgress,
-            [cardStart + contentDuration + slideInDuration, cardEnd],
+            [slideEnd, cardEnd],
             ['30px', '0px']
           )
 
           const padding = useTransform(
             scrollYProgress,
-            [cardStart + contentDuration + slideInDuration, cardEnd],
+            [slideEnd, cardEnd],
             ['0px', '30px']
+          )
+
+          // Mobile inner content animation
+          const marginTop = useTransform(
+            scrollYProgress,
+            [cardStart + segmentSize * 0.4, cardStart + segmentSize * 0.8],
+            ['384px', '0px']
           )
 
           return (
@@ -152,7 +151,7 @@ const Cards = ({ cards }) => {
               key={card.id}
               className={`${card.color} absolute inset-0`}
               style={{
-                y: cardY,
+                y,
                 margin: isMobile ? 0 : margin,
                 zIndex: i,
               }}
@@ -161,7 +160,7 @@ const Cards = ({ cards }) => {
                 card={card}
                 isMobile={isMobile}
                 padding={isMobile ? 0 : padding}
-                y={isMobile ? contentY : 0}
+                marginTop={isMobile ? marginTop : 0}
               />
             </motion.div>
           )
@@ -171,38 +170,47 @@ const Cards = ({ cards }) => {
   )
 }
 
-const CardContent = ({ card, isMobile, padding, y }) => {
+const CardContent = ({ card, isMobile, padding, marginTop }) => {
   return (
-    <div className="w-full h-full flex items-start justify-center overflow-hidden">
-      <motion.div
-        className="w-full relative"
-        style={{
-          padding: isMobile ? 0 : padding,
-          y,
-        }}
-      >
-        <CardInner card={card} isMobile={isMobile} />
-      </motion.div>
-    </div>
+    <motion.div
+      className="w-full h-full flex items-center justify-center"
+      style={{
+        padding: isMobile ? 0 : padding,
+      }}
+    >
+      <div className="w-full h-full border border-white flex flex-col items-center justify-center">
+        <CardInner
+          card={card}
+          isMobile={isMobile}
+          padding={padding}
+          marginTop={marginTop}
+        />
+      </div>
+    </motion.div>
   )
 }
 
-const CardInner = ({ card, isMobile }) => {
+const CardInner = ({ card, isMobile, padding, marginTop }) => {
+  const style = isMobile
+    ? { marginTop }
+    : {
+        position: 'absolute',
+        top: padding,
+        right: padding,
+      }
+
   return (
-    <div
+    <motion.div
       className={`
         border border-white
         text-white
         bg-black/20
-        ${isMobile ? 'w-full relative' : 'h-64 w-64'}
+        ${isMobile ? 'w-full h-full relative' : 'h-64 w-64'}
       `}
-      style={{
-        height: isMobile ? card.innerHeight : 256,
-      }}
+      style={style}
     >
-      <h2 className="text-4xl font-bold text-white p-4">{card.title}</h2>
-      <div className="p-4">Content height: {card.innerHeight}px</div>
-    </div>
+      <h2 className="text-4xl font-bold text-white">{card.title}</h2>
+    </motion.div>
   )
 }
 

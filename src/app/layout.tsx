@@ -46,3 +46,7 @@ export default function RootLayout({
     </html>
   )
 }
+
+// <h2 className="text-4xl font-bold text-white" >
+//   {card.title}
+// </h2>
