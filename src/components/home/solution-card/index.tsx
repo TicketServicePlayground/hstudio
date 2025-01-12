@@ -71,7 +71,7 @@ export const CardNumber = ({ number = 0 }: { number: number }) => (
   </div>
 )
 
-export const Card = ({
+export const InnerCard = ({
   card,
   isDark,
 }: {

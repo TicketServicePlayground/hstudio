@@ -5,10 +5,20 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 
 const Page = () => {
   const cards = [
-    { id: 1, title: 'First Card', color: 'bg-cyan-500' },
-    { id: 2, title: 'Second Card', color: 'bg-green-500' },
-    { id: 3, title: 'Third Card', color: 'bg-purple-500' },
-    { id: 4, title: 'Fourth Card', color: 'bg-red-500' },
+    { id: 1, title: 'First Card', color: 'bg-cyan-500', innerBlockHeight: 800 },
+    {
+      id: 2,
+      title: 'Second Card',
+      color: 'bg-green-500',
+      innerBlockHeight: 500,
+    },
+    {
+      id: 3,
+      title: 'Third Card',
+      color: 'bg-purple-500',
+      innerBlockHeight: 600,
+    },
+    { id: 4, title: 'Fourth Card', color: 'bg-red-500', innerBlockHeight: 300 },
   ]
 
   return (

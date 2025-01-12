@@ -13,7 +13,7 @@ import {
   Label,
   CTA,
   Title,
-  Card,
+  InnerCard,
   CardNumber,
 } from '@/components/home/solution-card'
 
@@ -87,7 +87,7 @@ const SolutionCard = ({
       <div className="absolute bottom-[27px] right-[27px] hidden md:block">
         <CTA />
       </div>
-      <Card card={card} isDark={isDark} />
+      <InnerCard card={card} isDark={isDark} />
       {/*
        */}
     </div>
