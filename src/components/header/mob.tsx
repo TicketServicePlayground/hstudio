@@ -146,7 +146,7 @@ const MobileNav = () => {
             <>
               {/* Menu container */}
               <motion.div
-                className="mobile-menu-container absolute bg-[#FFFFFF40] backdrop-blur-[40px] border border-[#FFFFFF60] text-black rounded-[20px]  z-40"
+                className="mobile-menu-container absolute bg-[#FFFFFF40] backdrop-blur-[40px] border border-[#FFFFFF60] text-black rounded-[20px] z-40"
                 initial="closed"
                 animate="open"
                 exit="closed"

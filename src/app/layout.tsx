@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Host_Grotesk, Space_Grotesk, Climate_Crisis } from 'next/font/google'
 import './globals.css'
+import '@/assets/css/index.css'
 
 import Header from '@/components/header'
 import Footer from '@/components/footer'

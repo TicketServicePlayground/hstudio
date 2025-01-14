@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 const Hero = () => (
-  <div className="relative h-auto min-h-[825px] md:min-h-[971px] overflow-x-hidden">
+  <div className="relative h-auto min-h-[900px] md:min-h-[971px] overflow-x-hidden">
     <Circle />
     {/*
     <ParallaxCircle />

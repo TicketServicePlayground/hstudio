@@ -28,7 +28,7 @@ const Header = () => {
     }
   }, [isLeftTabsReady, isRightTabsReady])
 
-  if (pathname.startsWith('animaitons')) {
+  if (pathname.startsWith('/animaitons') || pathname.startsWith('/2')) {
     return null
   }
 
