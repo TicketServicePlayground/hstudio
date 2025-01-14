@@ -1,3 +1,137 @@
+export const InnerCard = ({
+  card,
+  isDark,
+}: {
+  card: CardData
+  isDark?: boolean
+}) => {
+  return (
+    <div
+      className={`
+        card
+        ${isDark ? 'card--dark' : ''}
+        flex flex-col
+        relative
+        md:absolute md:top-0 md:right-0
+        rounded-[20px]
+        md:rounded-[32px]
+        backdrop-blur-[150px]
+        w-full
+        md:w-[494px]
+        p-[25px]
+        md:p-[46px]
+        gap-y-[40px]
+        pb-[120px]
+        md:pb-[46px]
+        ${isDark ? 'bg-[#FFFFFF05] text-white' : 'bg-[#FFFFFF20] text-black'}
+      `}
+    >
+      <span className="font-host font-[500] text-[24px] leading-none">
+        {card.heading}
+      </span>
+      {card.benefits && (
+        <div className="flex flex-col gap-y-[12px]">
+          <Label>Key Benefits</Label>
+          <div className="flex flex-col gap-y-[8px]">
+            {card.benefits.map((benefitItem) => (
+              <span
+                className="font-host text-[14px] font-[500] leading-none"
+                key={benefitItem}
+              >
+                {benefitItem}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+      {card.stack && (
+        <div className="flex flex-col gap-y-[16px]">
+          <Label>Technology Stack</Label>
+          <div className="flex flex-wrap gap-[4px]">
+            {card.stack.map((stackItem) => (
+              <span
+                className="flex items-center justify-center h-[24px] font-space text-[12px] font-[500] leading-none bg-white rounded-[9px] px-[12px]"
+                key={stackItem}
+              >
+                {stackItem}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+      <div className="block md:hidden">
+        <CTA />
+      </div>
+    </div>
+  )
+}
+// export const InnerCard = ({
+//   card,
+//   isDark,
+// }: {
+//   card: CardData
+//   isDark?: boolean
+// }) => {
+//   return (
+//     <div
+//       className={`
+//         card
+//         flex flex-col
+//         relative
+//         md:absolute md:top-0 md:right-0
+//         rounded-[20px]
+//         md:rounded-[32px]
+//         border border-[#FFFFFF60] backdrop-blur-[150px]
+//         w-full
+//         md:w-[494px]
+//         p-[25px]
+//         md:p-[46px]
+//         gap-y-[40px]
+//         pb-[120px]
+//         md:pb-[25px]
+//         ${isDark ? 'bg-[#FFFFFF05] text-white' : 'bg-[#FFFFFF20] text-black'}
+//       `}
+//     >
+//       <span className="font-host font-[500] text-[24px] leading-none">
+//         {card.heading}
+//       </span>
+//       {card.benefits && (
+//         <div className="flex flex-col gap-y-[12px]">
+//           <Label>Key Benefits</Label>
+//           <div className="flex flex-col gap-y-[8px]">
+//             {card.benefits.map((benefitItem) => (
+//               <span
+//                 className="font-host text-[14px] font-[500] leading-none"
+//                 key={benefitItem}
+//               >
+//                 {benefitItem}
+//               </span>
+//             ))}
+//           </div>
+//         </div>
+//       )}
+//       {card.stack && (
+//         <div className="flex flex-col gap-y-[16px]">
+//           <Label>Technology Stack</Label>
+//           <div className="flex flex-wrap gap-[4px]">
+//             {card.stack.map((stackItem) => (
+//               <span
+//                 className="flex items-center justify-center h-[24px] font-space text-[12px] font-[500] leading-none bg-white rounded-[9px] px-[12px]"
+//                 key={stackItem}
+//               >
+//                 {stackItem}
+//               </span>
+//             ))}
+//           </div>
+//         </div>
+//       )}
+//       <div className="block md:hidden">
+//         <CTA />
+//       </div>
+//     </div>
+//   )
+// }
+
 export const Label = ({ children }: { children?: string }) => (
   <span className="font-host font-[700] text-[18px] leading-none">
     {children}
@@ -70,70 +204,3 @@ export const CardNumber = ({ number = 0 }: { number: number }) => (
     {number}
   </div>
 )
-
-export const InnerCard = ({
-  card,
-  isDark,
-}: {
-  card: CardData
-  isDark?: boolean
-}) => {
-  return (
-    <div
-      className={`
-        card
-        flex flex-col
-        relative
-        md:absolute md:top-0 md:right-0
-        rounded-[20px]
-        md:rounded-[32px]
-        border border-[#FFFFFF60] backdrop-blur-[150px]
-        w-full
-        md:w-[494px]
-        p-[25px]
-        md:p-[46px]
-        gap-y-[40px]
-        pb-[120px]
-        md:pb-[25px]
-        ${isDark ? 'bg-[#FFFFFF05] text-white' : 'bg-[#FFFFFF20] text-black'}
-      `}
-    >
-      <span className="font-host font-[500] text-[24px] leading-none">
-        {card.heading}
-      </span>
-      {card.benefits && (
-        <div className="flex flex-col gap-y-[12px]">
-          <Label>Key Benefits</Label>
-          <div className="flex flex-col gap-y-[8px]">
-            {card.benefits.map((benefitItem) => (
-              <span
-                className="font-host text-[14px] font-[500] leading-none"
-                key={benefitItem}
-              >
-                {benefitItem}
-              </span>
-            ))}
-          </div>
-        </div>
-      )}
-      {card.stack && (
-        <div className="flex flex-col gap-y-[16px]">
-          <Label>Technology Stack</Label>
-          <div className="flex flex-wrap gap-[4px]">
-            {card.stack.map((stackItem) => (
-              <span
-                className="flex items-center justify-center h-[24px] font-space text-[12px] font-[500] leading-none bg-white rounded-[9px] px-[12px]"
-                key={stackItem}
-              >
-                {stackItem}
-              </span>
-            ))}
-          </div>
-        </div>
-      )}
-      <div className="block md:hidden">
-        <CTA />
-      </div>
-    </div>
-  )
-}

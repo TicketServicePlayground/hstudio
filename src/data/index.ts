@@ -91,4 +91,21 @@ export const cards: SolutionCardData[] = [
     mobileTitleOffset: 348,
   },
 ]
-// .filter((i, index) => index < 1)
+
+// background: url(<path-to-image>) lightgray 108.299px -37.448px / 75.428% 110.699% no-repeat;
+// background: url(<path-to-image>) lightgray -91px 57.739px / 150.556% 60.222% no-repeat;
+
+// background: url(<path-to-image>) lightgray 204.734px -43.244px / 61.452% 99.827% no-repeat;
+// background: url(<path-to-image>) lightgray -61.742px 45.429px / 141.317% 62.568% no-repeat;
+
+// background: url(<path-to-image>) lightgray 62.841px -17.547px / 78.85% 107.772% no-repeat;
+// background: url(<path-to-image>) lightgray -18.452px 87.827px / 137.07% 51.062% no-repeat;
+
+// background: url(<path-to-image>) lightgray 335.445px -152.007px / 54.734% 107.905% no-repeat;
+// background: url(<path-to-image>) lightgray -6.842px -12.943px / 121.001% 65.015% no-repeat;
+
+// background: url(<path-to-image>) lightgray 79.31px -36.072px / 82.958% 126.712% no-repeat;
+// background: url(<path-to-image>) lightgray -10.462px 59.488px / 141.859% 59.056% no-repeat;
+
+// background: url(<path-to-image>) lightgray 335.164px -31.448px / 51.425% 108.985% no-repeat;
+// background: url(<path-to-image>) lightgray -10.462px 59.488px / 141.859% 59.056% no-repeat;
