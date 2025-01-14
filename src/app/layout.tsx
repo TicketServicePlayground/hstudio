@@ -36,9 +36,9 @@ export default function RootLayout({
         className={`${hostGrotesk.variable} ${spaceGrotesk.variable} ${climateCrisis.variable} antialiased max-w-[100vw] overflow-x-hidden`}
       >
         <div className="flex flex-col w-screen min-h-screen bg-background">
+          <Header />
           {children}
           {/*
-          <Header />
           <Footer />
           */}
         </div>

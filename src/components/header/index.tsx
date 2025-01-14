@@ -1,5 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 
 import MobileNav from './mobile'
 import DesktopNav from './desktop'
@@ -9,6 +10,7 @@ const Header = () => {
   const [isRightTabsReady, setIsRightTabsReady] = useState(false)
   const [showHeader, setShowHeader] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
+  const pathname = usePathname()
 
   useEffect(() => {
     const checkMobile = () => {
@@ -26,18 +28,20 @@ const Header = () => {
     }
   }, [isLeftTabsReady, isRightTabsReady])
 
+  if (pathname.startsWith('animaitons')) {
+    return null
+  }
+
   if (isMobile) {
     return <MobileNav />
   }
 
   return (
-    <div className="z-[1]">
-      <DesktopNav
-        showHeader={showHeader}
-        onLeftTabsReady={() => setIsLeftTabsReady(true)}
-        onRightTabsReady={() => setIsRightTabsReady(true)}
-      />
-    </div>
+    <DesktopNav
+      showHeader={showHeader}
+      onLeftTabsReady={() => setIsLeftTabsReady(true)}
+      onRightTabsReady={() => setIsRightTabsReady(true)}
+    />
   )
 }
 

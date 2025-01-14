@@ -99,15 +99,6 @@ const MobileNav = () => {
         <AnimatePresence>
           {isOpen && (
             <>
-              {/* Backdrop overlay */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="fixed inset-0 z-30"
-                onClick={() => setIsOpen(false)}
-              />
-
               {/* Menu container */}
               <motion.div
                 className="absolute bottom-0 right-0 bg-[#FFFFFF40] backdrop-blur-[40px] border border-[#FFFFFF60] text-black rounded-[20px] overflow-hidden z-40"

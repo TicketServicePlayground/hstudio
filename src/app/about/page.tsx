@@ -33,7 +33,7 @@ const AboutPage = () => {
         ))}
 
         {/* Regular content sections */}
-        <section className="h-screen w-full snap-start pt-28 md:pt-12">
+        <section className="h-screen w-full snap-start pt-28 md:pt-24 2xl:pt-20">
           <ImageCarousel />
         </section>
 

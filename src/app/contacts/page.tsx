@@ -2,14 +2,14 @@ import Footer from '@/components/footer'
 
 const ContactsPage = () => {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col relative w-full">
       <div
         className={`
           flex flex-col gap-y-[140px] mb-[140px]
-          lg:flex-row lg:justify-between lg:items-center lg:mb-[80x] lg:gap-y-[0px]
-          lg:pl-[30px] lg:pr-[64px]
+          xl:flex-row xl:justify-between xl:items-center xl:mb-[80x] xl:gap-y-[0px]
+          xl:pl-[30px] xl:pr-[64px]
           pl-[25px] pr-[25px]
-          pt-[100px] lg:pt-[120px]
+          pt-[100px] xl:pt-[120px]
         `}
       >
         <ContactForm />
@@ -21,10 +21,14 @@ const ContactsPage = () => {
 }
 
 const ContactForm = () => (
-  <div className="flex flex-col px-[20px] lg:px-[65px] lg:py-[40px] py-[55px] bg-white rounded-[20px] lg:rounded-[60px] shadow-contact mr-[0px] lg:mr-[20px]">
-    <h1 className="text-[42px] lg:text-[64px] font-host leading-none font-medium mb-[40px]">
+  <div
+    className="flex flex-col px-[20px] xl:px-[65px] xl:py-[40px] py-[55px] bg-white rounded-[20px] xl:rounded-[60px] shadow-contact mr-[0px] xl:mr-[20px] 
+  "
+  >
+    <h1 className="text-[42px] xl:text-[64px] font-host leading-none font-medium mb-[40px]">
       Let's <span className="text-orange">talk</span> about
-      <br />
+      <br className="block lg:hidden xl:block" />
+      <span className="hidden lg:inline-block xl:hidden w-[11px]" />
       your project!
     </h1>
 
@@ -43,14 +47,14 @@ const Input = ({ placeholder }) => (
   <input
     type="text"
     placeholder={placeholder}
-    className="placeholder:text-black/40 text-black text-[16px] lg:text-[24px] rounded-[58px] p-[20px] bg-[#F6F5FA] focus:outline-liliac focus:outline-2"
+    className="placeholder:text-black/40 text-black text-[16px] xl:text-[24px] rounded-[58px] p-[20px] bg-[#F6F5FA] focus:outline-liliac focus:outline-2"
   />
 )
 
 const Button = ({ children }) => (
   <button
     type="submit"
-    className="py-[21px] px-[117.5px] font-host text-[20px] font-medium leading-none bg-black rounded-full text-white w-full lg:w-max"
+    className="py-[21px] px-[117.5px] font-host text-[20px] font-medium leading-none bg-black rounded-full text-white w-full xl:w-max"
   >
     {children}
   </button>
@@ -71,7 +75,7 @@ const Value = ({ children }) => (
 )
 
 const Address = () => (
-  <div className="flex flex-col gap-y-[40px]">
+  <div className="flex flex-col gap-y-[40px] relative xl:absolute xl:right-[calc(36.33vw-417.09px)]">
     <div className="flex flex-col gap-y-[12px]">
       <Label>Correspondence Address</Label>
       <Value>Pärnu mnt 18, 10141 Tallinn, Estonia</Value>
@@ -84,10 +88,10 @@ const Address = () => (
       <Label>Say Hello</Label>
       <Value>hello@h2.studio</Value>
     </div>
-    <div className="flex flex-col items-center lg:flex-row gap-y-[30px] gap-x-[30px]">
+    <div className="flex flex-col items-center xl:flex-row gap-y-[30px] gap-x-[30px]">
       <button
         type="submit"
-        className="py-[21px] px-[72px] font-host text-[20px] font-medium leading-none bg-black rounded-full text-white w-full lg:w-max"
+        className="py-[21px] px-[72px] font-host text-[20px] font-medium leading-none bg-black rounded-full text-white w-full xl:w-max"
       >
         schedule a call
       </button>
