@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
+// 1280-1024,
+// 1024-768,
 
 const Hero = () => (
-  <div className="relative h-auto min-h-[900px] md:min-h-[971px] overflow-x-hidden">
+  <div className="relative h-auto min-h-[900px] lg:min-h-[971px] overflow-hidden">
     <Circle />
     {/*
     <ParallaxCircle />
@@ -20,14 +22,14 @@ const Hero = () => (
         gap-y-[26px]
 
         top-[405px] right-[22px]
-        md:top-[550px] md:right-[92px]
+        lg:top-[550px] lg:right-[92px]
     `}
     >
       <HeroText>
         designed to handle millions of messages per second, while ensuring
         seamless real-time data processing for high-demand industries
       </HeroText>
-      <div className="hidden md:block">
+      <div className="hidden lg:block">
         <HeroCTA>contact us</HeroCTA>
       </div>
     </div>
@@ -38,12 +40,12 @@ const Hero = () => (
       <HeroTag
         className={`
           bg-orange
-          rounded-tl-[0px] md:rounded-tr-[0px]
+          rounded-tl-[0px] lg:rounded-tr-[0px]
 
-          md:top-[159.54px]
+          lg:top-[159.54px]
           top-[331px]
 
-          md:left-[410.31px]
+          lg:left-[410.31px]
           left-[265px]
         `}
       >
@@ -55,13 +57,15 @@ const Hero = () => (
           rounded-tl-[0px]
 
           top-[499px]
-          md:top-[207px]
+          lg:top-[207px]
 
           left-[25px]
-          md:left-[unset]
+          lg:left-[unset]
 
-          md:right-[328.38px]
           right-[unset]
+          lg:right-[22.8vw]
+          _lg:right-[328.38px]
+          2xl:right-[28vw]
         `}
       >
         Frontend
@@ -72,13 +76,15 @@ const Hero = () => (
           rounded-tl-[0px]
 
           top-[538px]
-          md:top-[293px]
+          lg:top-[293px]
 
           right-[unset]
-          md:right-[209.38px]
+          _lg:right-[209.38px]
+          lg:right-[14.54vw]
+          2xl:right-[20vw]
 
           left-[79px]
-          md:left-[unset]
+          lg:left-[unset]
         `}
       >
         Backend
@@ -89,10 +95,10 @@ const Hero = () => (
           rounded-tr-[0px]
 
           top-[84px]
-          md:top-[514px]
+          lg:top-[514px]
 
           left-[58px]
-          md:left-[580px]
+          lg:left-[580px]
         `}
       >
         Design
@@ -119,11 +125,11 @@ const HeroTag = ({ children, className }) => (
       rounded-[11.1px]
       text-[14.858px]
 
-      md:py-[17.539px]
-      md:pt-[17.539px]
-      md:px-[26.309px]
-      md:rounded-[19.732px]
-      md:text-[26.309px]
+      lg:py-[17.539px]
+      lg:pt-[17.539px]
+      lg:px-[26.309px]
+      lg:rounded-[19.732px]
+      lg:text-[26.309px]
 
       font-space
       font-medium
@@ -139,7 +145,7 @@ const HeroTag = ({ children, className }) => (
 )
 
 const HeroText = ({ children }) => (
-  <p className="max-w-[166px] md:max-w-[432px] font-host font-medium text-[16px] md:text-[20px] leading-none">
+  <p className="max-w-[166px] lg:max-w-[432px] font-host font-medium text-[16px] lg:text-[20px] leading-none">
     {children}
   </p>
 )
@@ -159,10 +165,10 @@ const HeroHeading = ({ children }) => (
     absolute
 
     left-[25px] top-[154px]
-    md:left-[50px] md:top-[272px]
+    lg:left-[50px] lg:top-[272px]
 
     text-[58px]
-    md:text-[96px]
+    lg:text-[96px]
 
     font-medium leading-[83%] font-host
     `}
@@ -181,10 +187,10 @@ const LogoMarquee = () => {
   ]
 
   return (
-    <div className="w-full overflow-hidden absolute top-[717px] md:top-[841.78px]">
-      <div className="relative flex items-center mx-[0px] md:mx-[30px]">
+    <div className="w-full overflow-hidden absolute top-[717px] lg:top-[841.78px]">
+      <div className="relative flex items-center mx-[0px] lg:mx-[30px]">
         {/* Desktop static version */}
-        <div className="hidden md:flex w-full items-center justify-between">
+        <div className="hidden lg:flex w-full items-center justify-between">
           {logos.map((logo) => (
             <div
               key={logo.id}
@@ -200,7 +206,7 @@ const LogoMarquee = () => {
         </div>
 
         {/* Mobile sliding version */}
-        <div className="md:hidden relative w-full overflow-hidden">
+        <div className="lg:hidden relative w-full overflow-hidden">
           <div className="flex gap-[50px] animate-marquee pl-[25px]">
             {/* First set of logos */}
             {logos.map((logo) => (
@@ -241,9 +247,10 @@ const Circle = () => {
       className={`
         absolute z-0
         left-[67px] top-[52px]
-        md:left-[188px] md:-top-[64px]
+        lg:left-[188px] lg:-top-[64px]
 
-        md:w-[820px] md:h-[820px]
+        lg:w-[unset] lg:h-[unset]
+        lg:right-[30vw] lg:top-[-7.9vh]
         w-[625px] h-[625px]
       `}
     >
