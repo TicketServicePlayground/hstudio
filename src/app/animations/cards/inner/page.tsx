@@ -56,9 +56,9 @@ const Cards = ({ cards }) => {
 
   const totalScrollHeight = React.useMemo(() => {
     if (isMobile) {
-      return cards.length * 100
+      return cards.length * 100 // One viewport height per card on mobile
     } else {
-      return (0.1 + (cards.length - 1)) * 100
+      return (0.1 + (cards.length - 1)) * 100 // Keep desktop calculation exactly the same
     }
   }, [isMobile, cards.length])
 
@@ -76,6 +76,7 @@ const Cards = ({ cards }) => {
       <div className="sticky top-0 h-screen">
         {cards.map((card, i) => {
           if (i === 0) {
+            // First card animations (desktop only)
             const margin = useTransform(
               scrollYProgress,
               [0, 0.1],
@@ -88,11 +89,10 @@ const Cards = ({ cards }) => {
               ['0px', '30px']
             )
 
-            // First card animation
             const marginTop = useTransform(
               scrollYProgress,
-              [0, 0.2],
-              [`${card.innerBlockHeight}px`, '0px']
+              [0, 0.4],
+              ['384px', '0px']
             )
 
             return (
@@ -114,35 +114,46 @@ const Cards = ({ cards }) => {
           }
 
           // For subsequent cards
-          const segmentSize = 0.8 / (cards.length - 1)
-          const cardStart = 0.2 + (i - 1) * segmentSize
-          const cardEnd = 0.2 + i * segmentSize
+          const segmentSize = isMobile
+            ? 1 / cards.length
+            : (1 - 0.1) / (cards.length - 1)
 
-          // Slide animation
+          const cardStart = isMobile
+            ? i * segmentSize
+            : 0.1 + (i - 1) * segmentSize
+
+          const cardEnd = cardStart + segmentSize
+
+          // Mobile animation timing
+          const slideStart = cardStart
+          const slideEnd = isMobile
+            ? cardStart + segmentSize * 0.4 // Card enters in first 40%
+            : cardStart + segmentSize * 0.5 // Desktop timing unchanged
+
           const y = useTransform(
             scrollYProgress,
-            [cardStart, cardEnd],
+            [slideStart, slideEnd],
             ['100vh', '0vh']
           )
 
-          // Desktop animations (unchanged)
+          // Desktop expand animations (unchanged)
           const margin = useTransform(
             scrollYProgress,
-            [cardStart, cardEnd],
+            [slideEnd, cardEnd],
             ['30px', '0px']
           )
 
           const padding = useTransform(
             scrollYProgress,
-            [cardStart, cardEnd],
+            [slideEnd, cardEnd],
             ['0px', '30px']
           )
 
-          // Content slides up during the entire card animation
+          // Mobile inner content animation
           const marginTop = useTransform(
             scrollYProgress,
-            [cardStart, cardEnd],
-            [`${card.innerBlockHeight}px`, '0px']
+            [cardStart + segmentSize * 0.4, cardStart + segmentSize * 0.8],
+            ['384px', '0px']
           )
 
           return (
@@ -177,7 +188,7 @@ const CardContent = ({ card, isMobile, padding, marginTop }) => {
         padding: isMobile ? 0 : padding,
       }}
     >
-      <div className="w-full h-full border border-white flex flex-col items-center justify-end">
+      <div className="w-full h-full border border-white flex flex-col items-center justify-center">
         <CardInner
           card={card}
           isMobile={isMobile}
@@ -191,15 +202,11 @@ const CardContent = ({ card, isMobile, padding, marginTop }) => {
 
 const CardInner = ({ card, isMobile, padding, marginTop }) => {
   const style = isMobile
-    ? {
-        marginTop,
-        height: card.innerBlockHeight,
-      }
+    ? { marginTop }
     : {
         position: 'absolute',
         top: padding,
         right: padding,
-        height: 256,
       }
 
   return (
@@ -208,11 +215,11 @@ const CardInner = ({ card, isMobile, padding, marginTop }) => {
         border border-white
         text-white
         bg-black/20
-        ${isMobile ? 'w-full relative' : 'w-64'}
+        ${isMobile ? 'w-full h-full relative' : 'h-64 w-64'}
       `}
       style={style}
     >
-      <h2 className="text-4xl font-bold text-white p-4">{card.title}</h2>
+      <h2 className="text-4xl font-bold text-white">{card.title}</h2>
     </motion.div>
   )
 }

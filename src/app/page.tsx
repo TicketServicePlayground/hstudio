@@ -20,9 +20,9 @@ import {
 export default function Home() {
   return (
     <div className="flex flex-col">
+      <Hero />
       {/*
        */}
-      <Hero />
       {cards.map((i, index) => (
         <SolutionCard
           key={`${index}.${i.bg}`}
@@ -51,9 +51,13 @@ const SolutionCard = ({
   mobileTitleOffset,
 }: SolutionCardProps) => {
   const isDark = bg === 'cardDark'
-  const { isMobile, initialized } = useIsMobile()
+  const isMobile = useIsMobile()
+  console.log(isMobile)
+  console.log(isMobile)
+  console.log(isMobile)
+  // const { isMobile, initialized } = useIsMobile()
 
-  if (!initialized) return null
+  // if (!initialized) return null
 
   return (
     <div

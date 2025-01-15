@@ -50,17 +50,150 @@ const useMediaQuery = (query) => {
   return matches
 }
 
+const FirstDesktopCard = ({ card, scrollYProgress }) => {
+  const margin = useTransform(scrollYProgress, [0, 0.1], ['30px', '0px'])
+  const padding = useTransform(scrollYProgress, [0, 0.1], ['0px', '30px'])
+
+  return (
+    <motion.div
+      className={`${card.color} absolute inset-0`}
+      style={{ margin, zIndex: 0 }}
+    >
+      <CardContent card={card} isMobile={false} padding={padding} />
+    </motion.div>
+  )
+}
+
+const SubsequentDesktopCard = ({
+  card,
+  index,
+  totalCards,
+  scrollYProgress,
+}) => {
+  const cardStart = 0.1 + (index - 1) * (0.9 / (totalCards - 1))
+  const cardEnd = cardStart + 0.9 / (totalCards - 1)
+
+  const margin = useTransform(
+    scrollYProgress,
+    [cardStart, cardEnd],
+    ['30px', '0px']
+  )
+  const padding = useTransform(
+    scrollYProgress,
+    [cardStart, cardEnd],
+    ['0px', '30px']
+  )
+
+  return (
+    <motion.div
+      className={`${card.color} absolute inset-0`}
+      style={{ margin, zIndex: index }}
+    >
+      <CardContent card={card} isMobile={false} padding={padding} />
+    </motion.div>
+  )
+}
+
+const MobileCard = ({ card, scrollYProgress, start, entryPoint, end }) => {
+  const y = useTransform(scrollYProgress, [start, entryPoint], ['100vh', '0vh'])
+  const contentPosition = useTransform(
+    scrollYProgress,
+    [entryPoint, end],
+    ['560px', Math.max(0, window.innerHeight - card.innerBlockHeight) + 'px']
+  )
+
+  return (
+    <div className={`${card.color} absolute inset-0`}>
+      <motion.div className="w-full h-full" style={{ y }}>
+        <motion.div
+          className="w-full relative"
+          style={{
+            height: card.innerBlockHeight,
+            marginTop: contentPosition,
+          }}
+        >
+          <div className="w-full h-full border border-white">
+            <h2 className="text-4xl font-bold text-white p-4">{card.title}</h2>
+          </div>
+        </motion.div>
+      </motion.div>
+    </div>
+  )
+}
+
+const CardContent = ({ card, isMobile, padding }) => {
+  return (
+    <motion.div
+      className="w-full h-full flex items-center justify-center"
+      style={{ padding: isMobile ? 0 : padding }}
+    >
+      <div className="w-full h-full border border-white flex flex-col items-center justify-center">
+        <div
+          className={`
+            border border-white
+            text-white
+            bg-black/20
+            ${isMobile ? 'w-full h-full relative' : 'h-64 w-64 absolute top-0 right-0'}
+          `}
+          style={isMobile ? {} : { top: padding, right: padding }}
+        >
+          <h2 className="text-4xl font-bold text-white">{card.title}</h2>
+        </div>
+      </div>
+    </motion.div>
+  )
+}
+
 const Cards = ({ cards }) => {
   const containerRef = React.useRef(null)
   const isMobile = useMediaQuery('(max-width: 768px)')
 
-  const totalScrollHeight = React.useMemo(() => {
+  const metrics = React.useMemo(() => {
+    let sections = []
+    let totalHeight = 0
+
     if (isMobile) {
-      return cards.length * 100 // One viewport height per card on mobile
+      // Calculate the travel distance for each card's content
+      const cardMetrics = cards.map((card) => {
+        const startPos = 560
+        const endPos = Math.max(0, window.innerHeight - card.innerBlockHeight)
+        const travelDistance = startPos - endPos
+        return {
+          card,
+          travelDistance,
+          scrollHeight: window.innerHeight + travelDistance,
+        }
+      })
+
+      // For first card, reduce initial scroll space
+      cardMetrics[0].scrollHeight = cardMetrics[0].travelDistance
+
+      // Calculate total scroll height
+      totalHeight = cardMetrics.reduce((sum, m) => sum + m.scrollHeight, 0)
+
+      // Calculate scroll positions
+      let accumulatedHeight = 0
+      cardMetrics.forEach((metric, index) => {
+        const sectionStart = accumulatedHeight / totalHeight
+        const entryPoint =
+          index === 0
+            ? sectionStart
+            : (accumulatedHeight + window.innerHeight) / totalHeight
+        accumulatedHeight += metric.scrollHeight
+        const sectionEnd = accumulatedHeight / totalHeight
+
+        sections.push({
+          start: sectionStart,
+          entryPoint: entryPoint,
+          end: sectionEnd,
+        })
+      })
     } else {
-      return (0.1 + (cards.length - 1)) * 100 // Keep desktop calculation exactly the same
+      totalHeight = window.innerHeight * (0.1 + (cards.length - 1))
     }
-  }, [isMobile, cards.length])
+
+    return { sections, totalHeight }
+  }, [cards, isMobile])
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -71,156 +204,43 @@ const Cards = ({ cards }) => {
     <div
       ref={containerRef}
       className="relative"
-      style={{ height: `${totalScrollHeight}vh` }}
+      style={{
+        height: `${(metrics.totalHeight / window.innerHeight) * 100}vh`,
+      }}
     >
-      <div className="sticky top-0 h-screen">
+      <div className="sticky top-0 h-screen overflow-hidden">
         {cards.map((card, i) => {
-          if (i === 0) {
-            // First card animations (desktop only)
-            const margin = useTransform(
-              scrollYProgress,
-              [0, 0.1],
-              ['30px', '0px']
-            )
-
-            const padding = useTransform(
-              scrollYProgress,
-              [0, 0.1],
-              ['0px', '30px']
-            )
-
-            const marginTop = useTransform(
-              scrollYProgress,
-              [0, 0.4],
-              ['384px', '0px']
-            )
-
+          if (isMobile) {
             return (
-              <motion.div
+              <MobileCard
                 key={card.id}
-                className={`${card.color} absolute inset-0`}
-                style={{
-                  margin: isMobile ? 0 : margin,
-                }}
-              >
-                <CardContent
-                  card={card}
-                  isMobile={isMobile}
-                  padding={isMobile ? 0 : padding}
-                  marginTop={isMobile ? marginTop : 0}
-                />
-              </motion.div>
+                card={card}
+                scrollYProgress={scrollYProgress}
+                start={metrics.sections[i].start}
+                entryPoint={metrics.sections[i].entryPoint}
+                end={metrics.sections[i].end}
+              />
             )
           }
 
-          // For subsequent cards
-          const segmentSize = isMobile
-            ? 1 / cards.length
-            : (1 - 0.1) / (cards.length - 1)
-
-          const cardStart = isMobile
-            ? i * segmentSize
-            : 0.1 + (i - 1) * segmentSize
-
-          const cardEnd = cardStart + segmentSize
-
-          // Mobile animation timing
-          const slideStart = cardStart
-          const slideEnd = isMobile
-            ? cardStart + segmentSize * 0.4 // Card enters in first 40%
-            : cardStart + segmentSize * 0.5 // Desktop timing unchanged
-
-          const y = useTransform(
-            scrollYProgress,
-            [slideStart, slideEnd],
-            ['100vh', '0vh']
-          )
-
-          // Desktop expand animations (unchanged)
-          const margin = useTransform(
-            scrollYProgress,
-            [slideEnd, cardEnd],
-            ['30px', '0px']
-          )
-
-          const padding = useTransform(
-            scrollYProgress,
-            [slideEnd, cardEnd],
-            ['0px', '30px']
-          )
-
-          // Mobile inner content animation
-          const marginTop = useTransform(
-            scrollYProgress,
-            [cardStart + segmentSize * 0.4, cardStart + segmentSize * 0.8],
-            ['384px', '0px']
-          )
-
-          return (
-            <motion.div
+          return i === 0 ? (
+            <FirstDesktopCard
               key={card.id}
-              className={`${card.color} absolute inset-0`}
-              style={{
-                y,
-                margin: isMobile ? 0 : margin,
-                zIndex: i,
-              }}
-            >
-              <CardContent
-                card={card}
-                isMobile={isMobile}
-                padding={isMobile ? 0 : padding}
-                marginTop={isMobile ? marginTop : 0}
-              />
-            </motion.div>
+              card={card}
+              scrollYProgress={scrollYProgress}
+            />
+          ) : (
+            <SubsequentDesktopCard
+              key={card.id}
+              card={card}
+              index={i}
+              totalCards={cards.length}
+              scrollYProgress={scrollYProgress}
+            />
           )
         })}
       </div>
     </div>
-  )
-}
-
-const CardContent = ({ card, isMobile, padding, marginTop }) => {
-  return (
-    <motion.div
-      className="w-full h-full flex items-center justify-center"
-      style={{
-        padding: isMobile ? 0 : padding,
-      }}
-    >
-      <div className="w-full h-full border border-white flex flex-col items-center justify-center">
-        <CardInner
-          card={card}
-          isMobile={isMobile}
-          padding={padding}
-          marginTop={marginTop}
-        />
-      </div>
-    </motion.div>
-  )
-}
-
-const CardInner = ({ card, isMobile, padding, marginTop }) => {
-  const style = isMobile
-    ? { marginTop }
-    : {
-        position: 'absolute',
-        top: padding,
-        right: padding,
-      }
-
-  return (
-    <motion.div
-      className={`
-        border border-white
-        text-white
-        bg-black/20
-        ${isMobile ? 'w-full h-full relative' : 'h-64 w-64'}
-      `}
-      style={style}
-    >
-      <h2 className="text-4xl font-bold text-white">{card.title}</h2>
-    </motion.div>
   )
 }
 

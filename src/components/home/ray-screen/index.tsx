@@ -10,7 +10,7 @@ interface RayProps {
 
 const Ray: React.FC<RayProps> = ({ angle, isOdd }) => {
   const [isSwapped, setIsSwapped] = React.useState(false)
-  const { isMobile, initialized } = useIsMobile()
+  const isMobile = useIsMobile()
 
   React.useEffect(() => {
     const interval = setInterval(() => {
