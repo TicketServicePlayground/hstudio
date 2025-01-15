@@ -50,5 +50,10 @@ export default {
     'mt-[390px]',
     'mt-[432px]',
     'mt-[348px]',
+
+    '-ml-[94px]',
+    'ml-[-94px]',
+    '-ml-[59px]',
+    'ml-[-59px]',
   ],
 } satisfies Config

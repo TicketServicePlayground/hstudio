@@ -2,8 +2,6 @@
 import React from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
-const RAY_LENGTH = 188
-
 interface RayProps {
   angle: number
   isOdd: boolean
@@ -54,7 +52,7 @@ const Ray: React.FC<RayProps> = ({ angle, isOdd }) => {
         }}
         animate={{
           scaleX: currentScale,
-          // transformOrigin: currentOrigin,
+          transformOrigin: currentOrigin,
         }}
         transition={{
           duration: 2,
@@ -70,18 +68,18 @@ const RayBackground: React.FC = () => {
 
   return (
     <div className="relative w-full h-screen overflow-hidden bg-white">
+      {/*
       <div
         className="absolute left-0 top-[50vh] z-[1]"
-        style={{ width: 264, height: 120, background: 'blue' }}
+        style={{ width: 322, height: 120, background: 'blue' }}
       />
       <div
         className="absolute right-0 top-[50vh] z-[1]"
-        style={{ width: 264, height: 120, background: 'blue' }}
+        style={{ width: 322, height: 120, background: 'blue' }}
       />
-      {/*
-       */}
+      */}
       <div
-        className={`absolute w-full h-screen overflow-hidden bg-white -ml-[${RAY_LENGTH / 2}px]`}
+        className="absolute w-full h-screen overflow-hidden bg-white -ml-[94px]"
         style={{
           transform: 'rotate(0.13deg)',
         }}

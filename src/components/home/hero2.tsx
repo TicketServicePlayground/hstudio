@@ -5,23 +5,11 @@ import LogoMarquee from '@/components/logo-marquee'
 const Hero = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
 
-  // useEffect(() => {
-  //   const handleMouseMove = (e) => {
-  //     const x = (e.clientX / window.innerWidth) * 100
-  //     const y = (e.clientY / window.innerHeight) * 100
-  //     setMousePosition({ x, y })
-  //   }
-
-  //   window.addEventListener('mousemove', handleMouseMove)
-  //   return () => window.removeEventListener('mousemove', handleMouseMove)
-  // }, [])
-
   useEffect(() => {
     const handleMouseMove = (e) => {
-      setMousePosition({
-        x: e.clientX,
-        y: e.clientY,
-      })
+      const x = (e.clientX / window.innerWidth) * 100
+      const y = (e.clientY / window.innerHeight) * 100
+      setMousePosition({ x, y })
     }
 
     window.addEventListener('mousemove', handleMouseMove)
@@ -60,6 +48,7 @@ const Hero = () => {
       <div>
         <HeroTag
           mousePosition={mousePosition}
+          index={0}
           className={`
             bg-orange
             rounded-tl-[0px] lg:rounded-tr-[0px]
@@ -76,6 +65,7 @@ const Hero = () => {
         </HeroTag>
         <HeroTag
           mousePosition={mousePosition}
+          index={1}
           className={`
             bg-liliac
             rounded-tl-[0px]
@@ -97,6 +87,7 @@ const Hero = () => {
         </HeroTag>
         <HeroTag
           mousePosition={mousePosition}
+          index={2}
           className={`
             bg-blue
             rounded-tl-[0px]
@@ -118,6 +109,7 @@ const Hero = () => {
         </HeroTag>
         <HeroTag
           mousePosition={mousePosition}
+          index={3}
           className={`
             bg-lime
             rounded-tr-[0px]
@@ -135,6 +127,20 @@ const Hero = () => {
       </div>
 
       <LogoMarquee />
+
+      <style jsx global>{`
+        @keyframes float {
+          0% {
+            transform: translate(0px, 0px);
+          }
+          50% {
+            transform: translate(0px, -10px);
+          }
+          100% {
+            transform: translate(0px, 0px);
+          }
+        }
+      `}</style>
     </div>
   )
 }
@@ -146,55 +152,55 @@ const HeroTag = ({
   parallaxIntensity = 0.03,
   index = 0,
 }) => {
-  // Reduced multiplier for more subtle movement
-  const x = ((mousePosition.x - window.innerWidth / 2) / window.innerWidth) * 30 // reduced from 100
-  const y =
-    ((mousePosition.y - window.innerHeight / 2) / window.innerHeight) * 30 // reduced from 100
+  // Mouse movement calculations
+  const x = -mousePosition.x * 0.1
+  const y = -mousePosition.y * 0.1
+
+  // Calculate different animation delays based on index
+  const animationDelay = `${index * 0.6}s`
 
   return (
     <div
-      style={{
-        transform: `translate3d(${x * -0.12}px, ${y * -0.12}px, 0)`, // reduced from -0.5
-      }}
-    >
-      <div
-        className={`
+      className={`
         absolute
         py-[9.9px]
         pt-[9.91px]
         px-[14.86px]
         rounded-[11.1px]
         text-[14.858px]
+
         lg:py-[17.539px]
         lg:pt-[17.539px]
         lg:px-[26.309px]
         lg:rounded-[19.732px]
         lg:text-[26.309px]
+
         font-space
         font-medium
         leading-none
+        
         w-max
         hover:scale-105
+
         ${className}
       `}
-        style={{
-          transform: `translate3d(${x * -parallaxIntensity}px, ${y * -parallaxIntensity}px, 0)`,
-          transition: 'transform 0.2s cubic-bezier(0.33, 1, 0.68, 1)',
-          willChange: 'transform',
-          animation: `float ${3 + parallaxIntensity * 10}s ease-in-out infinite`,
-          animationDelay: `${parallaxIntensity * 5}s`,
-        }}
-      >
-        {children}
-      </div>
+      style={{
+        transform: `translate3d(${x}px, ${y}px, 0)`,
+        transition: 'transform 0.2s cubic-bezier(0.33, 1, 0.68, 1)',
+        willChange: 'transform',
+        animation: 'float 3s ease-in-out infinite',
+        animationDelay,
+      }}
+    >
+      {children}
     </div>
   )
 }
 
 const Circle = ({ mousePosition }) => {
   // Increase the movement multiplier for more noticeable effect
-  const x = -mousePosition.x * 0.03
-  const y = -mousePosition.y * 0.03
+  const x = -mousePosition.x * 0.15
+  const y = -mousePosition.y * 0.15
 
   return (
     <div
@@ -265,9 +271,9 @@ const HeroHeading = ({ children }) => (
   </h1>
 )
 
-// const LogoMarquee = () => {
-//   // LogoMarquee implementation remains unchanged
-//   return null
-// }
+const LogoMarquee = () => {
+  // LogoMarquee implementation remains unchanged
+  return null
+}
 
 export default Hero

@@ -51,7 +51,9 @@ const SolutionCard = ({
   mobileTitleOffset,
 }: SolutionCardProps) => {
   const isDark = bg === 'cardDark'
-  const isMobile = useIsMobile()
+  const { isMobile, initialized } = useIsMobile()
+
+  if (!initialized) return null
 
   return (
     <div
@@ -93,3 +95,8 @@ const SolutionCard = ({
     </div>
   )
 }
+
+// hero issues:
+//
+// 1280-1024,
+// 1024-768,

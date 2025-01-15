@@ -6,6 +6,28 @@ body {
   background: #f6f5fa;
 }
 
+@keyframes float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -5px, 0);
+  }
+}
+
+/* @keyframes float { */
+/*   0% { */
+/*     transform: translate(0px, 0px); */
+/*   } */
+/*   50% { */
+/*     transform: translate(0px, -10px); */
+/*   } */
+/*   100% { */
+/*     transform: translate(0px, 0px); */
+/*   } */
+/* } */
+
 /* .scale-primary { */
 /*   animation: scalePrimary 4s ease-in-out infinite; */
 /* } */

@@ -3,6 +3,8 @@ export const clients = [
     logo: '/img/clients/logos_x2/logo-0.png',
     name: 'EventStripe',
     bgImg: '/img/clients/gradients/1.jpeg',
+    bgStyle: '',
+    bgStyleMobile: '',
     contentImg: '',
     tags: [
       {
@@ -33,6 +35,7 @@ export const clients = [
     logo: '/img/clients/logos_x2/logo-1.png',
     name: 'VTB — Data Streaming System',
     bgImg: '/img/clients/gradients/2.jpeg',
+    bgStyle: '',
     tags: [
       {
         text: 'Backend Solutions',
@@ -61,6 +64,7 @@ export const clients = [
     logo: '/img/clients/logos_x2/logo-2.png',
     name: 'Sber — Microservice Architecture and Biometric Authorization',
     bgImg: '/img/clients/gradients/3.jpeg',
+    bgStyle: '',
     tags: [
       {
         text: 'Web & Mobile Application',
@@ -94,6 +98,7 @@ export const clients = [
     logo: '/img/clients/logos_x2/logo-3.png',
     name: 'Societe Generale — Personalized Advertising Banner Service',
     bgImg: '/img/clients/bg/bg-4.png',
+    bgStyle: '',
     contentImg: '',
     tags: [
       {
@@ -128,6 +133,7 @@ export const clients = [
     logo: '/img/clients/logos_x2/logo-4.png',
     name: 'Architectural bureau MIR',
     bgImg: '/img/clients/gradients/5.jpeg',
+    bgStyle: '',
     contentImg: '',
     tags: [
       {
@@ -154,6 +160,7 @@ export const clients = [
     logo: '/img/clients/logos_x2/logo-5.png',
     name: 'KClub Group',
     bgImg: '/img/clients/gradients/6.jpeg',
+    bgStyle: '',
     contentImg: '',
     tags: [
       {
@@ -174,6 +181,7 @@ export const clients = [
     logo: '/img/clients/logos_x2/logo-6.png',
     name: 'Matahari Hills',
     bgImg: '/img/clients/bg/bg-7.png',
+    bgStyle: '',
     contentImg: '',
     tags: [
       {
@@ -199,6 +207,7 @@ export const clients = [
     logo: '/img/clients/logos_x2/logo-7.png',
     name: 'Mirage Flash',
     bgImg: '/img/clients/gradients/8.jpeg',
+    bgStyle: '',
     contentImg: '',
     tags: [
       {
@@ -224,6 +233,7 @@ export const clients = [
     logo: '/img/clients/logos_x2/logo-8.png',
     name: 'Frigate Surfboards',
     bgImg: '/img/clients/gradients/9.jpeg',
+    bgStyle: '',
     contentImg: '',
     tags: [
       {
@@ -254,6 +264,7 @@ export const clients = [
     logo: '/img/clients/logos_x2/logo-9.png',
     name: 'Ntainers',
     bgImg: '/img/clients/bg/bg-10.png',
+    bgStyle: '',
     contentImg: '',
     tags: [
       {
@@ -310,3 +321,12 @@ export const clients = [
 
 // 10: top: -76.7, left: -66, right: -64.09
 // top: 12.42, left: 68.85, right: 48.19
+//
+//
+//
+//
+// MODALS:
+//
+//
+// background: url(<path-to-image>) lightgray 0px -53.468px / 122.5% 183.75% no-repeat;
+// background: url(<path-to-image>) lightgray 0px -55.484px / 100% 200% no-repeat, #FFF;

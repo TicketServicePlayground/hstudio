@@ -2,8 +2,11 @@
 import Tabs from '@/components/tabs'
 import Logo from '@/components/logo'
 import { motion, AnimatePresence } from 'framer-motion'
+import { usePathname } from 'next/navigation'
 
 const DesktopNav = ({ showHeader, onLeftTabsReady, onRightTabsReady }) => {
+  const pathname = usePathname()
+
   return (
     <div className="z-[10]">
       <motion.div
@@ -20,10 +23,25 @@ const DesktopNav = ({ showHeader, onLeftTabsReady, onRightTabsReady }) => {
       >
         <Tabs
           items={[
-            { text: 'home', type: 'link', href: '/' },
-            { text: 'clients', type: 'link', href: '/clients' },
-            { text: 'about us', type: 'link', href: '/about', active: true },
-            { text: 'contacts', type: 'link', href: '/contacts' },
+            // { text: 'home', type: 'link', href: '/', active: pathname === '/' },
+            {
+              text: 'clients',
+              type: 'link',
+              href: '/clients',
+              active: pathname === '/clients',
+            },
+            {
+              text: 'about us',
+              type: 'link',
+              href: '/about',
+              active: pathname === '/about',
+            },
+            {
+              text: 'contacts',
+              type: 'link',
+              href: '/contacts',
+              active: pathname === '/contacts',
+            },
           ]}
           onReady={onLeftTabsReady}
         />
