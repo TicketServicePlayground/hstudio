@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 
 const Tabs = ({
   items,
@@ -8,9 +8,10 @@ const Tabs = ({
   selectedBgColor = 'black',
   selectedTextColor,
 }) => {
-  const [activeTab, setActiveTab] = useState(
-    items.find((item) => item.active)?.text || items[0]?.text
-  )
+  const [activeTab, setActiveTab] = useState(() => {
+    const activeItem = items.find((item) => item.active)
+    return activeItem?.text || null
+  })
   const [activeTabWidth, setActiveTabWidth] = useState(0)
   const [activeTabLeft, setActiveTabLeft] = useState(0)
   const [isReady, setIsReady] = useState(false)
@@ -18,31 +19,76 @@ const Tabs = ({
   const isFirstInteraction = useRef(true)
 
   useEffect(() => {
-    const activeTabIndex = items.findIndex((item) => item.text === activeTab)
-    const activeTabElement = tabRefs.current[activeTabIndex]
-    if (activeTabElement) {
-      const { width, left } = activeTabElement.getBoundingClientRect()
-      const parentLeft =
-        tabRefs.current[0].parentElement.getBoundingClientRect().left
-      setActiveTabWidth(width)
-      setActiveTabLeft(left - parentLeft - 2)
+    // Update active tab when items change
+    const activeItem = items.find((item) => item.active)
+    setActiveTab(activeItem?.text || null)
 
-      if (!isReady) {
-        setIsReady(true)
-        onReady?.() // Notify parent when ready
+    if (activeItem?.text) {
+      const activeTabIndex = items.findIndex(
+        (item) => item.text === activeItem.text
+      )
+      const activeTabElement = tabRefs.current[activeTabIndex]
+      if (activeTabElement) {
+        const { width, left } = activeTabElement.getBoundingClientRect()
+        const parentLeft =
+          tabRefs.current[0].parentElement.getBoundingClientRect().left
+        setActiveTabWidth(width)
+        setActiveTabLeft(left - parentLeft - 2)
       }
     }
-  }, [activeTab, items, isReady, onReady])
 
-  const getTransition = () => ({
-    type: 'spring',
-    stiffness: 500,
-    damping: 35,
-  })
+    if (!isReady) {
+      setIsReady(true)
+      onReady?.()
+    }
+  }, [items, isReady, onReady])
+
+  useEffect(() => {
+    if (activeTab) {
+      const activeTabIndex = items.findIndex((item) => item.text === activeTab)
+      const activeTabElement = tabRefs.current[activeTabIndex]
+      if (activeTabElement) {
+        const { width, left } = activeTabElement.getBoundingClientRect()
+        const parentLeft =
+          tabRefs.current[0].parentElement.getBoundingClientRect().left
+        setActiveTabWidth(width)
+        setActiveTabLeft(left - parentLeft - 2)
+      }
+    }
+  }, [activeTab, items])
+
+  const getTransition = (type) => {
+    if (isFirstInteraction.current) {
+      return { duration: 0 }
+    }
+
+    switch (type) {
+      case 'position':
+        return {
+          type: 'spring',
+          stiffness: 500,
+          damping: 35,
+        }
+      case 'opacity':
+        return {
+          duration: 0.2,
+          ease: 'easeInOut',
+        }
+      default:
+        return {
+          type: 'spring',
+          stiffness: 500,
+          damping: 35,
+        }
+    }
+  }
 
   const renderTabItem = (item, index) => {
-    const commonClasses = `relative px-[14px] py-[10px] text-[16px] font-semibold font-host z-10 rounded-full whitespace-nowrap
-    ${selectedTextColor ? `text-${selectedTextColor}` : 'mix-blend-difference text-white'}`
+    const isActive = item.text === activeTab
+    const commonClasses = `relative px-[14px] py-[10px] text-[16px] font-semibold font-host z-10 rounded-full whitespace-nowrap transition-colors
+      ${isActive && selectedTextColor ? `text-${selectedTextColor}` : ''}
+      ${isActive && !selectedTextColor ? 'mix-blend-difference text-white' : ''}
+      ${!isActive ? 'text-gray-700' : ''}`
 
     if (item.type === 'link') {
       return (
@@ -52,7 +98,7 @@ const Tabs = ({
           ref={(el) => (tabRefs.current[index] = el)}
           onClick={() => {
             isFirstInteraction.current = false
-            setActiveTab(item.text)
+            setActiveTab(item.active ? item.text : null)
           }}
           className={commonClasses}
         >
@@ -67,7 +113,7 @@ const Tabs = ({
         ref={(el) => (tabRefs.current[index] = el)}
         onClick={() => {
           isFirstInteraction.current = false
-          setActiveTab(item.text)
+          setActiveTab(item.active ? item.text : null)
           item.onClick?.()
         }}
         className={commonClasses}
@@ -80,19 +126,35 @@ const Tabs = ({
   return (
     <div className="relative" style={{ opacity: isReady ? 1 : 0 }}>
       <div className="relative flex gap-3 rounded-full bg-white p-[2px] w-fit">
-        <motion.div
-          className="absolute h-[calc(100%-4px)] top-[2px]"
-          initial={false}
-          animate={{
-            x: activeTabLeft,
-            width: activeTabWidth,
-          }}
-          transition={
-            isFirstInteraction.current ? { duration: 0 } : getTransition()
-          }
-        >
-          <div className={`h-full w-full rounded-full bg-${selectedBgColor}`} />
-        </motion.div>
+        <AnimatePresence>
+          {activeTab && (
+            <motion.div
+              className="absolute h-[calc(100%-4px)] top-[2px]"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{
+                opacity: 1,
+                scale: 1,
+                x: activeTabLeft,
+                width: activeTabWidth,
+              }}
+              exit={{
+                opacity: 0,
+                scale: 0.95,
+                transition: getTransition('opacity'),
+              }}
+              transition={{
+                opacity: { duration: 0.15, ease: 'easeOut' },
+                scale: { duration: 0.15, ease: 'easeOut' },
+                x: getTransition('position'),
+                width: getTransition('position'),
+              }}
+            >
+              <div
+                className={`h-full w-full rounded-full bg-${selectedBgColor}`}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
         {items.map((item, index) => renderTabItem(item, index))}
       </div>
     </div>
