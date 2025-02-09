@@ -7,9 +7,10 @@ import Footer from '@/components/footer'
 
 const AboutPage = () => {
   const lyrics = [
-    'We focus on delivering',
-    'scalable, secure, and',
-    'innovative solutions',
+    'We focus on delivering scalable, secure, and innovative solutions',
+    'across web, mobile, and blockchain platforms',
+    'With expertise in seamless integration, DevOps automation, and UX/UI design',
+    'we transform complex challenges into efficient digital products',
   ]
 
   // return (

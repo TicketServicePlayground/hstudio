@@ -15,7 +15,7 @@ export const InnerCard = ({
         md:absolute md:top-0 md:right-0
         rounded-[20px]
         md:rounded-[32px]
-        backdrop-blur-[150px]
+        ${isDark ? '' : 'backdrop-blur-[150px]'}
         w-full
         md:w-[494px]
         p-[25px]

@@ -1,104 +1,91 @@
 'use client'
-import Image from 'next/image'
-import { cards } from '@/data'
-import { SolutionCardProps, CardData } from '@/types'
-import { useIsMobile } from '@/hooks'
 
 import Hero from '@/components/home/hero'
+import Cards from '@/components/cards'
 import RayScreen from '@/components/home/ray-screen'
-import Header from '@/components/header'
 import Footer from '@/components/footer'
-
-import {
-  Label,
-  CTA,
-  Title,
-  InnerCard,
-  CardNumber,
-} from '@/components/home/solution-card'
 
 export default function Home() {
   return (
     <div className="flex flex-col">
       <Hero />
-      {/*
-       */}
-      {cards.map((i, index) => (
-        <SolutionCard
-          key={`${index}.${i.bg}`}
-          index={index}
-          bg={i.bg}
-          pic={i.pic}
-          title={i.title}
-          card={i.card}
-          mobileTitleOffset={i.mobileTitleOffset}
-        />
-      ))}
+      <Cards />
       <RayScreen />
       <Footer />
-      {/*
-       */}
+      {/* */}
     </div>
   )
 }
 
-const SolutionCard = ({
-  bg,
-  pic,
-  title,
-  card,
-  index,
-  mobileTitleOffset,
-}: SolutionCardProps) => {
-  const isDark = bg === 'cardDark'
-  const isMobile = useIsMobile()
-  console.log(isMobile)
-  console.log(isMobile)
-  console.log(isMobile)
-  // const { isMobile, initialized } = useIsMobile()
+// import {
+//   Label,
+//   CTA,
+//   Title,
+//   InnerCard,
+//   CardNumber,
+// } from '@/components/home/solution-card'
+//
+// import Image from 'next/image'
+// import { cards } from '@/data'
+// import { SolutionCardProps, CardData } from '@/types'
 
-  // if (!initialized) return null
+// const SolutionCard = ({
+//   bg,
+//   pic,
+//   title,
+//   card,
+//   index,
+//   mobileTitleOffset,
+// }: SolutionCardProps) => {
+//   const isDark = bg === 'cardDark'
+//   const isMobile = useIsMobile()
+//   console.log(isMobile)
+//   console.log(isMobile)
+//   console.log(isMobile)
+//   // const { isMobile, initialized } = useIsMobile()
 
-  return (
-    <div
-      className={`
-        w-full 
-        md:w-[calc(100%-60px)]
+//   // if (!initialized) return null
 
-        m-[0px]
-        md:m-[30px]
+//   return (
+//     <div
+//       className={`
+//         w-full
+//         md:w-[calc(100%-60px)]
 
-        rounded-[20px]
-        md:rounded-[32px]
+//         m-[0px]
+//         md:m-[30px]
 
-        h-full
-        min-h-[700px] mb-0 bg-${bg} relative
+//         rounded-[20px]
+//         md:rounded-[32px]
 
-        flex flex-col
-        md:block
+//         h-full
+//         min-h-[700px] mb-0 bg-${bg} relative
 
-        ${index === 0 ? 'mt-[0px]' : 'mt-[-60px]'}
-        md:mt-[unset]
-      `}
-    >
-      <img
-        src={`/img/${isMobile ? 'mobile' : 'desktop'}-covers/${pic}`}
-        className={isMobile ? 'absolute top-0 w-full' : ''}
-        alt={title}
-      />
-      <CardNumber number={index + 1} />
-      <Title isDark={isDark} mobileTitleOffset={mobileTitleOffset}>
-        {title}
-      </Title>
-      <div className="absolute bottom-[27px] right-[27px] hidden md:block">
-        <CTA />
-      </div>
-      <InnerCard card={card} isDark={isDark} />
-      {/*
-       */}
-    </div>
-  )
-}
+//         flex flex-col
+//         md:block
+
+//         ${index === 0 ? 'mt-[0px]' : 'mt-[-60px]'}
+//         md:mt-[unset]
+//       `}
+//     >
+//       <img
+//         src={`/img/${isMobile ? 'mobile' : 'desktop'}-covers/${pic}`}
+//         className={isMobile ? 'absolute top-0 w-full' : ''}
+//         alt={title}
+//       />
+//       <CardNumber number={index + 1} />
+//       <Title isDark={isDark} mobileTitleOffset={mobileTitleOffset}>
+//         {title}
+//       </Title>
+//       <div className="absolute bottom-[27px] right-[27px] hidden md:block">
+//         <CTA />
+//       </div>
+//       <InnerCard card={card} isDark={isDark} />
+//       {/*
+//        */}
+//     </div>
+//   )
+// }
 
 // hero issues:
 //

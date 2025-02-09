@@ -125,3 +125,35 @@ body {
 /*   animation: outIn 3s infinite ease-in-out; */
 /*   transform-origin: center left; */
 /* } */
+
+.blur-card {
+  position: relative;
+  /* overflow: hidden; */
+}
+
+.blur-card::after {
+  content: '';
+  position: absolute;
+  /* inset: 0; /1* Shorthand for top/right/bottom/left: 0 *1/ */
+  /* backdrop-filter: blur(150px); */
+  /* -webkit-backdrop-filter: blur(150px); */
+  /* background: rgba(255, 255, 255, 0.01); /1* Almost transparent background *1/ */
+  /* background: red !important; */
+  /* z-index: 0; /1* Keep it above background but below content *1/ */
+
+  inset: 10%;
+  z-index: -1;
+  filter: blur(18px);
+  background-color: rgba(35, 35, 35, 1);
+}
+
+/* Dark theme variation */
+.blur-card.card--dark::before {
+  background: rgba(0, 0, 0, 0.01); /* Dark version */
+}
+
+/* /1* Ensure content stays above the blur *1/ */
+/* .blur-card > * { */
+/*   position: relative; */
+/*   /1* z-index: 1; *1/ */
+/* } */

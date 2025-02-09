@@ -49,13 +49,13 @@ const Cards = ({ cards }) => {
             const margin = useTransform(
               scrollYProgress,
               [0, 0.1],
-              ['30px', '0px']
+              ['100px', '0px']
             )
 
             const padding = useTransform(
               scrollYProgress,
               [0, 0.1],
-              ['0px', '30px']
+              ['0px', '100px']
             )
 
             return (
@@ -106,13 +106,13 @@ const Cards = ({ cards }) => {
           const margin = useTransform(
             scrollYProgress,
             [expandStart, expandEnd],
-            ['30px', '0px']
+            ['100px', '0px']
           )
 
           const padding = useTransform(
             scrollYProgress,
             [expandStart, expandEnd],
-            ['0px', '30px']
+            ['0px', '100px']
           )
 
           return (

@@ -1,5 +1,5 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import Link from 'next/link'
@@ -9,6 +9,30 @@ const MotionLink = motion(Link)
 
 const MobileNav = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const [isVisible, setIsVisible] = useState(true)
+  const [lastScrollY, setLastScrollY] = useState(0)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY
+
+      // Show when scrolling up, hide when scrolling down
+      if (currentScrollY > lastScrollY) {
+        setIsVisible(false)
+      } else {
+        setIsVisible(true)
+      }
+
+      setLastScrollY(currentScrollY)
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [lastScrollY])
+  console.log(isVisible)
 
   const menuVariants = {
     closed: {
@@ -73,9 +97,30 @@ const MobileNav = () => {
           H.STUDIO
         </Link>
       </div>
-      <div className="fixed bottom-[0px] right-[0px] w-screen flex flex-col z-40 min-w-screen">
+      <motion.div
+        className="fixed bottom-[0px] right-[0px] w-screen flex flex-col z-40 min-w-screen"
+        animate={{
+          y: isVisible ? 0 : 100,
+          opacity: isVisible ? 1 : 0,
+        }}
+        transition={{
+          duration: 0.4,
+          // ease: [0.4, 0, 0.2, 1],
+
+          ease: 'circOut',
+
+          // type: 'spring',
+          // stiffness: 200,
+          // damping: 20,
+
+          // type: 'spring',
+          // stiffness: 100,
+          // damping: 15,
+          // ease: 'easeInOut',
+        }}
+      >
         {/* Bottom Fixed Buttons */}
-        <div className="flex items-center gap-x-[14px] absolute bottom-[21px] _w-[calc(100vw-24px)] left-[24px] right-[22px]">
+        <div className="flex items-center gap-x-[14px] absolute bottom-[21px] left-[24px] right-[22px]">
           <MotionLink
             href="/contact"
             className="py-[21px] flex items-center justify-center font-host text-[20px] font-medium leading-none bg-black rounded-full text-white w-full flex-1"
@@ -196,7 +241,7 @@ const MobileNav = () => {
             </>
           )}
         </AnimatePresence>
-      </div>
+      </motion.div>
     </>
   )
 }

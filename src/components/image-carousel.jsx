@@ -42,30 +42,40 @@ const ImageCarousel = () => {
 
   const teamMembers = [
     {
-      name: 'David',
-      experience: 'Over 5 years of experience in frontend development.',
-      image: '/img/team/photo-0.png',
+      name: 'Alex',
+      experience:
+        'A web and UI/UX design expert, bringing bold and engaging digital experiences to life for clients through creative and impactful solutions.',
+      image: '/img/team/photo-5.png',
     },
     {
-      name: 'Michael',
-      experience: 'Over 4 years of experience in mobile development.',
-      image: '/img/team/photo-1.png',
+      name: 'Artem',
+      experience:
+        'Kotlin Backend Developer with a strong background in blockchain and Web3 technologies, focusing on scalable solutions for the gaming industry.',
+      image: '/img/team/photo-4.png',
+    },
+    {
+      name: 'Albert',
+      experience:
+        'Full-Stack Developer with 6 years of experience in web applications. Skilled in Python, Flask, .NET, CargoWise, AWS, and specializing in e-commerce, blockchain, and secure, user-friendly solutions.',
+      image: '/img/team/photo-3.png',
     },
     {
       name: 'Alexander',
       experience:
         'Over 7 years of experience in fintech, specializing in high-load system development.',
+      image: '/img/team/photo-0.png',
+    },
+    {
+      name: 'George',
+      experience:
+        'Programming since 1988, expert in DevOps since its emergence in 2009.',
+      image: '/img/team/photo-1.png',
+    },
+    {
+      name: 'Ian',
+      experience:
+        '6 years of experience in frontend development with a focus on progressive web applications (PWA).',
       image: '/img/team/photo-2.png',
-    },
-    {
-      name: 'James',
-      experience: 'Over 6 years of experience in cloud architecture.',
-      image: '/img/team/photo-3.png',
-    },
-    {
-      name: 'Robert',
-      experience: 'Over 5 years of experience in DevOps.',
-      image: '/img/team/photo-4.png',
     },
   ]
 
