@@ -9,12 +9,7 @@ export default async function Layout({
   children: React.ReactNode
 }) {
   const reqUserAgent = userAgent({ headers: await headers() })
-  console.log(reqUserAgent)
-  console.log(reqUserAgent)
-  console.log(reqUserAgent)
-  console.log(reqUserAgent)
-  console.log(reqUserAgent)
-  // return
+
   return <LayoutClient reqUserAgent={reqUserAgent}>{children}</LayoutClient>
 }
 

@@ -38,6 +38,9 @@ export default {
     'bg-card',
     'bg-cardDark',
     'bg-[#ECEBF1]',
+    'bg-[#E4E9EF]',
+    'bg-[#000000]',
+    'text-[#000000]',
 
     'top-[390px]',
     'top-[432px]',

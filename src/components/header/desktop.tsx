@@ -48,10 +48,12 @@ const DesktopNav = ({ showHeader, onLeftTabsReady, onRightTabsReady }) => {
         <div className="flex flex-row-reverse">
           <Tabs
             items={[
-              { text: 'eng', type: 'btn', onClick: () => {} },
+              { text: 'eng', type: 'btn', onClick: () => {}, active: true },
               { text: 'deu', type: 'btn', onClick: () => {} },
             ]}
             onReady={onRightTabsReady}
+            selectedBgColor="[#E4E9EF]"
+            selectedTextColor="[#000000]"
           />
           <div className="absolute right-[calc(36.33vw-141.24px)]">
             <Logo className="leading-[48px]" />

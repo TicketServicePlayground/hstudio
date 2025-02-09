@@ -234,6 +234,8 @@ const MobileNav = () => {
                         { text: 'eng', type: 'btn', onClick: () => {} },
                         { text: 'deu', type: 'btn', onClick: () => {} },
                       ]}
+                      selectedBgColor="[#E4E9EF]"
+                      selectedTextColor="[#000000]"
                     />
                   </motion.div>
                 </motion.div>
