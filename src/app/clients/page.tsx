@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { X } from 'lucide-react'
 import { clients } from '@/data/clients'
+import { useIsMobile } from '@/hooks'
 
 import Tabs from '@/components/tabs'
 import Footer from '@/components/footer'
@@ -97,18 +98,23 @@ const ClientsPage: React.FC = () => {
 
 const ClientCard = ({ client }) => {
   const [isOpen, setIsOpen] = useState(false)
+  const isMobile = useIsMobile()
 
   return (
     <>
       {/* Card */}
       <div
         onClick={() => setIsOpen(true)}
-        className="rounded-[20px] md:rounded-[32px] aspect-square w-full cursor-pointer min-h-[450px] lg:min-h-unset"
+        className="rounded-[20px] md:rounded-[32px] aspect-square w-full cursor-pointer min-h-[525px] _min-h-[450px] lg:min-h-unset"
       >
-        <div className="w-full h-full rounded-[32px] overflow-hidden relative">
+        <div className="w-full h-full rounded-[20px] lg:rounded-[32px] overflow-hidden relative">
           {client.bgImg && (
             <img
-              src={client.bgImg}
+              src={
+                isMobile && client.mobileBgImg
+                  ? client.mobileBgImg
+                  : client.bgImg
+              }
               alt=""
               className="absolute inset-0 w-full h-full object-cover"
             />
@@ -183,7 +189,7 @@ const ClientCard = ({ client }) => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="relative w-[calc(100vw-1rem)] md:w-[calc(100vw-64px)] min-h-[calc(100vh-80px)] md:h-[calc(100vh-70px)] bg-white rounded-[32px] mt-20 md:mt-0 overflow-auto mx-auto">
+                <Dialog.Panel className="relative w-[calc(100vw-1rem)] md:w-[calc(100vw-64px)] min-h-[calc(100vh-80px)] md:h-[calc(100vh-70px)] bg-white rounded-[20px] lg:rounded-[32px] mt-20 md:mt-0 overflow-auto mx-auto">
                   <div className="flex flex-col md:flex-row h-full">
                     {/* Left Side - Image */}
                     <div className="w-full md:w-1/2 relative aspect-square md:aspect-auto">

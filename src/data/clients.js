@@ -3,6 +3,7 @@ export const clients = [
     logo: '/img/clients/logos_x2/logo-0.png',
     name: 'EventStripe',
     bgImg: '/img/clients/gradients/1.jpeg',
+    mobileBgImg: '/card-eventstripe-mobile.png',
     bgStyle: '',
     bgStyleMobile: '',
     contentImg: '',
@@ -64,6 +65,7 @@ export const clients = [
     logo: '/img/clients/logos_x2/logo-2.png',
     name: 'Sber — Microservice Architecture and Biometric Authorization',
     bgImg: '/img/clients/gradients/3.jpeg',
+    mobileBgImg: '/card-sber.png',
     bgStyle: '',
     tags: [
       {
@@ -160,6 +162,7 @@ export const clients = [
     logo: '/img/clients/logos_x2/logo-5.png',
     name: 'KClub Group',
     bgImg: '/img/clients/gradients/6.jpeg',
+    mobileBgImg: '/card-kclub.png',
     bgStyle: '',
     contentImg: '',
     tags: [
@@ -207,6 +210,7 @@ export const clients = [
     logo: '/img/clients/logos_x2/logo-7.png',
     name: 'Mirage Flash',
     bgImg: '/img/clients/gradients/8.jpeg',
+    mobileBgImg: '/card-mirage-mobile.png',
     bgStyle: '',
     contentImg: '',
     tags: [
@@ -233,6 +237,7 @@ export const clients = [
     logo: '/img/clients/logos_x2/logo-8.png',
     name: 'Frigate Surfboards',
     bgImg: '/img/clients/gradients/9.jpeg',
+    mobileBgImg: '/card-frigate.png',
     bgStyle: '',
     contentImg: '',
     tags: [

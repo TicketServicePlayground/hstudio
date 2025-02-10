@@ -1,6 +1,7 @@
 'use client'
 import React, { useState, useEffect } from 'react'
 import LogoMarquee from '@/components/logo-marquee'
+import { useIsMobile } from '@/hooks'
 
 const Hero = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
@@ -45,7 +46,7 @@ const Hero = () => {
           gap-y-[26px]
 
           top-[405px] right-[22px]
-          lg:top-[550px] lg:right-[92px]
+          lg:top-[unset] lg:bottom-[calc(40px+148px)] lg:right-[calc(36.33vw-432px)]
       `}
       >
         <HeroText>
@@ -123,7 +124,8 @@ const Hero = () => {
             rounded-tr-[0px]
 
             top-[84px]
-            lg:top-[514px]
+            _lg:top-[514px]
+            lg:top-[604px]
 
             left-[58px]
             lg:left-[580px]
@@ -247,23 +249,36 @@ const HeroCTA = ({ children }) => (
   </button>
 )
 
-const HeroHeading = ({ children }) => (
-  <h1
-    className={`
+const HeroHeading = ({ children }) => {
+  const isMobile = useIsMobile()
+
+  return (
+    <h1
+      className={`
     absolute
 
     left-[25px] top-[154px]
-    lg:left-[50px] lg:top-[272px]
+    lg:left-[50px] lg:top-[unset]
 
     text-[58px]
     lg:text-[96px]
 
     font-medium leading-[83%] font-host
     `}
-  >
-    {children}
-  </h1>
-)
+      style={
+        !isMobile
+          ? {
+              // top: `calc(${(window.innerHeight - 159.36) / 2}px)`,
+              top: (window.innerHeight - 159.36) / 2,
+              // ...
+            }
+          : {}
+      }
+    >
+      {children}
+    </h1>
+  )
+}
 
 // const LogoMarquee = () => {
 //   // LogoMarquee implementation remains unchanged

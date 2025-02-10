@@ -5,13 +5,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { useMediaQuery } from '@/hooks'
 import { cards } from '@/data'
 
-import {
-  Label,
-  CTA,
-  Title,
-  // InnerCard,
-  CardNumber,
-} from '@/components/home/solution-card'
+import { Label, CTA, Title, CardNumber } from '@/components/home/solution-card'
 
 const Cards = ({ cards }) => {
   const containerRef = React.useRef(null)
@@ -19,21 +13,26 @@ const Cards = ({ cards }) => {
   const metrics = React.useMemo(() => {
     let sections = []
     let totalHeight = 0
+    const viewportHeight = window.innerHeight
 
-    // Calculate the travel distance for each card's content
+    // Calculate metrics for each card
     const cardMetrics = cards.map((card) => {
-      const startPos = 560
-      const endPos = Math.max(0, window.innerHeight - card.innerBlockHeight)
-      const travelDistance = startPos - endPos
+      // How much we need to scroll to see the full card
+      const contentScrollHeight = Math.max(
+        0,
+        card.innerBlockHeight + 560 - viewportHeight
+      )
+
       return {
         card,
-        travelDistance,
-        scrollHeight: window.innerHeight + travelDistance, // Entry + reveal
+        contentScrollHeight,
+        // Total scroll needed: content scroll + viewport height for next card entry
+        scrollHeight: contentScrollHeight + viewportHeight,
       }
     })
 
-    // For first card, reduce initial scroll space since it's already visible
-    cardMetrics[0].scrollHeight = cardMetrics[0].travelDistance
+    // First card starts in view
+    cardMetrics[0].scrollHeight = cardMetrics[0].contentScrollHeight
 
     // Calculate total scroll height
     totalHeight = cardMetrics.reduce((sum, m) => sum + m.scrollHeight, 0)
@@ -42,18 +41,18 @@ const Cards = ({ cards }) => {
     let accumulatedHeight = 0
     cardMetrics.forEach((metric, index) => {
       const sectionStart = accumulatedHeight / totalHeight
-      // First card doesn't need entry animation
-      const entryPoint =
-        index === 0
-          ? sectionStart
-          : (accumulatedHeight + window.innerHeight) / totalHeight
+      // Point where content is fully visible
+      const contentScrollEnd =
+        (accumulatedHeight + metric.contentScrollHeight) / totalHeight
+
       accumulatedHeight += metric.scrollHeight
       const sectionEnd = accumulatedHeight / totalHeight
 
       sections.push({
         start: sectionStart,
-        entryPoint: entryPoint,
+        contentScrollEnd,
         end: sectionEnd,
+        contentScrollHeight: metric.contentScrollHeight,
       })
     })
 
@@ -70,7 +69,7 @@ const Cards = ({ cards }) => {
       ref={containerRef}
       className="relative"
       style={{
-        height: `${(metrics.totalHeight / window.innerHeight) * 100}vh`,
+        height: `${metrics.totalHeight}px`,
       }}
     >
       <div className="sticky top-0 h-screen overflow-hidden rounded-b-[20px]">
@@ -79,9 +78,7 @@ const Cards = ({ cards }) => {
             key={`${index}.${card.bg}`}
             card={card}
             scrollYProgress={scrollYProgress}
-            start={metrics.sections[index].start}
-            entryPoint={metrics.sections[index].entryPoint}
-            end={metrics.sections[index].end}
+            metrics={metrics.sections[index]}
             index={index}
           />
         ))}
@@ -90,30 +87,21 @@ const Cards = ({ cards }) => {
   )
 }
 
-const MobileCard = ({
-  card,
-  scrollYProgress,
-  start,
-  end,
-  entryPoint,
-  index,
-}) => {
-  // Card slides in from start to entryPoint
-  const y = useTransform(scrollYProgress, [start, entryPoint], ['100vh', '0vh'])
+const MobileCard = ({ card, scrollYProgress, metrics, index }) => {
+  const { start, contentScrollEnd, end, contentScrollHeight } = metrics
 
-  // Content reveals from entryPoint to end
-  const contentPosition = useTransform(
+  // Only animate card entry after previous content is fully scrolled
+  const y = useTransform(
     scrollYProgress,
-    [entryPoint, end],
-    ['560px', Math.max(0, window.innerHeight - card.innerBlockHeight) + 'px']
+    [contentScrollEnd, end],
+    ['100vh', '0vh']
   )
 
-  const marg = 560 - Math.max(0, window.innerHeight - card.innerBlockHeight)
-
-  const margChange = useTransform(
+  // Scroll card up to reveal full content
+  const cardY = useTransform(
     scrollYProgress,
-    [entryPoint, end],
-    ['0px', -marg * 0.8 + 'px']
+    [start, contentScrollEnd],
+    [0, -contentScrollHeight]
   )
 
   const isDark = card.bg === 'cardDark'
@@ -125,16 +113,12 @@ const MobileCard = ({
     >
       <motion.img
         src={`/img/mobile-covers/${card.pic}`}
-        className={'absolute top-0 w-full'}
+        className="absolute top-0 w-full"
         alt={card.title}
-        style={{
-          marginTop: margChange,
-          //
-        }}
       />
       <CardNumber number={index + 1} />
-      <div className="w-full h-full">
-        <motion.div
+      <motion.div className="w-full h-full" style={{ y: cardY }}>
+        <div
           className={`
             flex flex-col
             card
@@ -157,38 +141,32 @@ const MobileCard = ({
           `}
           style={{
             height: card.innerBlockHeight,
-            top: contentPosition,
+            top: 560,
             background: isDark
               ? 'hsla(0, 0%, 100%, .05)'
               : 'hsla(0, 0%, 100%, .2)',
-            // backgroundImage: 'url(http://localhost:3000/semi-transparent.png)',
           }}
         >
           <InnerCard card={card.card} title={card.title} isDark={isDark} />
-        </motion.div>
-      </div>
+        </div>
+      </motion.div>
     </motion.div>
   )
 }
 
 export const InnerCard = ({ card, title, isDark }) => {
-  // 25 + 168 + 44
-
   return (
     <div className="flex flex-col gap-y-[40px] relative">
       <div
         className={`
           absolute
-      font-medium not-italic leading-none font-host ${isDark ? 'text-white' : 'text-black'} 
-      text-[42px]
-
+          font-medium not-italic leading-none font-host 
+          ${isDark ? 'text-white' : 'text-black'} 
+          text-[42px]
           flex flex-col justify-end
-
-
           h-[168px]
           top-[-237px]
-      _left-[25px]
-      `}
+        `}
       >
         {title}
       </div>
