@@ -14,7 +14,6 @@ const Ray: React.FC<RayProps> = ({ angle, isOdd }) => {
     const interval = setInterval(() => {
       setIsSwapped((prev) => !prev)
     }, 2000) // Swap every 2 seconds
-
     return () => clearInterval(interval)
   }, [])
 
@@ -47,7 +46,6 @@ const Ray: React.FC<RayProps> = ({ angle, isOdd }) => {
         style={{
           height: '2px',
           width: '188px',
-          // background: isOdd ? 'red' : 'blue',
           background: 'rgb(240, 240, 245)',
         }}
         animate={{
@@ -68,20 +66,15 @@ const RayBackground: React.FC = () => {
 
   return (
     <div className="relative w-full h-screen overflow-hidden bg-white">
-      {/*
-      <div
-        className="absolute left-0 top-[50vh] z-[1]"
-        style={{ width: 322, height: 120, background: 'blue' }}
-      />
-      <div
-        className="absolute right-0 top-[50vh] z-[1]"
-        style={{ width: 322, height: 120, background: 'blue' }}
-      />
-      */}
-      <div
+      <motion.div
         className="absolute w-full h-screen overflow-hidden bg-white -ml-[94px]"
-        style={{
-          transform: 'rotate(0.13deg)',
+        animate={{
+          rotate: 360,
+        }}
+        transition={{
+          duration: 20,
+          ease: 'linear',
+          repeat: Infinity,
         }}
       >
         <div className="absolute inset-0">
@@ -98,7 +91,7 @@ const RayBackground: React.FC = () => {
               <Ray key={`secondary-${angle}`} angle={angle} isOdd={false} />
             ))}
         </div>
-      </div>
+      </motion.div>
     </div>
   )
 }

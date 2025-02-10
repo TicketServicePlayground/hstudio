@@ -82,10 +82,20 @@ const RayBackground: React.FC = () => {
         style={{ width: 322, height: 120, background: 'blue' }}
       />
       */}
-      <div
+      <motion.div
         className="absolute w-full h-screen overflow-hidden"
-        style={{
-          transform: 'rotate(0.13deg)',
+        // style={{
+        //   transform: 'rotate(0.13deg)',
+        // }}
+
+        animate={{
+          rotate: 360,
+        }}
+        transition={{
+          // duration: 90,
+          duration: 80,
+          ease: 'linear',
+          repeat: Infinity,
         }}
       >
         <div className="absolute inset-0 md:ml-[-94px] ml-[-118px] scale-[0.7]_md:scale-100">
@@ -102,7 +112,7 @@ const RayBackground: React.FC = () => {
               <Ray key={`secondary-${angle}`} angle={angle} isOdd={false} />
             ))}
         </div>
-      </div>
+      </motion.div>
 
       <p className="block lg:hidden text-black font-medium font-host text-[24px] md:text-[42px] leading-none text-center z-[2]">
         We are{' '}

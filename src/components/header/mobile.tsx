@@ -32,7 +32,6 @@ const MobileNav = () => {
       window.removeEventListener('scroll', handleScroll)
     }
   }, [lastScrollY])
-  console.log(isVisible)
 
   const menuVariants = {
     closed: {
@@ -92,11 +91,23 @@ const MobileNav = () => {
 
   return (
     <>
-      <div className="w-full flex justify-center top-[26.4px] absolute">
+      {/* Logo with animation */}
+      <motion.div
+        className="w-full flex justify-center top-[26.4px] absolute"
+        animate={{
+          y: isVisible ? 0 : -100,
+          opacity: isVisible ? 1 : 0,
+        }}
+        transition={{
+          duration: 0.4,
+          ease: 'circOut',
+        }}
+      >
         <Link href="/" className="text-[20px] cursor-pointer font-climate">
           H.STUDIO
         </Link>
-      </div>
+      </motion.div>
+
       <motion.div
         className="fixed bottom-[0px] right-[0px] w-screen flex flex-col z-40 min-w-screen"
         animate={{
@@ -105,20 +116,10 @@ const MobileNav = () => {
         }}
         transition={{
           duration: 0.4,
-          // ease: [0.4, 0, 0.2, 1],
-
           ease: 'circOut',
-
-          // type: 'spring',
-          // stiffness: 200,
-          // damping: 20,
-
-          // type: 'spring',
-          // stiffness: 100,
-          // damping: 15,
-          // ease: 'easeInOut',
         }}
       >
+        {/* Rest of the code remains the same */}
         {/* Bottom Fixed Buttons */}
         <div className="flex items-center gap-x-[14px] absolute bottom-[21px] left-[24px] right-[22px]">
           <MotionLink
@@ -132,7 +133,7 @@ const MobileNav = () => {
 
           <motion.button
             onClick={() => setIsOpen(!isOpen)}
-            className="w-[60px] h-[60px] bg-black text-white rounded-lg flex items-center justify-center shrink-0 relative z-50"
+            className="w-[60px] h-[60px] bg-black text-white rounded-[16px] flex items-center justify-center shrink-0 relative z-50"
             animate={{ rotate: isOpen ? 90 : 0 }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
           >
@@ -143,11 +144,7 @@ const MobileNav = () => {
               viewBox="0 0 60 60"
               fill="none"
             >
-              <motion.g
-                // animate={{ rotate: isOpen ? 90 : 0 }}
-                // transition={{ duration: 0.3, ease: 'easeInOut' }}
-                style={{ transformOrigin: '30px 30px' }}
-              >
+              <motion.g style={{ transformOrigin: '30px 30px' }}>
                 <rect width="60" height="60" rx="16" fill="black" />
 
                 <motion.path
@@ -189,15 +186,13 @@ const MobileNav = () => {
         <AnimatePresence>
           {isOpen && (
             <>
-              {/* Menu container */}
               <motion.div
-                className="mobile-menu-container absolute bg-[#FFFFFF40] backdrop-blur-[40px] border border-[#FFFFFF60] text-black rounded-[20px]  z-40"
+                className="mobile-menu-container absolute bg-[#FFFFFF40] backdrop-blur-[40px] border border-[#FFFFFF60] text-black rounded-[20px] z-40"
                 initial="closed"
                 animate="open"
                 exit="closed"
                 variants={menuVariants}
               >
-                {/* Menu content */}
                 <motion.div
                   className="h-full w-full"
                   variants={menuItemsContainerVariants}
@@ -231,7 +226,12 @@ const MobileNav = () => {
                   >
                     <Tabs
                       items={[
-                        { text: 'eng', type: 'btn', onClick: () => {} },
+                        {
+                          text: 'eng',
+                          type: 'btn',
+                          onClick: () => {},
+                          active: true,
+                        },
                         { text: 'deu', type: 'btn', onClick: () => {} },
                       ]}
                       selectedBgColor="[#E4E9EF]"

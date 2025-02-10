@@ -1,6 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react'
-import { motion, useAnimation, AnimatePresence } from 'motion/react'
+import { motion, useAnimation } from 'motion/react'
 import Image from 'next/image'
 
 const ImageCarousel = () => {
@@ -8,6 +8,7 @@ const ImageCarousel = () => {
   const [isMounted, setIsMounted] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const [dragStartX, setDragStartX] = useState(0)
+  const [isDragging, setIsDragging] = useState(false)
   const controls = useAnimation()
 
   useEffect(() => {
@@ -23,21 +24,29 @@ const ImageCarousel = () => {
   }, [])
 
   const handleDragStart = (event, info) => {
+    setIsDragging(true)
     setDragStartX(info.point.x)
   }
 
   const handleDragEnd = (event, info) => {
+    setIsDragging(false)
     const dragEndX = info.point.x
     const diff = dragStartX - dragEndX
 
-    if (Math.abs(diff) > 30) {
-      // Reduced threshold for more responsive feel
+    // Reduced threshold for more responsive swipes
+    if (Math.abs(diff) > 20) {
       if (diff > 0 && currentIndex < teamMembers.length - 1) {
         setCurrentIndex(currentIndex + 1)
       } else if (diff < 0 && currentIndex > 0) {
         setCurrentIndex(currentIndex - 1)
       }
     }
+
+    // Snap back to position
+    controls.start({
+      x: 0,
+      transition: { type: 'spring', stiffness: 300, damping: 30 },
+    })
   }
 
   const teamMembers = [
@@ -96,12 +105,12 @@ const ImageCarousel = () => {
   }
 
   const getSpacing = () => {
-    return isMobile ? 220 : 350
+    return isMobile ? 220 : 350 // Restored original spacing
   }
 
   return (
     <div className="w-full px-4 overflow-hidden">
-      <h1 className="text-center text-[24px] md:text-[28px] md:mb-[40px] lg:text-[48px] font-medium leading-[83%] font-host mb-[60px] lg:mb-[80px]">
+      <h1 className="text-center text-[24px] md:text-[28px] md:mb-[40px] lg:text-[48px] font-medium leading-[83%] font-host mb-[60px] lg:mb-[40px]">
         Meet the team
       </h1>
 
@@ -113,6 +122,7 @@ const ImageCarousel = () => {
         onDragStart={handleDragStart}
         onDragEnd={handleDragEnd}
         dragMomentum={false}
+        animate={controls}
       >
         <div
           className={`relative ${isMobile ? 'w-[240px]' : 'w-[380px]'} h-full`}
@@ -145,10 +155,8 @@ const ImageCarousel = () => {
                   zIndex: isActive ? 2 : 1,
                 }}
                 transition={{
-                  // duration: 0.5, // Changed from 0.3 to 0.5 for smoother feel
-                  // ease: [0.16, 1, 0.3, 1], // Modified easing curve for gentler motion
                   duration: 0.5,
-                  ease: isMobile ? [0.16, 1, 0.3, 1] : 'easeInOut',
+                  ease: [0.16, 1, 0.3, 1],
                 }}
                 onClick={() => !isMobile && setCurrentIndex(index)}
               >
@@ -160,7 +168,7 @@ const ImageCarousel = () => {
                   <Image
                     src={member.image}
                     alt={member.name}
-                    className="object-cover grayscale"
+                    className={`object-cover grayscale ${isDragging ? 'pointer-events-none' : ''}`}
                     fill
                     sizes={`(max-width: 768px) ${dimensions.width}px, ${dimensions.width}px`}
                     priority={isActive}
@@ -182,7 +190,7 @@ const ImageCarousel = () => {
         <h2 className="text-[24px] md:text-[30px] lg:text-[36px] font-medium font-host leading-none mb-[16px] lg:mb-[24px]">
           {activeMember.name}
         </h2>
-        <p className="text-[14px] md:text-[20px] lg:text-[24px] font-medium font-host leading-none pb-2 max-w-[240px] md:max-w-[300px] lg:max-w-[380px] mx-auto">
+        <p className="text-[14px] md:text-[20px] lg:text-[24px] font-medium font-host leading-none pb-2 max-w-[240px] md:max-w-[300px] lg:max-w-[580px] mx-auto">
           {activeMember.experience}
         </p>
       </motion.div>

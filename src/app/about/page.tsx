@@ -1,8 +1,7 @@
 'use client'
 import React from 'react'
-import { motion, useInView } from 'motion/react'
+import { motion, useInView } from 'framer-motion'
 import ImageCarousel from '@/components/image-carousel'
-
 import Footer from '@/components/footer'
 
 const AboutPage = () => {
@@ -13,28 +12,28 @@ const AboutPage = () => {
     'we transform complex challenges into efficient digital products',
   ]
 
-  // return (
-  //   <div className="pt-12">
-  //     <ImageCarousel />
-  //   </div>
-  // )
-
   return (
     <main>
-      {/* Container for all sections including animations and content */}
       <div className="snap-y snap-mandatory overflow-y-auto h-screen">
-        {/* Animated text sections */}
-        {lyrics.map((text, index) => (
+        {/* First section needs an id for the observer */}
+        <section
+          key="first-section"
+          className="h-screen w-full flex items-center justify-center snap-start first-snap-section"
+        >
+          <AnimatedText text={lyrics[0]} />
+        </section>
+
+        {/* Rest of the sections */}
+        {lyrics.slice(1).map((text, index) => (
           <section
-            key={index}
+            key={index + 1}
             className="h-screen w-full flex items-center justify-center snap-start"
           >
             <AnimatedText text={text} />
           </section>
         ))}
 
-        {/* Regular content sections */}
-        <section className="h-screen w-full snap-start pt-28 md:pt-24 2xl:pt-20">
+        <section className="h-screen w-full snap-start pt-28 lg:pt-22 md:pt-24 2xl:pt-20">
           <ImageCarousel />
         </section>
 
@@ -69,16 +68,7 @@ const AnimatedText = ({ text }) => {
         mass: 1,
       }}
     >
-      <div
-        className="gradient-text text-[56px] leading-[79.68px] md:text-[96px] font-medium font-host font-extrabold"
-        style={
-          {
-            // fontSize: 'clamp(2rem, 8vw, 8rem)',
-            // lineHeight: '1.1',
-            // whiteSpace: 'nowrap',
-          }
-        }
-      >
+      <div className="gradient-text text-[56px] leading-[79.68px] md:text-[96px] font-medium font-host font-extrabold">
         {text}
       </div>
     </motion.div>

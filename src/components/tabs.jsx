@@ -81,7 +81,6 @@ const Tabs = ({
       ${isActive && selectedTextColor ? `text-${selectedTextColor}` : ''}
       ${isActive && !selectedTextColor ? 'mix-blend-difference text-white' : ''}
       ${!isActive ? 'text-gray-700' : ''}
-      ${selectedTextColor ? `text-${selectedTextColor}` : ''}
     `
 
     if (item.type === 'link') {

@@ -11,14 +11,45 @@ const ClientsPage: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState('All')
 
   const categories = [
-    'All',
-    'Backend Solutions',
-    'Web & Mobile Application',
-    'Design & User Experience',
-    'DevOps & Automation',
-    'Game & Web3',
-    'Seamless Integration',
+    {
+      text: 'All',
+      bgColor: 'black',
+      textColor: 'white',
+    },
+    {
+      text: 'Backend Solutions',
+      bgColor: 'liliac',
+      textColor: 'black',
+    },
+    {
+      text: 'Web & Mobile Application',
+      bgColor: 'orange',
+      textColor: 'black',
+    },
+    {
+      text: 'Design & User Experience',
+
+      bgColor: '[#ECEBF1]',
+      textColor: 'black',
+    },
+    {
+      text: 'DevOps & Automation',
+      bgColor: 'blue',
+      textColor: 'black',
+    },
+    {
+      text: 'Game & Web3',
+      bgColor: 'orange',
+      textColor: 'black',
+    },
+    {
+      text: 'Seamless Integration',
+      bgColor: 'cardDark', // or darkCard
+      textColor: 'white',
+    },
   ]
+
+  const activeCategory = categories.find((i) => i.text === activeFilter)
 
   return (
     <div className="flex flex-col w-full items-center pt-[196px] md:pt-[190px]">
@@ -26,23 +57,17 @@ const ClientsPage: React.FC = () => {
 
       <div className="pl-[25px] md:pl-unset max-w-[100%] overflow-x-auto">
         <Tabs
-          selectedBgColor="blue"
-          selectedTextColor="black"
-          items={[
-            'All',
-            'Backend Solutions',
-            'Web & Mobile Application',
-            'Design & User Experience',
-            'DevOps & Automation',
-            'Game & Web3',
-            'Seamless Integration',
-          ].map((i) => ({
-            text: i,
+          // selectedBgColor="blue"
+          // selectedTextColor="black"
+          selectedBgColor={activeCategory.bgColor}
+          selectedTextColor={activeCategory.textColor}
+          items={categories.map((i) => ({
+            text: i.text,
             onClick: () => {
-              setActiveFilter(i)
+              setActiveFilter(i.text)
             },
             type: 'button',
-            active: activeFilter === i,
+            active: activeFilter === i.text,
           }))}
         />
       </div>
@@ -51,7 +76,7 @@ const ClientsPage: React.FC = () => {
 
       <div
         className={`
-        grid gap-[25px] md:gap-[20px]
+        grid gap-[25px] lg:gap-[20px]
         grid-cols-1 md:grid-cols-2
         mt-[80px] md:mt-[110px]
 
@@ -78,7 +103,7 @@ const ClientCard = ({ client }) => {
       {/* Card */}
       <div
         onClick={() => setIsOpen(true)}
-        className="rounded-[20px] md:rounded-[32px] aspect-square w-full cursor-pointer min-h-[450px] md:min-h-unset"
+        className="rounded-[20px] md:rounded-[32px] aspect-square w-full cursor-pointer min-h-[450px] lg:min-h-unset"
       >
         <div className="w-full h-full rounded-[32px] overflow-hidden relative">
           {client.bgImg && (
@@ -264,9 +289,10 @@ const ClientCard = ({ client }) => {
 }
 
 const Title = () => (
-  <h2 className="font-host font-medium leading-[83%] text-[58px] md:text-[96px] text-center mb-[80px] md:mb-[60px]">
+  <h2 className="font-host font-medium leading-[83%] text-[58px] md:text-[96px] text-center mb-[80px] md:mb-[60px] mx-[20px] lg:mx-[0px]">
     Examples of our
-    <br />
+    <br className="hidden lg:block" />
+    <span className="inline-block lg:hidden w-[11px]" />
     expertise in action
   </h2>
 )
