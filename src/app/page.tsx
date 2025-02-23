@@ -12,7 +12,7 @@ export default function Home() {
       <Cards />
       <RayScreen />
       <Footer />
-      {/* */}
+
     </div>
   )
 }

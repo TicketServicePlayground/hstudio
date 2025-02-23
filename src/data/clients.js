@@ -5,7 +5,9 @@ export const clients = [
     bgImg: '/img/clients/gradients/1.jpeg',
     mobileBgImg: '/card-eventstripe-mobile.png',
     bgStyle: '',
+    cardDesktop: '/img/clients/bg/EventStripeCardInside.png',
     bgStyleMobile: '',
+    categories: ['Web & Mobile Application', 'DevOps & Automation'],
     contentImg: '',
     tags: [
       {
@@ -36,7 +38,9 @@ export const clients = [
     logo: '/img/clients/logos_x2/logo-1.png',
     name: 'VTB — Data Streaming System',
     bgImg: '/img/clients/gradients/2.jpeg',
+    cardDesktop: '/img/clients/gradients/2.jpeg',
     bgStyle: '',
+    categories: ['Backend Solutions', 'DevOps & Automation'],
     tags: [
       {
         text: 'Backend Solutions',
@@ -65,7 +69,9 @@ export const clients = [
     logo: '/img/clients/logos_x2/logo-2.png',
     name: 'Sber — Microservice Architecture and Biometric Authorization',
     bgImg: '/img/clients/gradients/3.jpeg',
+    categories: ['Web & Mobile Application', 'DevOps & Automation'],
     mobileBgImg: '/card-sber.png',
+    cardDesktop: '/img/clients/gradients/3.jpeg',
     bgStyle: '',
     tags: [
       {
@@ -101,6 +107,8 @@ export const clients = [
     name: 'Societe Generale — Personalized Advertising Banner Service',
     bgImg: '/img/clients/bg/bg-4.png',
     bgStyle: '',
+    cardDesktop: '/img/clients/bg/bg-4.png',
+    categories: ['Web & Mobile Application', 'DevOps & Automation'],
     contentImg: '',
     tags: [
       {
@@ -136,7 +144,9 @@ export const clients = [
     name: 'Architectural bureau MIR',
     bgImg: '/img/clients/gradients/5.jpeg',
     bgStyle: '',
+    cardDesktop: '/img/clients/bg/MirBackgroundCard.png',
     contentImg: '',
+    categories: ['Design & User Experience', 'DevOps & Automation'],
     tags: [
       {
         text: 'Design & User Experience',
@@ -163,7 +173,9 @@ export const clients = [
     name: 'KClub Group',
     bgImg: '/img/clients/gradients/6.jpeg',
     mobileBgImg: '/card-kclub.png',
+    cardDesktop: '/img/clients/bg/KClubCard.png',
     bgStyle: '',
+    categories: ['Backend Solutions', 'Web & Mobile Application'],
     contentImg: '',
     tags: [
       {
@@ -183,9 +195,11 @@ export const clients = [
   {
     logo: '/img/clients/logos_x2/logo-6.png',
     name: 'Matahari Hills',
+    cardDesktop: '/img/clients/bg/HatariCard.png',
     bgImg: '/img/clients/bg/bg-7.png',
     bgStyle: '',
     contentImg: '',
+    categories: ['Backend Solutions', 'Web & Mobile Application', 'Seamless Integration'],
     tags: [
       {
         text: 'Backend Solutions',
@@ -212,6 +226,8 @@ export const clients = [
     bgImg: '/img/clients/gradients/8.jpeg',
     mobileBgImg: '/card-mirage-mobile.png',
     bgStyle: '',
+    cardDesktop: '/img/clients/bg/MirageFlashCard.png',
+    categories: ['Backend Solutions', 'Web & Mobile Application', 'Design & User Experience'],
     contentImg: '',
     tags: [
       {
@@ -239,7 +255,10 @@ export const clients = [
     bgImg: '/img/clients/gradients/9.jpeg',
     mobileBgImg: '/card-frigate.png',
     bgStyle: '',
+    cardDesktop: '/img/clients/bg/SurfBoardCard.png',
     contentImg: '',
+    categories: ['Backend Solutions', 'Web & Mobile Application', 'DevOps & Automation'],
+
     tags: [
       {
         text: 'Backend Solutions',
@@ -270,6 +289,9 @@ export const clients = [
     name: 'Ntainers',
     bgImg: '/img/clients/bg/bg-10.png',
     bgStyle: '',
+    cardDesktop: '/img/clients/bg/NtainersCard.png',
+    categories: ['Backend Solutions', 'Web & Mobile Application', 'Seamless Integration'],
+
     contentImg: '',
     tags: [
       {

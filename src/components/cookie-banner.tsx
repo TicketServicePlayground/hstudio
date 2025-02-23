@@ -1,6 +1,8 @@
 import React from 'react'
 
 const CookieBanner = () => {
+
+
   return (
     <div className="fixed bottom-4 left-4 right-4 z-50 md:max-w-lg">
       <div className="bg-white rounded-[32px] p-4 shadow-sm flex items-center justify-between">

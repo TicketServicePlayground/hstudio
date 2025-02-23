@@ -156,6 +156,7 @@ const Cards = ({ cards }) => {
                 zIndex: i,
               }}
             >
+
               <div className="w-full h-full flex items-center justify-center p-8">
                 <div className="w-full h-full border border-white flex flex-col items-center justify-start overflow-hidden">
                   <h2 className="text-4xl font-bold text-white p-4 sticky top-0 bg-inherit z-10">

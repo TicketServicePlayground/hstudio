@@ -11,6 +11,7 @@ import Footer from '@/components/footer'
 const ClientsPage: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState('All')
 
+
   const categories = [
     {
       text: 'All',
@@ -87,9 +88,12 @@ const ClientsPage: React.FC = () => {
         md:w-[calc(100%-60px)] 
       `}
       >
-        {clients.map((client) => (
-          <ClientCard key={client.name} client={client} />
-        ))}
+
+        {clients
+          .filter(client => activeFilter === 'All' || client.categories.includes(activeFilter))
+          .map(client => (
+            <ClientCard key={client.name} client={client} />
+          ))}
       </div>
       <Footer />
     </div>
@@ -105,7 +109,7 @@ const ClientCard = ({ client }) => {
       {/* Card */}
       <div
         onClick={() => setIsOpen(true)}
-        className="rounded-[20px] md:rounded-[32px] aspect-square w-full cursor-pointer min-h-[525px] _min-h-[450px] lg:min-h-unset"
+        className="rounded-[20px] md:rounded-[32px] aspect-square w-full cursor-pointer min-h-[450px] lg:min-h-[680px]"
       >
         <div className="w-full h-full rounded-[20px] lg:rounded-[32px] overflow-hidden relative">
           {client.bgImg && (
@@ -195,7 +199,7 @@ const ClientCard = ({ client }) => {
                     <div className="w-full md:w-1/2 relative aspect-square md:aspect-auto">
                       {client.contentImg ? (
                         <img
-                          src={client.contentImg}
+                          src={client.cardDesktop}
                           alt={client.name}
                           className="w-full h-full object-cover"
                         />
@@ -204,7 +208,7 @@ const ClientCard = ({ client }) => {
                           className={`w-full h-full ${client.bgImg ? 'bg-cover bg-center' : 'bg-gradient-to-br from-gray-100 to-gray-200'}`}
                           style={
                             client.bgImg
-                              ? { backgroundImage: `url(${client.bgImg})` }
+                              ? { backgroundImage: `url(${client.cardDesktop})` }
                               : {}
                           }
                         />
@@ -296,10 +300,10 @@ const ClientCard = ({ client }) => {
 
 const Title = () => (
   <h2 className="font-host font-medium leading-[83%] text-[58px] md:text-[96px] text-center mb-[80px] md:mb-[60px] mx-[20px] lg:mx-[0px]">
-    Examples of our
+    Examples of&nbsp;our
     <br className="hidden lg:block" />
     <span className="inline-block lg:hidden w-[11px]" />
-    expertise in action
+    expertise in&nbsp;action
   </h2>
 )
 

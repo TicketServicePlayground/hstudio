@@ -4,7 +4,7 @@ import { motion, useAnimation } from 'motion/react'
 import Image from 'next/image'
 
 const ImageCarousel = () => {
-  const [currentIndex, setCurrentIndex] = useState(2)
+  const [currentIndex, setCurrentIndex] = useState(3)
   const [isMounted, setIsMounted] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const [dragStartX, setDragStartX] = useState(0)

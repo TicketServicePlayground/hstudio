@@ -126,28 +126,29 @@ const Footer = () => {
 
         {/* Links */}
         <Link
-          href="/"
-          className="text-black hover:text-black/50 hover:underline text-[14px] font-host font-medium leading-none hover:no-underline"
-        >
-          Home
-        </Link>
-        <Link
-          href="/clients"
-          className="text-black hover:text-black/50 hover:underline text-[14px] font-host font-medium leading-none hover:no-underline"
-        >
-          Clients
-        </Link>
-        <Link
-          href="/about"
-          className="text-black hover:text-black/50 hover:underline text-[14px] font-host font-medium leading-none hover:no-underline"
+            href="/about"
+            className="text-black hover:text-black/50 hover:underline text-[14px] font-host font-medium leading-none hover:no-underline"
         >
           About us
         </Link>
         <Link
-          href="/contacts"
+          href="/terms"
           className="text-black hover:text-black/50 hover:underline text-[14px] font-host font-medium leading-none hover:no-underline"
         >
-          Contacts
+          Terms of Service
+        </Link>
+        <Link
+          href="/#"
+          className="text-black hover:text-black/50 hover:underline text-[14px] font-host font-medium leading-none hover:no-underline"
+        >
+          Blog
+        </Link>
+
+        <Link
+          href="/privacy"
+          className="text-black hover:text-black/50 hover:underline text-[14px] font-host font-medium leading-none hover:no-underline"
+        >
+          Privacy Policy
         </Link>
       </div>
     </footer>

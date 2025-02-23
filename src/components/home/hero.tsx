@@ -79,7 +79,7 @@ const Hero = () => {
           mousePosition={mousePosition}
           className={`
             bg-liliac
-            rounded-tl-[0px]
+            !rounded-tl-[0px]
 
             top-[499px]
             lg:top-[207px]
@@ -100,7 +100,7 @@ const Hero = () => {
           mousePosition={mousePosition}
           className={`
             bg-blue
-            rounded-tl-[0px]
+            !rounded-tl-[0px]
 
             top-[538px]
             lg:top-[293px]
@@ -121,7 +121,7 @@ const Hero = () => {
           mousePosition={mousePosition}
           className={`
             bg-lime
-            rounded-tr-[0px]
+            !rounded-tr-[0px]
 
             top-[84px]
             _lg:top-[514px]
