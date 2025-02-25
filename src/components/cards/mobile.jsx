@@ -21,16 +21,12 @@ const Cards = ({ cards }) => {
           card.innerBlockHeight + viewportHeight
       )
 
-      console.log(contentScrollHeight)
-
       return {
         card,
         contentScrollHeight,
         scrollHeight: contentScrollHeight + viewportHeight  ,
       }
     })
-
-    cardMetrics[0].scrollHeight = cardMetrics[0].contentScrollHeight
 
     totalHeight = cardMetrics.reduce((sum, m) => sum + m.scrollHeight , 0)
 
@@ -51,6 +47,8 @@ const Cards = ({ cards }) => {
       })
     })
 
+    console.log('SECTIONS totalHeight', sections, totalHeight)
+
     return { sections, totalHeight }
   }, [cards])
 
@@ -62,7 +60,7 @@ const Cards = ({ cards }) => {
   return (
       <div
           ref={containerRef}
-          className="relative"
+          className="relative -mt-[120vh]"
           style={{
             height: `${metrics.totalHeight}px`,
           }}
@@ -88,16 +86,16 @@ const MobileCard = ({ card, scrollYProgress, metrics, index }) => {
   // Карточка будет двигаться с прокруткой страницы
   const y = useTransform(
       scrollYProgress,
-      [start, contentScrollEnd],
-      ['100vh', '0vh']
-  )
+      [start, end],
+      ['100vh', '-80vh']
+  ) //index === 0 ? '0vh' :
 
   // Прокрутка контента внутри карточки
-  const contentY = useTransform(
-      scrollYProgress,
-      [start, contentScrollEnd],
-      [570, `-${contentScrollHeight - 570 - window.innerHeight}px`]
-  )
+  // const contentY = useTransform(
+  //     scrollYProgress,
+  //     [start, contentScrollEnd],
+  //     [570, `-${contentScrollHeight - 570 - window.innerHeight}px`]
+  // )
 
   const cardY = useTransform(
       scrollYProgress,
@@ -105,12 +103,14 @@ const MobileCard = ({ card, scrollYProgress, metrics, index }) => {
       [570, -contentScrollHeight - window.innerHeight -570 ]
   )
 
+  const height = '180vh'
+
   const isDark = card.bg === 'cardDark'
 
   return (
       <motion.div
           className={`bg-${card.bg} absolute inset-0 rounded-t-[20px]`}
-          style={{ y: y }}
+          style={{ y: y, height: height }}
       >
         <motion.img
             src={`/img/mobile-covers/${card.pic}`}
@@ -120,7 +120,7 @@ const MobileCard = ({ card, scrollYProgress, metrics, index }) => {
         <CardNumber number={index + 1} />
         <motion.div
             className="w-full h-max"
-            style={{ y: contentY }}
+            // style={{ y: cardY }}
         >
           <div
               className={`
@@ -168,7 +168,7 @@ export const InnerCard = ({ card, title, isDark }) => {
           ${isDark ? 'text-white' : 'text-black'} 
           text-[42px]
           flex flex-col justify-end
-          h-[168px]
+          h-auto
           top-[-237px]
         `}
         >
@@ -176,7 +176,7 @@ export const InnerCard = ({ card, title, isDark }) => {
         </div>
         <span className="font-host font-[500] text-[24px] leading-none">
         {card.heading}
-      </span>
+        </span>
         {card.benefits && (
             <div className="flex flex-col gap-y-[12px]">
               <Label>Key Benefits</Label>
