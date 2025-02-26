@@ -46,7 +46,7 @@ const Cards = ({ cards }) => {
         contentScrollHeight: metric.contentScrollHeight,
       })
     })
-
+    console.log("sections: ",sections)
     return { sections, totalHeight }
   }
   const metrics = metricsFunc()
@@ -91,8 +91,8 @@ const MobileCard = ({ card, scrollYProgress, metrics, index, length }) => {
 
   // Карточка будет двигаться с прокруткой страницы
   const y = useTransform(
-      scrollYProgress,
-      [start, end],
+    scrollYProgress,
+      [start  * 0.8, end  * 0.8],
       ['100vh', !isLast ? `-${stop}vh` : `0vh`]
   ) //index === 0 ? '0vh' :
 
