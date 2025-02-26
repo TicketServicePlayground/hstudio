@@ -10,7 +10,7 @@ import { Label, CTA, Title, CardNumber } from '@/components/home/solution-card'
 const Cards = ({ cards }) => {
   const containerRef = React.useRef(null)
 
-  const metrics = React.useMemo(() => {
+  const metricsFunc = () => {
     let sections = []
     let totalHeight = 0
     const viewportHeight = window.innerHeight
@@ -48,7 +48,8 @@ const Cards = ({ cards }) => {
     })
 
     return { sections, totalHeight }
-  }, [cards])
+  }
+  const metrics = metricsFunc()
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -84,7 +85,7 @@ const MobileCard = ({ card, scrollYProgress, metrics, index, length }) => {
 
   const viewportHeight = window.innerHeight
 
-  const stop = Math.floor((card.blockHeightMobile - (Math.floor(card.blockHeightMobile / viewportHeight) * viewportHeight)) / viewportHeight * 100)
+  const stop = 13;
 
   const isLast = index === length - 1
 
@@ -148,7 +149,7 @@ const MobileCard = ({ card, scrollYProgress, metrics, index, length }) => {
           `}
               style={{
                 height: card.innerBlockHeight,
-                top: 560,
+                top: `calc(100vh - ${card.innerBlockHeight}px + 20vh)`,
                 background: isDark
                     ? 'hsla(0, 0%, 100%, .05)'
                     : 'hsla(0, 0%, 100%, .2)',

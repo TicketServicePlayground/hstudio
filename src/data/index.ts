@@ -22,8 +22,8 @@ export const cards: SolutionCardData[] = [
         'ClickHouse',
       ],
     },
-    mobileTitleOffset: 390,
-    innerBlockHeight: 635,
+    mobileTitleOffset: 400,
+    innerBlockHeight: 670,
     blockHeightMobile: 1190
   },
   {
@@ -43,7 +43,7 @@ export const cards: SolutionCardData[] = [
     },
     mobileTitleOffset: 390,
     // innerBlockHeight: 649,
-    innerBlockHeight: 640,
+    innerBlockHeight: 680,
     blockHeightMobile: 1200
   },
   {
@@ -56,9 +56,9 @@ export const cards: SolutionCardData[] = [
       heading:
         'We create clean, intuitive designs that enhance user experience. From websites to apps, we focus on aesthetics, functionality, and accessibility for a seamless user journey.',
     },
-    mobileTitleOffset: 432,
-    innerBlockHeight: 409,
-    blockHeightMobile: 970
+    mobileTitleOffset: 632,
+    innerBlockHeight: 450,
+    blockHeightMobile: 1200
   },
   {
     bg: 'blue',
@@ -77,7 +77,7 @@ export const cards: SolutionCardData[] = [
       stack: ['Jenkins', 'Kubernetes', 'Docker', 'GitHub Actions'],
     },
     mobileTitleOffset: 432,
-    innerBlockHeight: 641,
+    innerBlockHeight: 700,
     blockHeightMobile: 1200
   },
   {
@@ -97,7 +97,7 @@ export const cards: SolutionCardData[] = [
       stack: ['Kotlin', 'Blockchain', 'TON', 'Web3'],
     },
     mobileTitleOffset: 390,
-    innerBlockHeight: 666,
+    innerBlockHeight: 700,
     blockHeightMobile: 1225
   },
   {
@@ -111,7 +111,7 @@ export const cards: SolutionCardData[] = [
         'Ensuring efficient integration across any platform, service, or technology stack. From legacy systems to modern APIs, cloud services, and third-party tools, we cover all your business needs',
     },
     mobileTitleOffset: 348,
-    innerBlockHeight: 438,
+    innerBlockHeight: 530,
     blockHeightMobile: 1300
   },
 ]
