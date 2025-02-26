@@ -22,7 +22,7 @@ const Cards = ({ cards }) => {
     offset: ['start start', 'end end'],
   })
 
-  const totalScrollHeight = (cards.length - 0.5) * 100
+  const totalScrollHeight = (cards.length + 0.5) * 100
 
   return (
     <div
@@ -50,6 +50,7 @@ const Cards = ({ cards }) => {
                   marginRight: 30,
                   zIndex: 1,
                   borderRadius: 32,
+                  willChange: "transform"
                 }}
                 className={`bg-${card.bg}`}
               >
