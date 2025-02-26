@@ -38,7 +38,7 @@ const Footer = () => {
         {/* Social Icons */}
         <div className="flex gap-x-[10px]">
           <Link
-            href="#"
+            href="https://x.com/hartung__?s=21"
             target="_blank"
             className="bg-black rounded-[10px] w-[36px] h-[36px] p-[8px] cursor-pointer hover:bg-black/80"
           >
@@ -49,7 +49,7 @@ const Footer = () => {
             />
           </Link>
           <Link
-            href="#"
+            href="https://www.instagram.com/h_studio.dev?igsh=MTg0NnV4bWsycmlrMw%3D%3D&utm_source=qr"
             target="_blank"
             className="bg-black rounded-[10px] w-[36px] h-[36px] p-[8px] cursor-pointer hover:bg-black/80"
           >
@@ -71,7 +71,7 @@ const Footer = () => {
         {/* Social Icons */}
         <div className="hidden md:flex gap-x-[10px]">
           <Link
-            href="#"
+            href="https://x.com/hartung__?s=21"
             target="_blank"
             className="bg-black rounded-[10px] w-[36px] h-[36px] p-[8px] cursor-pointer hover:bg-black/80"
           >
@@ -82,7 +82,7 @@ const Footer = () => {
             />
           </Link>
           <Link
-            href="#"
+            href="https://www.instagram.com/h_studio.dev?igsh=MTg0NnV4bWsycmlrMw%3D%3D&utm_source=qr"
             target="_blank"
             className="bg-black rounded-[10px] w-[36px] h-[36px] p-[8px] cursor-pointer hover:bg-black/80"
           >

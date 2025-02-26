@@ -32,7 +32,7 @@ export const clients = [
         value: '12 months',
       },
     ],
-    href: 'https://google.com', // defines whethere there's cta
+    href: 'https://eventstripe.com/en', // defines whethere there's cta
   },
   {
     logo: '/img/clients/logos_x2/logo-1.png',
@@ -166,7 +166,7 @@ export const clients = [
         value: '6 months',
       },
     ],
-    href: 'https://google.com',
+    href: 'https://abs-mir.com/eng',
   },
   {
     logo: '/img/clients/logos_x2/logo-5.png',
@@ -190,7 +190,7 @@ export const clients = [
       },
     ],
     bio: 'A company in the leisure and tourism sector, for which we created a website with booking functionalities. The design was provided by the client, and we used Java for the backend logic and Next.js for the frontend, allowing us to create a fast and user-friendly service with excellent performance.',
-    href: 'https://google.com',
+    href: 'https://www.kclubgroup.com/',
   },
   {
     logo: '/img/clients/logos_x2/logo-6.png',
@@ -218,7 +218,7 @@ export const clients = [
       },
     ],
     bio: 'A project for an upscale residential complex with integrated interactive maps and multimedia content. The design was provided by the client, and we used Kotlin and Rust for backend reliability and security, while the dynamic interface was created with React and Vue.js.',
-    href: 'https://google.com',
+    href: 'https://www.mataharihills.com',
   },
   {
     logo: '/img/clients/logos_x2/logo-7.png',
@@ -247,7 +247,7 @@ export const clients = [
       },
     ],
     bio: 'A project for creating unique dynamic websites that combine creative design with cutting-edge technology. The design was provided by the client, and we used Java/Kotlin and Go for the backend, and React for the frontend, ensuring a high level of user interaction and fast data processing.',
-    href: 'https://google.com',
+    href: 'https://www.mirageflash.com',
   },
   {
     logo: '/img/clients/logos_x2/logo-8.png',
@@ -282,7 +282,7 @@ export const clients = [
       },
     ],
     bio: 'Development of an e-commerce site for a surfboard manufacturer, focusing on fast page load times and an intuitive user interface. The design was provided by the client, and the backend was built with Go and Rust, while the frontend was developed with Vue and TypeScript. We also implemented solutions for scalability and process automation.',
-    href: 'https://google.com',
+    href: 'https://www.frigate-surfboards.com/',
   },
   {
     logo: '/img/clients/logos_x2/logo-9.png',
@@ -311,9 +311,12 @@ export const clients = [
       },
     ],
     bio: 'An Australia StartUp project designed to manage and streamline container logistics. The design was provided by the client, and the backend was built with Go for performance and scalability. The frontend was developed using React for a seamless user experience, ensuring efficient management and tracking of containers.',
-    href: 'https://google.com',
+    href: 'https://ntainers.co',
   },
 ]
+
+export type ClientT = typeof clients[0]
+
 
 // DESKTOP:
 //

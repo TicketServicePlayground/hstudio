@@ -1,4 +1,6 @@
 import Footer from '@/components/footer'
+import { ReactNode } from 'react'
+import Link from 'next/link'
 
 const ContactsPage = () => {
   return (
@@ -27,8 +29,8 @@ const ContactForm = () => (
   >
     <h1 className="text-[42px] lg:text-[64px] font-host leading-none font-medium mb-[40px]">
       Let's <span className="text-orange">talk</span> about your project!
-      <br className="block lg:hidden lg:block" />
-      <span className="hidden lg:inline-block lg:hidden w-[11px]" />
+      <br className="block lg:block" />
+      <span className="hidden lg:hidden w-[11px]" />
 
     </h1>
 
@@ -43,7 +45,7 @@ const ContactForm = () => (
   </div>
 )
 
-const Input = ({ placeholder }) => (
+const Input = ({ placeholder }: {placeholder: string}) => (
   <input
     type="text"
     placeholder={placeholder}
@@ -51,7 +53,7 @@ const Input = ({ placeholder }) => (
   />
 )
 
-const Button = ({ children }) => (
+const Button = ({ children }: {children: ReactNode}) => (
   <button
     type="submit"
     className="py-[21px] px-[117.5px] font-host text-[20px] font-medium leading-none bg-black rounded-full text-white w-full lg:w-max"
@@ -66,11 +68,11 @@ const SocialButton = () => (
   </button>
 )
 
-const Label = ({ children }) => (
+const Label = ({ children }: {children: ReactNode}) => (
   <h3 className="font-bold font-host text-[18px] leading-none">{children}</h3>
 )
 
-const Value = ({ children }) => (
+const Value = ({ children }: {children: ReactNode}) => (
   <p className="font-medium font-host text-[24px] leading-none">{children}</p>
 )
 
@@ -89,15 +91,16 @@ const Address = () => (
             <Value>hello@h2.studio</Value>
         </div>
         <div className="flex flex-col items-center lg:flex-row gap-y-[30px] gap-x-[30px]">
-            <button
-                type="submit"
-                className="py-[21px] px-[72px] font-host text-[20px] whitespace-nowrap font-medium leading-none bg-black rounded-full text-white w-full lg:w-max"
+            <Link
+                href="https://calendly.com/hstudio"
+                target="_blank"
+                className="block py-[21px] px-[72px] font-host text-[20px] whitespace-nowrap font-medium leading-none bg-black rounded-full text-white w-full lg:w-max"
             >
                 schedule a call
-            </button>
+            </Link>
             <div className="flex gap-x-[12px]">
-                <a
-                    href="#"
+                <Link
+                    href="https://wa.me/+4915754892281"
                     target="_blank"
                     className="bg-black rounded-[13.333px] w-[48px] h-[48px] p-[10.67px] cursor-pointer hover:bg-black/80"
                 >
@@ -106,9 +109,9 @@ const Address = () => (
                         alt="X.com logo"
                         className="w-[26.667px] h-[26.667px]"
                     />
-                </a>
-                <a
-                    href="#"
+                </Link>
+                <Link
+                    href="https://t.me/+4915754892281"
                     target="_blank"
                     className="bg-black rounded-[13.333px] w-[48px] h-[48px] p-[10.67px] cursor-pointer hover:bg-black/80"
                 >
@@ -117,7 +120,7 @@ const Address = () => (
                         alt="Instagram logo"
                         className="w-[26.667px] h-[26.667px]"
                     />
-                </a>
+                </Link>
             </div>
         </div>
     </div>

@@ -6,7 +6,8 @@ const Tabs = ({
   items,
   onReady,
   selectedBgColor = 'black',
-  selectedTextColor,
+  selectedTextColor = 'white',
+  need = true
 }) => {
   const [activeTab, setActiveTab] = useState(() => {
     const activeItem = items.find((item) => item.active)
@@ -81,6 +82,7 @@ const Tabs = ({
       ${isActive && selectedTextColor ? `text-${selectedTextColor}` : ''}
       ${isActive && !selectedTextColor ? 'mix-blend-difference text-white' : ''}
       ${!isActive ? 'text-gray-700' : ''}
+      ${need && 'hover:bg-[#000000] hover:text-white transition duration-300'}
     `
 
     if (item.type === 'link') {

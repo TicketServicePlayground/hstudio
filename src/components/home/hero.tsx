@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import LogoMarquee from '@/components/logo-marquee'
 import { useIsMobile } from '@/hooks'
+import Link from 'next/link'
 
 const Hero = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
@@ -241,12 +242,12 @@ const HeroText = ({ children }) => (
 )
 
 const HeroCTA = ({ children }) => (
-  <button
-    type="submit"
-    className="py-[21px] px-[92px] font-host text-[20px] font-medium leading-none bg-black rounded-full text-white w-full lg:w-max"
+  <Link
+    href="/contacts"
+    className="block py-[21px] px-[92px] font-host text-[20px] font-medium leading-none bg-black rounded-full text-white w-full lg:w-max"
   >
     {children}
-  </button>
+  </Link>
 )
 
 const HeroHeading = ({ children }) => {

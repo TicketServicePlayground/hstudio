@@ -14,6 +14,7 @@ export default {
         climate: ['var(--font-climate-crisis)'],
       },
       colors: {
+
         background: '#F6F5FA',
         card: '#ECEBF1',
         cardDark: '#222224',
@@ -58,5 +59,9 @@ export default {
     'ml-[-94px]',
     '-ml-[59px]',
     'ml-[-59px]',
+
+    'font-space',
+    'font-host',
+    'font-climate'
   ],
 } satisfies Config

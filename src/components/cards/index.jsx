@@ -1,4 +1,5 @@
 'use client'
+
 import CardsMobile from '@/components/cards/mobile'
 import CardsDesktop from '@/components/cards/desktop'
 
