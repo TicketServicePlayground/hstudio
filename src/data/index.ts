@@ -23,7 +23,7 @@ export const cards: SolutionCardData[] = [
       ],
     },
     mobileTitleOffset: 400,
-    innerBlockHeight: 670,
+    innerBlockHeight: 770,
     blockHeightMobile: 1190
   },
   {
@@ -43,7 +43,7 @@ export const cards: SolutionCardData[] = [
     },
     mobileTitleOffset: 390,
     // innerBlockHeight: 649,
-    innerBlockHeight: 680,
+    innerBlockHeight: 780,
     blockHeightMobile: 1200
   },
   {
@@ -57,7 +57,7 @@ export const cards: SolutionCardData[] = [
         'We create clean, intuitive designs that enhance user experience. From websites to apps, we focus on aesthetics, functionality, and accessibility for a seamless user journey.',
     },
     mobileTitleOffset: 632,
-    innerBlockHeight: 450,
+    innerBlockHeight: 550,
     blockHeightMobile: 1200
   },
   {
@@ -77,7 +77,7 @@ export const cards: SolutionCardData[] = [
       stack: ['Jenkins', 'Kubernetes', 'Docker', 'GitHub Actions'],
     },
     mobileTitleOffset: 432,
-    innerBlockHeight: 700,
+    innerBlockHeight: 800,
     blockHeightMobile: 1200
   },
   {
@@ -97,7 +97,7 @@ export const cards: SolutionCardData[] = [
       stack: ['Kotlin', 'Blockchain', 'TON', 'Web3'],
     },
     mobileTitleOffset: 390,
-    innerBlockHeight: 700,
+    innerBlockHeight: 800,
     blockHeightMobile: 1225
   },
   {
