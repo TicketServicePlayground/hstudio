@@ -23,7 +23,7 @@ export const cards: SolutionCardData[] = [
       ],
     },
     mobileTitleOffset: 400,
-    innerBlockHeight: 770,
+    innerBlockHeight: 700,
     blockHeightMobile: 1190
   },
   {
@@ -43,7 +43,7 @@ export const cards: SolutionCardData[] = [
     },
     mobileTitleOffset: 390,
     // innerBlockHeight: 649,
-    innerBlockHeight: 780,
+    innerBlockHeight: 700,
     blockHeightMobile: 1200
   },
   {
@@ -77,7 +77,7 @@ export const cards: SolutionCardData[] = [
       stack: ['Jenkins', 'Kubernetes', 'Docker', 'GitHub Actions'],
     },
     mobileTitleOffset: 432,
-    innerBlockHeight: 800,
+    innerBlockHeight: 700,
     blockHeightMobile: 1200
   },
   {
@@ -97,7 +97,7 @@ export const cards: SolutionCardData[] = [
       stack: ['Kotlin', 'Blockchain', 'TON', 'Web3'],
     },
     mobileTitleOffset: 390,
-    innerBlockHeight: 800,
+    innerBlockHeight: 700,
     blockHeightMobile: 1225
   },
   {
