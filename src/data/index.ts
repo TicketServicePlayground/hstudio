@@ -24,6 +24,7 @@ export const cards: SolutionCardData[] = [
     },
     mobileTitleOffset: 390,
     innerBlockHeight: 635,
+    blockHeightMobile: 1190
   },
   {
     bg: 'orange',
@@ -42,7 +43,8 @@ export const cards: SolutionCardData[] = [
     },
     mobileTitleOffset: 390,
     // innerBlockHeight: 649,
-    innerBlockHeight: 610,
+    innerBlockHeight: 640,
+    blockHeightMobile: 1200
   },
   {
     bg: 'card',
@@ -56,6 +58,7 @@ export const cards: SolutionCardData[] = [
     },
     mobileTitleOffset: 432,
     innerBlockHeight: 409,
+    blockHeightMobile: 970
   },
   {
     bg: 'blue',
@@ -75,6 +78,7 @@ export const cards: SolutionCardData[] = [
     },
     mobileTitleOffset: 432,
     innerBlockHeight: 641,
+    blockHeightMobile: 1200
   },
   {
     bg: 'lime',
@@ -93,7 +97,8 @@ export const cards: SolutionCardData[] = [
       stack: ['Kotlin', 'Blockchain', 'TON', 'Web3'],
     },
     mobileTitleOffset: 390,
-    innerBlockHeight: 616,
+    innerBlockHeight: 666,
+    blockHeightMobile: 1225
   },
   {
     bg: 'cardDark',
@@ -106,7 +111,8 @@ export const cards: SolutionCardData[] = [
         'Ensuring efficient integration across any platform, service, or technology stack. From legacy systems to modern APIs, cloud services, and third-party tools, we cover all your business needs',
     },
     mobileTitleOffset: 348,
-    innerBlockHeight: 338,
+    innerBlockHeight: 438,
+    blockHeightMobile: 1300
   },
 ]
 

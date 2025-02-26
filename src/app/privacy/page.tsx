@@ -1,17 +1,16 @@
-'use client'
 import React from 'react'
 import Footer from "@/components/footer";
 
 const PrivacyPage = () => {
     return (
-        <main>
-            <div className="flex flex-col pr-36 pl-36 mt-36">
-                <h1 className={"font-host font-medium leading-[83%] text-[58px] md:text-[96px]  mx-[20px] lg:mx-[0px]"}>
+        <main className={'font-space'}>
+            <div className="flex flex-col lg:px-36 md:px-20 px-5 mt-36">
+                <h1 className={"font-host font-medium leading-[83%] text-[48px] md:text-[96px] md:text-left text-center"}>
                     Privacy Policy
                 </h1>
-                <span className={'md:mb-[60px] mb-[80px]'}>Last updated: February 18, 2025</span>
+                <span className={'mb-[60px] md:mb-[80px] md:text-base text-sm mt-6 text-center md:text-left'}>Last updated: February 18, 2025</span>
 
-                <p className={'mb-12 text-xl'}>
+                <p className={'mb-12 md:text-xl'}>
                     This Privacy Policy (“Policy”) explains how H-Studio (“H-Studio,” “we,” “us,” or “our”) collects,
                     protects, and uses personally identifiable information (“Personal Information”) that you (“User,”
                     “you,” or “your”) may provide when using our website h2.studio (the “Website”) or in the course of
@@ -21,8 +20,8 @@ const PrivacyPage = () => {
                     This Policy does not apply to third-party services that we do not own or control.
 
                 </p>
-                <h2 className={'mb-3 text-[40px] font-bold'}>1. Collection of Personal Information</h2>
-                <p className={'mb-12 text-xl'}>
+                <h2 className={'font-host mb-3 text-[20px] md:text-[40px] font-bold'}>1. Collection of Personal Information</h2>
+                <p className={'mb-12 md:text-xl'}>
                     We collect and store Personal Information that you knowingly provide to us, including: <br/><br/>
                     • Your email address (required for communication and service access). <br/>
                     • Additional details you voluntarily provide when contacting us. <br/>
@@ -32,8 +31,8 @@ const PrivacyPage = () => {
 
                 </p>
 
-                <h2 className={'mb-3 text-[40px] font-bold'}>2. Collection of Non-Personal Information</h2>
-                <p className={'mb-12 text-xl'}>
+                <h2 className={'font-host mb-3 text-[20px] md:text-[40px] font-bold'}>2. Collection of Non-Personal Information</h2>
+                <p className={'mb-12 md:text-xl'}>
                     When you visit our Website, our servers automatically log certain non-personal data, such as:<br/>
                     <br/>
                     • Your <span className={'font-bold'}>IP address</span>, browser type, and operating system. <br/>
@@ -44,15 +43,15 @@ const PrivacyPage = () => {
 
                 </p>
 
-                <h2 className={'mb-3 text-[40px] font-bold'}>3. Payments & Third-Party Services</h2>
-                <p className={'mb-12 text-xl'}>All transactions on the Website are processed<span
+                <h2 className={'font-host mb-3 text-[20px] md:text-[40px] font-bold'}>3. Payments & Third-Party Services</h2>
+                <p className={'mb-12 md:text-xl'}>All transactions on the Website are processed<span
                     className={'font-bold'}> by third-party payment
                     providers</span>. Payment processors may collect and store additional personal information
                     (such as your name, billing address, and credit card details) according to their own policies.
                     H-Studio <span className={'font-bold'}>does not store or process</span> payment details.</p>
 
-                <h2 className={'mb-3 text-[40px] font-bold'}>4. Managing Your Personal Information</h2>
-                <p className={'mb-12 text-xl'}>You can:<br/><br/>
+                <h2 className={'font-host mb-3 text-[20px] md:text-[40px] font-bold'}>4. Managing Your Personal Information</h2>
+                <p className={'mb-12 md:text-xl'}>You can:<br/><br/>
                     • Request <span className={'font-bold'}> updates or corrections </span> to your Personal
                     Information.<br/>
                     • Request <span className={'font-bold'}>deletion</span> of your Personal Information (note: this may
@@ -65,8 +64,8 @@ const PrivacyPage = () => {
                     retention period expires, Personal Information is permanently deleted.
                 </p>
 
-                <h2 className={'mb-3 text-[40px] font-bold'}>5. Use and Processing of Collected Information</h2>
-                <p className={'mb-12 text-xl'}>We use collected data to: <br/><br/>
+                <h2 className={'font-host mb-3 text-[20px] md:text-[40px] font-bold'}>5. Use and Processing of Collected Information</h2>
+                <p className={'mb-12 md:text-xl'}>We use collected data to: <br/><br/>
                     • Provide and improve our services.<br/>
                     • Communicate with you regarding transactions or inquiries.<br/>
                     • Ensure website security and prevent fraud.<br/>
@@ -76,14 +75,14 @@ const PrivacyPage = () => {
                     parties.
                 </p>
 
-                <h2 className={'mb-3 text-[40px] font-bold'}>6. International Data Transfers</h2>
-                <p className={'mb-12 text-xl'}>Your data may be stored or processed in a country different from your
+                <h2 className={'font-host mb-3 text-[20px] md:text-[40px] font-bold'}>6. International Data Transfers</h2>
+                <p className={'mb-12 md:text-xl'}>Your data may be stored or processed in a country different from your
                     own. If we transfer your data internationally, we take appropriate security measures to ensure
                     compliance with applicable data protection laws.
                 </p>
 
-                <h2 className={'mb-3 text-[40px] font-bold'}>7. Your Rights</h2>
-                <p className={'mb-12 text-xl'}>You have the right to: <br/><br/>
+                <h2 className={'font-host mb-3 text-[20px] md:text-[40px] font-bold'}>7. Your Rights</h2>
+                <p className={'mb-12 md:text-xl'}>You have the right to: <br/><br/>
                     • Withdraw consent for data processing.<br/>
                     • Request access to your Personal Information.<br/>
                     • Request corrections or updates.<br/>
@@ -94,19 +93,19 @@ const PrivacyPage = () => {
                         className={'font-bold hover:text-black/50'}>hello@h2.studio</span></a>.
 
                 </p>
-                <h2 className={'mb-3 text-[40px] font-bold'}>8. Privacy of Children</h2>
-                <p className={'mb-12 text-xl'}>We do not knowingly collect data from children under <span
+                <h2 className={'font-host mb-3 text-[20px] md:text-[40px] font-bold'}>8. Privacy of Children</h2>
+                <p className={'mb-12 md:text-xl'}>We do not knowingly collect data from children under <span
                     className={'font-bold'}> 13 years old</span>. If you believe a child has provided us with Personal
                     Information, please contact us immediately.
                 </p>
-                <h2 className={'mb-3 text-[40px] font-bold'}>9. Cookies and Tracking Technologies</h2>
-                <p className={'mb-12 text-xl'}>We use <span
+                <h2 className={'font-host mb-3 text-[20px] md:text-[40px] font-bold'}>9. Cookies and Tracking Technologies</h2>
+                <p className={'mb-12 md:text-xl'}>We use <span
                     className={'font-bold'}>cookies</span> to enhance user experience and collect website usage
                     statistics. You can disable cookies in your browser settings, but some features of the Website may
                     not function properly.
                 </p>
-                <h2 className={'mb-3 text-[40px] font-bold'}>10. Security Measures</h2>
-                <p className={'mb-12 text-xl'}>We implement <span className={'font-bold'}>technical and organizational security measures</span> to
+                <h2 className={'font-host mb-3 text-[20px] md:text-[40px] font-bold'}>10. Security Measures</h2>
+                <p className={'mb-12 md:text-xl'}>We implement <span className={'font-bold'}>technical and organizational security measures</span> to
                     protect your data. However, no online platform is completely secure. You acknowledge that:<br/><br/>
                     • Internet data transmission is not 100% secure. <br/>
                     • We cannot guarantee absolute protection against cyberattacks. <br/>
@@ -115,18 +114,18 @@ const PrivacyPage = () => {
                     take necessary legal steps.
                 </p>
 
-                <h2 className={'mb-3 text-[40px] font-bold'}>11. Third-Party Links</h2>
-                <p className={'mb-12 text-xl'}>Our Website may contain links to external websites. We are <span
+                <h2 className={'font-host mb-3 text-[20px] md:text-[40px] font-bold'}>11. Third-Party Links</h2>
+                <p className={'mb-12 md:text-xl'}>Our Website may contain links to external websites. We are <span
                     className={'font-bold'}>not responsible</span> for their privacy practices. We encourage you to review their policies separately.
                 </p>
 
-                <h2 className={'mb-3 text-[40px] font-bold'}>12. Changes to This Policy</h2>
-                <p className={'mb-12 text-xl'}>We may update this Policy from time to time. Any changes will be posted on this page with a <span
+                <h2 className={'font-host mb-3 text-[20px] md:text-[40px] font-bold'}>12. Changes to This Policy</h2>
+                <p className={'mb-12 md:text-xl'}>We may update this Policy from time to time. Any changes will be posted on this page with a <span
                     className={'font-bold'}>revised date</span>. Continued use of our Website means you accept the updated Policy.
                 </p>
 
-                <h2 className={'mb-3 text-[40px] font-bold'}>13. Contact Us</h2>
-                <p className={'mb-12 text-xl'}>
+                <h2 className={'font-host mb-3 text-[20px] md:text-[40px] font-bold'}>13. Contact Us</h2>
+                <p className={'mb-12 md:text-xl'}>
                     If you have any questions about these Terms, you can contact us at:
                     <br/>
                     <br/>

@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { X } from 'lucide-react'
-import { clients } from '@/data/clients'
+import { clients, ClientT } from '@/data/clients'
 import { useIsMobile } from '@/hooks'
 
 import Tabs from '@/components/tabs'
@@ -55,14 +55,15 @@ const ClientsPage: React.FC = () => {
 
   return (
     <div className="flex flex-col w-full items-center pt-[196px] md:pt-[190px]">
-      <Title>Examples of our expertise in action</Title>
+      <Title />
 
       <div className="pl-[25px] md:pl-unset max-w-[100%] overflow-x-auto">
         <Tabs
           // selectedBgColor="blue"
           // selectedTextColor="black"
-          selectedBgColor={activeCategory.bgColor}
-          selectedTextColor={activeCategory.textColor}
+          selectedBgColor={activeCategory?.bgColor || ''}
+          selectedTextColor={activeCategory?.textColor || ''}
+          need={false}
           items={categories.map((i) => ({
             text: i.text,
             onClick: () => {
@@ -100,7 +101,7 @@ const ClientsPage: React.FC = () => {
   )
 }
 
-const ClientCard = ({ client }) => {
+const ClientCard = ({ client }: {client: ClientT}) => {
   const [isOpen, setIsOpen] = useState(false)
   const isMobile = useIsMobile()
 

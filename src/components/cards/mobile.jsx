@@ -47,8 +47,6 @@ const Cards = ({ cards }) => {
       })
     })
 
-    console.log('SECTIONS totalHeight', sections, totalHeight)
-
     return { sections, totalHeight }
   }, [cards])
 
@@ -60,7 +58,7 @@ const Cards = ({ cards }) => {
   return (
       <div
           ref={containerRef}
-          className="relative -mt-[120vh]"
+          className="relative -mt-[100vh]"
           style={{
             height: `${metrics.totalHeight}px`,
           }}
@@ -73,6 +71,7 @@ const Cards = ({ cards }) => {
                   scrollYProgress={scrollYProgress}
                   metrics={metrics.sections[index]}
                   index={index}
+                  length={cards.length}
               />
           ))}
         </div>
@@ -80,14 +79,20 @@ const Cards = ({ cards }) => {
   )
 }
 
-const MobileCard = ({ card, scrollYProgress, metrics, index }) => {
+const MobileCard = ({ card, scrollYProgress, metrics, index, length }) => {
   const { start, contentScrollEnd, end, contentScrollHeight } = metrics
+
+  const viewportHeight = window.innerHeight
+
+  const stop = Math.floor((card.blockHeightMobile - (Math.floor(card.blockHeightMobile / viewportHeight) * viewportHeight)) / viewportHeight * 100)
+
+  const isLast = index === length - 1
 
   // Карточка будет двигаться с прокруткой страницы
   const y = useTransform(
       scrollYProgress,
       [start, end],
-      ['100vh', '-80vh']
+      ['100vh', !isLast ? `-${stop}vh` : `0vh`]
   ) //index === 0 ? '0vh' :
 
   // Прокрутка контента внутри карточки
@@ -103,14 +108,12 @@ const MobileCard = ({ card, scrollYProgress, metrics, index }) => {
       [570, -contentScrollHeight - window.innerHeight -570 ]
   )
 
-  const height = '180vh'
-
   const isDark = card.bg === 'cardDark'
 
   return (
       <motion.div
-          className={`bg-${card.bg} absolute inset-0 rounded-t-[20px]`}
-          style={{ y: y, height: height }}
+          className={`bg-${card.bg} absolute inset-0 rounded-t-[20px] rounded-b-[20px]`}
+          style={{ y: y, height: card.blockHeightMobile, willChange: 'transform' }}
       >
         <motion.img
             src={`/img/mobile-covers/${card.pic}`}
@@ -160,7 +163,7 @@ const MobileCard = ({ card, scrollYProgress, metrics, index }) => {
 
 export const InnerCard = ({ card, title, isDark }) => {
   return (
-      <div className="flex flex-col gap-y-[40px] relative">
+      <div className="flex flex-col gap-y-[40px] relative h-auto overflow-hidden">
         <div
             className={`
           absolute

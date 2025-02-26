@@ -4,6 +4,9 @@ export interface SolutionCardData {
   title: string
   card: CardData
   mobileTitleOffset: number
+  backgroundImage: string
+  innerBlockHeight: number
+  blockHeightMobile: number
 }
 
 export interface CardData {
