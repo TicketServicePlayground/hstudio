@@ -9,7 +9,8 @@ import Header from '@/components/header'
 // import {Cookie} from '@/components/Cookie/cookie'
 import Footer from '@/components/footer'
 import {useState} from "react";
-import Cookie from "@/components/Cookie/cookie";
+import Cookie from '@/components/Cookie/cookie'
+import { ToastContainer } from 'react-toastify'
 
 // * FONTS * //
 const hostGrotesk = Host_Grotesk({
@@ -55,6 +56,7 @@ export default function RootLayout({
           <Cookie />
 
         </UserAgentContext.Provider>
+        <ToastContainer />
       </body>
     </html>
   )
