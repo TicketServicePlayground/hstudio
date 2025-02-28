@@ -35,18 +35,19 @@ const Cards = ({ cards }) => {
       style={{
         height: `${totalHeight}px`,
         marginTop: '13vh',
-        paddingTop: '13vh',
+        paddingTop: '13vh'
       }}
     >
       <div className="sticky top-0 h-screen rounded-b-[20px]">
         {cards.map((card, index) => {
           const isDark = card.bg === 'cardDark'
+          const viewportHeight = window.innerHeight
 
           if (index === 0) {
             return (
               <motion.div
                 id={`card-${card.title}`}
-                className={`bg-${card.bg} absolute top-[-300px] left-0 right-0 rounded-t-[20px]`}
+                className={`bg-${card.bg} absolute top-[${viewportHeight * .13}] left-0 right-0 rounded-t-[20px]`}
                 key={index + card.title}
                 style={{ height: `${heights[index]}px` }}
               >
@@ -68,12 +69,10 @@ const Cards = ({ cards }) => {
 
           const cardHeight = heights[index]
 
-          const viewportHeight = window.innerHeight
-
           const start = prevCardsHeight / (totalHeight - heights[0])
           const end = (prevCardsHeight + cardHeight) / (totalHeight - heights[0])
 
-          const stop = (cardHeight - viewportHeight) / viewportHeight * 100
+          const stop = ((cardHeight - viewportHeight - 100) / viewportHeight * 100)
 
           const y = useTransform(
             scrollYProgress,
@@ -85,7 +84,7 @@ const Cards = ({ cards }) => {
             <motion.div
               id={`card-${card.title}`}
               className={`bg-${card.bg} absolute left-0 right-0 top-0 rounded-t-[20px]`}
-              style={{ y, height: `${heights[index]}px` }}
+              style={{ y, height: `${heights[index]}px`, willChange: 'transform' }}
               key={index + card.title}
             >
               <motion.img
