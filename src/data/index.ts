@@ -24,7 +24,7 @@ export const cards: SolutionCardData[] = [
     },
     mobileTitleOffset: 400,
     innerBlockHeight: 700,
-    blockHeightMobile: 1190
+    blockHeightMobile: 1195
   },
   {
     bg: 'orange',
@@ -44,7 +44,7 @@ export const cards: SolutionCardData[] = [
     mobileTitleOffset: 390,
     // innerBlockHeight: 649,
     innerBlockHeight: 700,
-    blockHeightMobile: 1000
+    blockHeightMobile: 1209
   },
   {
     bg: 'card',
@@ -58,7 +58,7 @@ export const cards: SolutionCardData[] = [
     },
     mobileTitleOffset: 632,
     innerBlockHeight: 550,
-    blockHeightMobile: 1000
+    blockHeightMobile: 969
   },
   {
     bg: 'blue',
@@ -78,7 +78,7 @@ export const cards: SolutionCardData[] = [
     },
     mobileTitleOffset: 432,
     innerBlockHeight: 700,
-    blockHeightMobile: 1000
+    blockHeightMobile: 1231
   },
   {
     bg: 'lime',
@@ -98,7 +98,7 @@ export const cards: SolutionCardData[] = [
     },
     mobileTitleOffset: 390,
     innerBlockHeight: 700,
-    blockHeightMobile: 1000
+    blockHeightMobile: 1213
   },
   {
     bg: 'cardDark',
@@ -112,7 +112,7 @@ export const cards: SolutionCardData[] = [
     },
     mobileTitleOffset: 348,
     innerBlockHeight: 530,
-    blockHeightMobile: 1000
+    blockHeightMobile: 1038
   },
 ]
 

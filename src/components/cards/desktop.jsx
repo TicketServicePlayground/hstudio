@@ -50,7 +50,6 @@ const Cards = ({ cards }) => {
                   marginRight: 30,
                   zIndex: 1,
                   borderRadius: 32,
-                  willChange: "transform"
                 }}
                 className={`bg-${card.bg}`}
               >
@@ -84,6 +83,7 @@ const Cards = ({ cards }) => {
                 marginRight: 30,
                 zIndex: index + 2,
                 borderRadius: 32,
+                willChange: "transform"
               }}
               className={`bg-${card.bg}`}
             >

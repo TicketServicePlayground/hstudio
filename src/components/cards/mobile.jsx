@@ -64,16 +64,17 @@ const Cards = ({ cards }) => {
       style={{
         // height: `${metrics.totalHeight}px`,
         height: `${totalHeight}px`,
+        marginTop: '350px',
       }}
     >
-      <div className="sticky top-0 h-screen overflow-hidden rounded-b-[20px]">
+      <div className="sticky top-0 h-screen rounded-b-[20px]">
         {cards.map((card, index) => {
           const isDark = card.bg === 'cardDark'
 
           if (index === 0) {
             return (
               <motion.div
-                className={`bg-${card.bg} absolute inset-0 rounded-t-[20px] rounded-b-[20px]`}
+                className={`bg-${card.bg} absolute top-[-350px] bottom-0 left-0 right-0 rounded-t-[20px] rounded-b-[20px]`}
                 style={{ height: card.blockHeightMobile }}
                 key={index+card.title}
               >
@@ -94,7 +95,7 @@ const Cards = ({ cards }) => {
                   `}
                     style={{
                       height: card.innerBlockHeight,
-                      top: `calc(100vh - ${card.innerBlockHeight}px + 8vh)`,
+                      top: `600px`,
                       background: isDark
                         ? 'hsla(0, 0%, 100%, .05)'
                         : 'hsla(0, 0%, 100%, .2)',
@@ -117,10 +118,14 @@ const Cards = ({ cards }) => {
           const start = prevCardsHeight / (totalHeight - cards[0].blockHeightMobile)
           const end = (prevCardsHeight + card.blockHeightMobile) / (totalHeight - cards[0].blockHeightMobile)
 
+          const viewportHeight = window.innerHeight
+
+          const stop = Math.floor((card.blockHeightMobile - (Math.floor(card.blockHeightMobile / viewportHeight) * viewportHeight)) / viewportHeight * 100)
+
           const y = useTransform(
             scrollYProgress,
             [start, end],
-            ['100vh', !isLast ? `-${13}vh` : `0vh`]
+            ['100vh', !isLast ? `-${stop}vh` : `0vh`]
           )
 
           return (
@@ -148,7 +153,7 @@ const Cards = ({ cards }) => {
                   `}
                   style={{
                     height: card.innerBlockHeight,
-                    top: `calc(100vh - ${card.innerBlockHeight}px + 20vh)`,
+                    top: `600px`,
                     background: isDark
                       ? 'hsla(0, 0%, 100%, .05)'
                       : 'hsla(0, 0%, 100%, .2)',
@@ -260,7 +265,7 @@ const MobileCard = ({ card, scrollYProgress, metrics, index, length }) => {
 
 export const InnerCard = ({ card, title, isDark }) => {
   return (
-    <div className="flex flex-col gap-y-[40px] relative h-auto overflow-hidden">
+    <div className="flex flex-col gap-y-[40px] relative h-auto">
       <div
         className={`
           absolute
