@@ -94,7 +94,7 @@ const Cards = ({ cards }) => {
                   `}
                     style={{
                       height: card.innerBlockHeight,
-                      top: `calc(100vh - ${card.innerBlockHeight}px + 20vh)`,
+                      top: `calc(100vh - ${card.innerBlockHeight}px + 8vh)`,
                       background: isDark
                         ? 'hsla(0, 0%, 100%, .05)'
                         : 'hsla(0, 0%, 100%, .2)',
