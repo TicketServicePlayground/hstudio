@@ -64,7 +64,8 @@ const Cards = ({ cards }) => {
       style={{
         // height: `${metrics.totalHeight}px`,
         height: `${totalHeight}px`,
-        marginTop: '350px',
+        marginTop: '170px',
+        paddingTop: '170px'
       }}
     >
       <div className="sticky top-0 h-screen rounded-b-[20px]">
@@ -74,7 +75,7 @@ const Cards = ({ cards }) => {
           if (index === 0) {
             return (
               <motion.div
-                className={`bg-${card.bg} absolute top-[-350px] bottom-0 left-0 right-0 rounded-t-[20px] rounded-b-[20px]`}
+                className={`bg-${card.bg} absolute top-[-300px] bottom-0 left-0 right-0 rounded-t-[20px] rounded-b-[20px]`}
                 style={{ height: card.blockHeightMobile }}
                 key={index+card.title}
               >
@@ -95,7 +96,7 @@ const Cards = ({ cards }) => {
                   `}
                     style={{
                       height: card.innerBlockHeight,
-                      top: `600px`,
+                      top: `calc(${card.blockHeightMobile}px - ${card.innerBlockHeight}px + 15vh)`,
                       background: isDark
                         ? 'hsla(0, 0%, 100%, .05)'
                         : 'hsla(0, 0%, 100%, .2)',
@@ -103,7 +104,7 @@ const Cards = ({ cards }) => {
                   >
                     <InnerCard
                       card={card.card}
-                      title={card.title}
+                      title={card.title.split(' ').join('     ')}
                       isDark={isDark}
                     />
                   </div>
@@ -114,7 +115,7 @@ const Cards = ({ cards }) => {
 
           const isLast = index === length - 1
 
-          const prevCardsHeight = cards.slice(1, index).reduce((sum, c) => sum + c.blockHeightMobile, 0)
+          const prevCardsHeight = cards.slice(1, index).reduce((sum, c) => sum + c.blockHeightMobile, 0) + 170
           const start = prevCardsHeight / (totalHeight - cards[0].blockHeightMobile)
           const end = (prevCardsHeight + card.blockHeightMobile) / (totalHeight - cards[0].blockHeightMobile)
 
@@ -153,7 +154,7 @@ const Cards = ({ cards }) => {
                   `}
                   style={{
                     height: card.innerBlockHeight,
-                    top: `600px`,
+                    top: `calc(${card.blockHeightMobile}px - ${card.innerBlockHeight}px + 15vh)`,
                     background: isDark
                       ? 'hsla(0, 0%, 100%, .05)'
                       : 'hsla(0, 0%, 100%, .2)',
