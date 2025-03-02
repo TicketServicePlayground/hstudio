@@ -1,100 +1,99 @@
 'use client'
 
-import React, { useRef, useMemo, useState, useEffect } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import React, { useRef, useState, useEffect } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Label, CTA, CardNumber } from '@/components/home/solution-card'
 
-const Cards = ({ cards }) => {
+gsap.registerPlugin(ScrollTrigger)
+
+function Cards({ cards = [] }) {
   const containerRef = useRef(null)
   const [heights, setHeights] = useState([])
+  const cardsRef = useRef([])
 
-  // После монтирования вычисляем реальные высоты карточек
   useEffect(() => {
-    const newHeights = cards.map((card) => {
-      const element = document.getElementById(`card-${card.title}`)
-      return element.offsetHeight + 50
+    if (!cards.length) return
+
+    const newHeights = cardsRef.current.map((el) => {
+      if (!el) return 0
+      return el.offsetHeight
     })
     setHeights(newHeights)
   }, [cards])
 
-  // Общая высота всех карточек
-  const totalHeight = useMemo(
-    () => heights.reduce((sum, h) => sum + h, 0),
-    [heights]
-  )
+  useEffect(() => {
+    if (!heights.length) return
 
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start start', 'end end'],
-  })
+    ScrollTrigger.getAll().forEach((t) => t.kill())
+
+    const totalHeight = heights.reduce((sum, h) => sum + h, 0)
+
+    if (containerRef.current) {
+      containerRef.current.style.height = `${totalHeight}px`
+    }
+
+    let currentOffset = 0
+
+    cardsRef.current.forEach((cardEl, index) => {
+      if (!cardEl) return
+
+      const cardHeight = heights[index]
+
+      const startValue = currentOffset - window.innerHeight
+      const endValue = currentOffset + cardHeight - window.innerHeight
+
+      const vh = window.innerHeight
+      const fromY = vh + 250
+      const toY = -(cardHeight - vh)
+
+      gsap.fromTo(
+        cardEl,
+        { y: fromY },
+        {
+          y: toY,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: `top+=${startValue} top`,
+            end: `top+=${endValue} top`,
+            scrub: true,
+          },
+        }
+      )
+
+      currentOffset += cardHeight
+    })
+  }, [heights])
 
   return (
-    <div
-      ref={containerRef}
-      className="relative"
-      style={{
-        height: `${totalHeight}px`,
-        marginTop: '13vh',
-        paddingTop: '13vh'
-      }}
-    >
-      <div className="sticky top-0 h-screen rounded-b-[20px]">
+    <div ref={containerRef} className="relative w-full -mt-[250px]">
+      <div className="sticky top-0 h-screen overflow-hidden">
         {cards.map((card, index) => {
           const isDark = card.bg === 'cardDark'
-          const viewportHeight = window.innerHeight
-
-          if (index === 0) {
-            return (
-              <motion.div
-                id={`card-${card.title}`}
-                className={`bg-${card.bg} absolute top-[${viewportHeight * .13}] left-0 right-0 rounded-t-[20px]`}
-                key={index + card.title}
-                style={{ height: `${heights[index]}px` }}
-              >
-                <motion.img
-                  src={`/img/mobile-covers/${card.pic}`}
-                  className="absolute top-0 w-full"
-                  alt={card.title}
-                />
-                <CardNumber number={index + 1} />
-                <InnerCard card={card.card} title={card.title.split(' ').join('   ')} isDark={isDark} />
-              </motion.div>
-            )
-          }
-
-          const prevCardsHeight = useMemo(
-            () => heights.slice(1, index).reduce((sum, h) => sum + h, 0),
-            [heights, index]
-          )
-
-          const cardHeight = heights[index]
-
-          const start = prevCardsHeight / (totalHeight - heights[0])
-          const end = (prevCardsHeight + cardHeight) / (totalHeight - heights[0])
-
-          const stop = ((cardHeight - viewportHeight - 100) / viewportHeight * 100)
-
-          const y = useTransform(
-            scrollYProgress,
-            [start + 0.02, end + 0.02],
-            ['100vh', `-${stop}vh`]
-          )
-
           return (
-            <motion.div
-              id={`card-${card.title}`}
-              className={`bg-${card.bg} absolute left-0 right-0 top-0 rounded-t-[20px]`}
-              style={{ y, height: `${heights[index]}px`, willChange: 'transform' }}
-              key={index + card.title}
+            <div
+              key={`${card.title}-${index}`}
+              ref={(el) => (cardsRef.current[index] = el)}
+              className={`
+                absolute left-0 right-0 top-0
+                ${index !== cards.length - 1 ? 'rounded-[20px]' : 'rounded-t-[20px]'}
+                bg-${card.bg} 
+                ${isDark ? 'text-white' : 'text-black'}
+              `}
+              style={{
+                overflow: 'hidden',
+                willChange: 'transform'
+              }}
             >
-              <motion.img
+              <img
                 src={`/img/mobile-covers/${card.pic}`}
-                className="absolute top-0 w-full"
                 alt={card.title}
+                className="absolute top-0 w-full z-10"
               />
               <CardNumber number={index + 1} />
               <InnerCard card={card.card} title={card.title} isDark={isDark} />
-            </motion.div>
+            </div>
           )
         })}
       </div>
@@ -104,7 +103,7 @@ const Cards = ({ cards }) => {
 
 export const InnerCard = ({ card, title, isDark }) => {
   return (
-    <motion.div className={`bg-${card.bg} w-full h-auto pt-[450px]`}>
+    <div className={`relative bg-${card.bg} w-full h-auto pt-[450px] z-20`}>
       <div
         className={`font-medium not-italic leading-none font-host ${isDark ? 'text-white' : 'text-black'} text-[42px] h-auto p-[25px]`}
       >
@@ -113,7 +112,9 @@ export const InnerCard = ({ card, title, isDark }) => {
       <div
         className={`flex flex-col card _blur-card _backdrop-blur-[150px] rounded-[20px] w-full p-[25px] gap-y-[40px] pb-[120px] h-auto ${isDark ? 'card--dark' : ''} ${isDark ? 'bg-[#FFFFFF05] text-white' : 'bg-[#FFFFFF20] text-black'}`}
         style={{
-          background: isDark ? 'hsla(0, 0%, 100%, .05)' : 'hsla(0, 0%, 100%, .2)',
+          background: isDark
+            ? 'hsla(0, 0%, 100%, .05)'
+            : 'hsla(0, 0%, 100%, .2)',
         }}
       >
         <div className={'flex flex-col gap-y-[40px] relative h-auto'}>
@@ -155,7 +156,7 @@ export const InnerCard = ({ card, title, isDark }) => {
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   )
 }
 
