@@ -5,7 +5,7 @@ export const cards: SolutionCardData[] = [
     bg: 'liliac',
     pic: './cover.png',
     backgroundImage: `url('/img/desktop-covers/cover.png') lightgray 108.299px -37.448px / 75.428% 110.699% no-repeat`,
-    title: 'Backend      Solutions Development',
+    title: 'Backend\u200B Solutions\u200B Development',
     card: {
       heading:
         'We specialize in building high-performance, scalable backend systems designed to handle heavy workloads and large-scale traffic.',
@@ -31,7 +31,7 @@ export const cards: SolutionCardData[] = [
     pic: './cover-1.png',
     // background: url(<path-to-image>) lightgray 204.734px -43.244px / 61.452% 99.827% no-repeat;
     backgroundImage: './cover-1.png',
-    title: 'Web & Mobile Application Development',
+    title: 'Web\u00A0&\u00A0Mobile\u200B Application\u200B Development',
     card: {
       heading:
         'Designed for optimal user experience, modern web and mobile applications combine intuitive interfaces with high performance',
@@ -51,7 +51,7 @@ export const cards: SolutionCardData[] = [
     pic: './cover-2.png',
     // background: url(<path-to-image>) lightgray 62.841px -17.547px / 78.85% 107.772% no-repeat;
     backgroundImage: './cover-2.png',
-    title: 'Design & User Experience',
+    title: 'Design\u00A0&\u00A0User\u200B Experience',
     card: {
       heading:
         'We create clean, intuitive designs that enhance user experience. From websites to apps, we focus on aesthetics, functionality, and accessibility for a seamless user journey.',
@@ -65,7 +65,7 @@ export const cards: SolutionCardData[] = [
     pic: './cover-3.png',
     // background: url(<path-to-image>) lightgray 335.445px -152.007px / 54.734% 107.905% no-repeat;
     backgroundImage: './cover-3.png',
-    title: 'DevOps & Automation',
+    title: 'DevOps\u200B &\u00A0Automation',
     card: {
       heading:
         'Full-cycle DevOps services ensure automated deployment and streamlined development processes.',
@@ -85,7 +85,7 @@ export const cards: SolutionCardData[] = [
     pic: './cover-4.png',
     // background: url(<path-to-image>) lightgray 79.31px -36.072px / 82.958% 126.712% no-repeat;
     backgroundImage: './cover-4.png',
-    title: 'Game & Web3 Platform Development',
+    title: 'Game\u00A0&\u00A0Web3\u200B Platform\u200B Development',
     card: {
       heading:
         'Solutions for blockchain platforms and the gaming industry provide Web3 integration and real-time transactions, ensuring a decentralized experience',
@@ -105,7 +105,7 @@ export const cards: SolutionCardData[] = [
     pic: './cover-5.png',
     backgroundImage: './cover-5.png',
     // background: url(<path-to-image>) lightgray 335.164px -31.448px / 51.425% 108.985% no-repeat;
-    title: 'Seamless Integration Across All Systems',
+    title: 'Seamless\u200B Integration\u200B Across\u200B All\u00A0Systems',
     card: {
       heading:
         'Ensuring efficient integration across any platform, service, or technology stack. From legacy systems to modern APIs, cloud services, and third-party tools, we cover all your business needs',

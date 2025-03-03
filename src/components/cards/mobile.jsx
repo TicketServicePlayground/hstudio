@@ -111,7 +111,7 @@ export const InnerCard = ({ card, title, isDark }) => {
   return (
     <div className={`relative bg-${card.bg} w-full h-auto pt-[500px] z-20`}>
       <div
-        className={`font-medium not-italic leading-none font-host ${isDark ? 'text-white' : 'text-black'} text-[42px] h-auto p-[25px]`}
+        className={`font-medium not-italic leading-none font-host w-5/6 ${isDark ? 'text-white' : 'text-black'} text-[42px] h-auto p-[25px]`}
       >
         {title}
       </div>
