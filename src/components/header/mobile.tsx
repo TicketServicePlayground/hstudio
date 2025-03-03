@@ -135,7 +135,7 @@ const MobileNav = () => {
         {/* Bottom Fixed Buttons */}
         <div className="flex items-center gap-x-[14px] absolute bottom-[21px] left-[24px] right-[22px]">
           <MotionLink
-            href="/contact"
+            href="/contacts"
             className="py-[21px] flex items-center justify-center font-host text-[20px] font-medium leading-none bg-black rounded-full text-white w-full flex-1"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}

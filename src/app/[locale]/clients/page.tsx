@@ -7,52 +7,52 @@ import { useIsMobile } from '@/hooks'
 
 import Tabs from '@/components/tabs'
 import Footer from '@/components/footer'
+import { useTranslations } from 'next-intl'
 
 const ClientsPage: React.FC = () => {
-  const [activeFilter, setActiveFilter] = useState('All')
+  const [activeFilter, setActiveFilter] = useState('all')
 
 
   const categories = [
     {
-      text: 'All',
+      text: 'all',
       bgColor: 'black',
       textColor: 'white',
     },
     {
-      text: 'Backend Solutions',
+      text: 'backend',
       bgColor: 'liliac',
       textColor: 'black',
     },
     {
-      text: 'Web & Mobile Application',
+      text: 'web',
       bgColor: 'orange',
       textColor: 'black',
     },
     {
-      text: 'Design & User Experience',
-
+      text: 'design',
       bgColor: '[#ECEBF1]',
       textColor: 'black',
     },
     {
-      text: 'DevOps & Automation',
+      text: 'devops',
       bgColor: 'blue',
       textColor: 'black',
     },
     {
-      text: 'Game & Web3',
+      text: 'game',
       bgColor: 'orange',
       textColor: 'black',
     },
     {
-      text: 'Seamless Integration',
+      text: 'seamless',
       bgColor: 'cardDark', // or darkCard
       textColor: 'white',
     },
   ]
 
   const activeCategory = categories.find((i) => i.text === activeFilter)
-
+  const t = useTranslations('clients.categories')
   return (
     <div className="flex flex-col w-full items-center pt-[196px] md:pt-[190px]">
       <Title />
@@ -65,7 +65,7 @@ const ClientsPage: React.FC = () => {
           selectedTextColor={activeCategory?.textColor || ''}
           need={false}
           items={categories.map((i) => ({
-            text: i.text,
+            text: t(i.text),
             onClick: () => {
               setActiveFilter(i.text)
             },
@@ -91,7 +91,7 @@ const ClientsPage: React.FC = () => {
       >
 
         {clients
-          .filter(client => activeFilter === 'All' || client.categories.includes(activeFilter))
+          .filter(client => activeFilter === 'all' || client.categories.includes(activeFilter))
           .map(client => (
             <ClientCard key={client.name} client={client} />
           ))}
@@ -101,9 +101,13 @@ const ClientsPage: React.FC = () => {
   )
 }
 
-const ClientCard = ({ client }: {client: ClientT}) => {
+const ClientCard = ({ client }: { client: ClientT }) => {
   const [isOpen, setIsOpen] = useState(false)
   const isMobile = useIsMobile()
+
+  const t = useTranslations('clients.categories')
+  const t_card = useTranslations('clients.card')
+  const t_cards = useTranslations('clients.cards')
 
   return (
     <>
@@ -153,7 +157,7 @@ const ClientCard = ({ client }: {client: ClientT}) => {
                     key={index}
                     className={`font-space font-medium leading-none px-[12px] py-[8px] rounded-[9px] text-[12px] bg-${tag.bgColor} text-${tag.textColor}`}
                   >
-                    {tag.text}
+                    {t(tag.text)}
                   </span>
                 ))}
               </div>
@@ -209,7 +213,9 @@ const ClientCard = ({ client }: {client: ClientT}) => {
                           className={`w-full h-full ${client.bgImg ? 'bg-cover bg-center' : 'bg-gradient-to-br from-gray-100 to-gray-200'}`}
                           style={
                             client.bgImg
-                              ? { backgroundImage: `url(${client.cardDesktop})` }
+                              ? {
+                                  backgroundImage: `url(${client.cardDesktop})`,
+                                }
                               : {}
                           }
                         />
@@ -243,7 +249,7 @@ const ClientCard = ({ client }: {client: ClientT}) => {
 
                         <div className="mb-[30px] md:mb-[40px]">
                           <h3 className="text-[14px] md:text-[18px] font-host font-bold mb-[16px]">
-                            Technology Stack
+                            {t_card('tech')}
                           </h3>
                           <div className="flex flex-wrap gap-[4px]">
                             {client.tags.map((tag, index) => (
@@ -251,14 +257,14 @@ const ClientCard = ({ client }: {client: ClientT}) => {
                                 key={index}
                                 className={`font-space font-medium leading-none px-[12px] py-[8px] rounded-[9px] text-[12px] bg-${tag.bgColor} text-${tag.textColor}`}
                               >
-                                {tag.text}
+                                {t(tag.text)}
                               </span>
                             ))}
                           </div>
                         </div>
 
                         <p className="mb-[30px] md:mb-[40px] font-host font-medium leading-none text-[18px] md:text-[24px]">
-                          {client.bio}
+                          {t_cards(client.bio)}
                         </p>
 
                         {client.stats && (
@@ -283,7 +289,7 @@ const ClientCard = ({ client }: {client: ClientT}) => {
                             rel="noopener noreferrer"
                             className="block py-[21px] px-[65.5px] font-host text-[20px] text-center font-medium leading-none bg-black rounded-full text-white w-full lg:w-max"
                           >
-                            visit the website
+                            {t_card('visit')}
                           </a>
                         )}
                       </div>
@@ -299,13 +305,16 @@ const ClientCard = ({ client }: {client: ClientT}) => {
   )
 }
 
-const Title = () => (
-  <h2 className="font-host font-medium leading-[83%] text-[58px] md:text-[96px] text-center mb-[80px] md:mb-[60px] mx-[20px] lg:mx-[0px]">
-    Examples of&nbsp;our
-    <br className="hidden lg:block" />
-    <span className="inline-block lg:hidden w-[11px]" />
-    expertise in&nbsp;action
-  </h2>
-)
+const Title = () => {
+  const t = useTranslations('clients')
+  return (
+    <h2 className="font-host font-medium leading-[83%] text-[58px] md:text-[96px] text-center mb-[80px] md:mb-[60px] mx-[20px] lg:mx-[0px]">
+      {t('title1')}
+      <br className="hidden lg:block" />
+      <span className="inline-block lg:hidden w-[11px]" />
+      {t('title2')}
+    </h2>
+  )
+}
 
 export default ClientsPage

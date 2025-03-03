@@ -101,12 +101,67 @@
     }
   },
   "clients": {
-
+    "title1": "Examples of our",
+    "title2": "expertise in action",
+    "categories": {
+      "all": "All",
+      "backend": "Backend Solutions",
+      "web": "Web & Mobile Application",
+      "design": "Design & User Experience",
+      "devops": "DevOps & Automation",
+      "game": "Game & Web3",
+      "seamless": "Seamless Integration"
+    },
+    "card": {
+      "tech": "Technology Stack",
+      "visit": "visit the website"
+    },
+    "cards": {
+      "EventStripe": "The company developed a SaaS platform, EventStripe, designed for ticket sales at events, supporting high burst loads of up to 10,000 sessions. The project leverages modern technologies such as Next.js, Java 20, Spring, Docker, Kubernetes, and monitoring tools like Jenkins, ELK, and Grafana. The primary focus was to ensure system stability under high loads and provide scalability flexibility.",
+      "VTB": "A real-time data streaming system was developed for VTB Bank, capable of processing millions of messages per second. The project utilizes a tech stack based on Java 17, Spring, Kafka, PostgreSQL, as well as containerization and orchestration through Docker and Kubernetes. The solution enables real-time processing of vast amounts of data and ensures high performance for financial sector tasks.",
+      "Sber": "A microservice architecture, including a biometric authorization system, was designed and implemented for Sber. The solution covers key client functions such as document generation, session tracking, and asynchronous integration with data spaces and other systems. The project is built using Spring, Java 17, Oracle, Docker, and Kubernetes for container management and scalability.",
+      "Societe": "A personalized advertising system for credit products was developed for Societe Generale Bank. The system includes a banner service, credit conveyor, and API for integration with external systems. The core technologies used include Java 11, Spring, Oracle, Docker, Kubernetes, and Jenkins for CI/CD processes. The project aims to improve customer engagement and automate credit operations.",
+      "Architectural": "UX/UI website design for an architectural bureau. MIR globally transforms space and influences the cultural code, forming a new world.",
+      "KClub": "A company in the leisure and tourism sector, for which we created a website with booking functionalities. The design was provided by the client, and we used Java for the backend logic and Next.js for the frontend, allowing us to create a fast and user-friendly service with excellent performance.",
+      "Matahari": "A project for an upscale residential complex with integrated interactive maps and multimedia content. The design was provided by the client, and we used Kotlin and Rust for backend reliability and security, while the dynamic interface was created with React and Vue.js.",
+      "Mirage": "A project for creating unique dynamic websites that combine creative design with cutting-edge technology. The design was provided by the client, and we used Java/Kotlin and Go for the backend, and React for the frontend, ensuring a high level of user interaction and fast data processing.",
+      "Frigate": "Development of an e-commerce site for a surfboard manufacturer, focusing on fast page load times and an intuitive user interface. The design was provided by the client, and the backend was built with Go and Rust, while the frontend was developed with Vue and TypeScript. We also implemented solutions for scalability and process automation.",
+      "Ntainers": "An Australia StartUp project designed to manage and streamline container logistics. The design was provided by the client, and the backend was built with Go for performance and scalability. The frontend was developed using React for a seamless user experience, ensuring efficient management and tracking of containers."
+    }
   },
   "about": {
-
+    "lyrics": {
+      "l1": "We focus on delivering scalable, secure, and innovative solutions",
+      "l2": "across web, mobile, and blockchain platforms",
+      "l3": "With expertise in seamless integration, DevOps automation, and UX/UI design",
+      "l4": "we transform complex challenges into efficient digital products"
+    },
+    "team": {
+      "title": "Meet the team",
+      "person": {
+        "desc1": "A web and UI/UX design expert, bringing bold and engaging digital experiences to life for clients through creative and impactful solutions.",
+        "desc2": "Kotlin Backend Developer with a strong background in blockchain and Web3 technologies, focusing on scalable solutions for the gaming industry.",
+        "desc3": "Full-Stack Developer with 6 years of experience in web applications. Skilled in Python, Flask, .NET, CargoWise, AWS, and specializing in e-commerce, blockchain, and secure, user-friendly solutions.",
+        "desc4": "Over 7 years of experience in fintech, specializing in high-load system development.",
+        "desc5": "Programming since 1988, expert in DevOps since its emergence in 2009.",
+        "desc6": "6 years of experience in frontend development with a focus on progressive web applications (PWA)."
+      }
+    }
   },
   "contacts": {
-
+    "title": "Let's <orange>talk</orange> about your project!",
+    "form": {
+      "name": "name",
+      "company": "company",
+      "email": "email",
+      "request": "describe your request",
+      "send": "send"
+    },
+    "info": {
+      "address": "Correspondence Address",
+      "callus": "Call us",
+      "hello": "Say Hello",
+      "schedule": "schedule a call"
+    }
   }
 }

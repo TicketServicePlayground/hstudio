@@ -3,13 +3,14 @@ import React from 'react'
 import { motion, useInView } from 'framer-motion'
 import ImageCarousel from '@/components/image-carousel'
 import Footer from '@/components/footer'
+import { useTranslations } from 'next-intl'
 
 const AboutPage = () => {
   const lyrics = [
-    'We focus on delivering scalable, secure, and innovative solutions',
-    'across web, mobile, and blockchain platforms',
-    'With expertise in seamless integration, DevOps automation, and UX/UI design',
-    'we transform complex challenges into efficient digital products',
+    'l1',
+    'l2',
+    'l3',
+    'l4',
   ]
 
   return (
@@ -46,14 +47,16 @@ const AboutPage = () => {
 )
 }
 
-const AnimatedText = ({
-  text
+const AnimatedText = ({text}: {
+  text: string
 }) => {
   const ref = React.useRef(null)
   const isInView = useInView(ref, {
     once: false,
     amount: 0.8,
   })
+
+  const t = useTranslations('about.lyrics')
 
   return (
     <motion.div
@@ -72,7 +75,7 @@ const AnimatedText = ({
       }}
     >
       <div className="gradient-text text-[56px] leading-[79.68px] md:text-[96px] font-medium font-host font-extrabold">
-        {text}
+        {t(text)}
       </div>
     </motion.div>
   )
