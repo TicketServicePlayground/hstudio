@@ -36,8 +36,6 @@ const Tabs = ({
     }
 
     const activeItem = items.find((item) => item.active)
-    console.log('activeItem')
-    console.log(activeItem)
     if (!activeItem) {
       setActiveTab(null)
     } else {

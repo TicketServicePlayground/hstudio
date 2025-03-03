@@ -38,9 +38,7 @@ const ContactForm = () => {
       email: '',
       request: '',
     },
-    onSubmit: (values) => {
-      console.log(values)
-    },
+    onSubmit: (values) => {},
   })
 
   useEffect(() => {

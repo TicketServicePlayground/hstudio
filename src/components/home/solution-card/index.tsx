@@ -1,10 +1,15 @@
+import { useTranslations } from 'next-intl'
+import { SolutionCardData } from '@/types'
+
 export const InnerCard = ({
   card,
   isDark,
 }: {
-  card: CardData
+  card: SolutionCardData
   isDark?: boolean
 }) => {
+  const t = useTranslations(`home.cards`)
+  const t1 = useTranslations('home')
   return (
     <div
       className={`
@@ -27,28 +32,28 @@ export const InnerCard = ({
       `}
     >
       <span className="font-host font-[500] text-[24px] leading-none">
-        {card.heading}
+        {t(card.card.heading)}
       </span>
-      {card.benefits && (
+      {card.card.benefits && (
         <div className="flex flex-col gap-y-[12px]">
-          <Label>Key Benefits</Label>
+          <Label>{t1('benefits')}</Label>
           <div className="flex flex-col gap-y-[8px]">
-            {card.benefits.map((benefitItem) => (
+            {card.card.benefits.map((benefitItem) => (
               <span
                 className="font-host text-[14px] font-[500] leading-none"
                 key={benefitItem}
               >
-                {benefitItem}
+                {t(benefitItem)}
               </span>
             ))}
           </div>
         </div>
       )}
-      {card.stack && (
+      {card.card.stack && (
         <div className="flex flex-col gap-y-[16px]">
-          <Label>Technology Stack</Label>
+          <Label>{t1('tech')}</Label>
           <div className="flex flex-wrap gap-[4px]">
-            {card.stack.map((stackItem) => (
+            {card.card.stack.map((stackItem) => (
               <span
                 className="flex items-center justify-center h-[24px] font-space text-[12px] font-[500] leading-none bg-white rounded-[9px] px-[12px]"
                 key={stackItem}
@@ -138,9 +143,11 @@ export const Label = ({ children }: { children?: string }) => (
   </span>
 )
 
-export const CTA = () => (
-  <button
-    className={`
+export const CTA = () => {
+  const t = useTranslations('home')
+  return (
+    <button
+      className={`
     px-[35px] py-[21px]
     font-host text-[20px] leading-none font-medium
     bg-black rounded-[32px]
@@ -157,10 +164,11 @@ export const CTA = () => (
     w-full
     md:w-[unset]
   `}
-  >
-    explore the case study
-  </button>
-)
+    >
+      {t('cardsBtn')}
+    </button>
+  )
+}
 
 export const Title = ({
   children,

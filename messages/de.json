@@ -1,0 +1,112 @@
+{
+  "global": {
+    "nav": {
+      "home": "home",
+      "clients": "kunden",
+      "about": "über uns",
+      "contacts": "kontakte"
+    },
+    "contactus": "Kontaktiere uns"
+  },
+  "footer": {
+    "title1": "Ihre digitale Vision",
+    "title2": "zum Leben erwecken",
+    "services": {
+      "s1": "Entwicklung von \nBackend-Lösungen",
+      "s2": "Web- & Mobile-\nEntwicklung",
+      "s3": "Design und \nBenutzererfahrung",
+      "s4": "DevOps \nund Automatisierung",
+      "s5": "Entwicklung von\n Game- und Web3-Plattformen",
+      "s6": "Nahtlose\nSystemintegration"
+    },
+    "links": {
+      "about": "Über uns",
+      "terms": "Nutzungsbedingungen",
+      "blog": "Blog",
+      "privacy": "Datenschutzrichtlinie"
+    }
+  },
+  "home": {
+    "title1": "Wir entwickeln",
+    "title2": "skalierbare Backend-\u200BSysteme",
+    "heroText": "Entwickelt, um Millionen von Nachrichten pro Sekunde zu verarbeiten und dabei eine nahtlose Echtzeit-Datenverarbeitung für anspruchsvolle Branchen zu gewährleisten",
+    "cardsBtn": "Fallstudie ansehen",
+    "benefits": "Hauptvorteile",
+    "tech": "Technologie-Stack",
+    "cards": {
+      "liliac": {
+        "title": "Backend-\u200BLösungen\u200B entwickeln",
+        "heading": "Wir sind auf leistungsstarke und skalierbare Backend-Systeme spezialisiert, die für hohe Lasten und großen Datenverkehr optimiert sind",
+        "benefits1": "Kapazität: Verarbeitung von bis zu 5 Millionen Nachrichten pro Sekunde – reibungsloser Betrieb auch bei Spitzenlasten.",
+        "benefits2": "Big Data Verarbeitung: Verwalten Milliarden von Datensätzen effizient."
+      },
+      "orange": {
+        "title": "Web-und\u200B Mobile-App\u200B Entwicklung",
+        "heading": "Entwickelt für eine optimale Benutzererfahrung kombinieren moderne Web- und Mobile-Anwendungen intuitive Schnittstellen mit hoher Leistung",
+        "benefits1": "PWA & Responsives Design: App-ähnliche Leistung auf allen Geräten",
+        "benefits2": "SSR mit Next.js: Schnellere Ladezeiten und besseres SEO",
+        "benefits3": "API-first Entwicklung: Nahtlose Systemintegration",
+        "benefits4": "Echtzeit-Funktionen: Live-Chats, Benachrichtigungen und Updates über WebSockets und GraphQL",
+        "benefits5": "Big Data Verarbeitung: Effiziente Verwaltung von Milliarden von Datensätzen."
+      },
+      "card": {
+        "title": "Design\u00A0& Benutzererfahrung",
+        "heading": "Wir erstellen saubere, intuitive Designs, die die Benutzererfahrung verbessern. Vom Webdesign bis zu Apps konzentrieren wir uns auf Ästhetik, Funktionalität und Barrierefreiheit für eine nahtlose Nutzererfahrung."
+      },
+      "blue": {
+        "title": "DevOps\u00A0&\u200B Automatisierung",
+        "heading": "Vollständige DevOps-Dienste gewährleisten automatisierte Bereitstellung und optimierte Entwicklungsprozesse",
+        "benefits1": "Automatisierung & CI/CD: Optimierte Bereitstellung mit kontinuierlicher Integration und Lieferung.",
+        "benefits2": "Skalierbarkeit & Sicherheit: Effizientes Management von Hochlastsystemen mit robusten Sicherheitspraktiken entlang der Bereitstellungspipeline.",
+        "benefits3": "Zuverlässigkeit: Kontinuierliche Überwachung und schnelle Wiederherstellung zur Minimierung von Ausfallzeiten."
+      },
+      "lime": {
+        "title": "Game\u00A0&\u200B Web3\u200B Plattform\u200B Entwicklung",
+        "heading": "Lösungen für Blockchain-Plattformen und die Gaming-Industrie bieten Web3-Integration und Echtzeit-Transaktionen, um ein dezentrales Erlebnis zu gewährleisten",
+        "benefits1": "Web3 & Smart Contracts: Dezentrales Gaming mit sicheren, automatisierten Transaktionen.",
+        "benefits2": "Echtzeit-Transaktionen: Sofortige Blockchain-gestützte Zahlungen.",
+        "benefits3": "Skalierbarkeit & Sicherheit: Für Wachstum gebaut mit starker Sicherheit."
+      },
+      "cardDark": {
+        "title": "Nahtlose\u200B Integration in\u200B alle Systeme",
+        "heading": "Sicherstellung einer effizienten Integration über alle Plattformen, Dienste und Technologiestacks hinweg. Vom Legacy-System bis zu modernen APIs, Cloud-Diensten und Drittanbieter-Tools decken wir alle Ihre Geschäftsanforderungen ab"
+      }
+    },
+    "ray": {
+      "desktop": {
+        "row1": "Wir sind <blue>flexibel und arbeiten</blue> mit",
+        "row2": "starken Partnern zusammen, um Ihre",
+        "row3": "<lime>Vision zum Leben</lime> zu erwecken.",
+        "row4": "Wir haben unsere Spezialgebiete,",
+        "row5": "sind aber stets offen für <orange>neue</orange>",
+        "row6": "<orange>Herausforderungen</orange> und entwickeln",
+        "row7": "maßgeschneiderte Lösungen für Ihre",
+        "row8": "<liliac>individuellen Projekte</liliac>"
+      },
+      "mobile": {
+        "row1": "Wir sind <blue>flexibel und</blue>",
+        "row2": "<blue>arbeiten</blue> mit starken",
+        "row3": "Partnern zusammen, um",
+        "row4": "Ihre <lime>Vision zum Leben</lime> zu",
+        "row5": "erwecken.",
+        "row6": "Wir haben unsere",
+        "row7": "Spezialgebiete, sind",
+        "row8": "aber stets offen für <orange>neue</orange>",
+        "row9": "<orange>Herausforderungen</orange> und",
+        "row10": "entwickeln",
+        "row11": "maßgeschneiderte",
+        "row12": "Lösungen für Ihre",
+        "row13": "<liliac>individuellen Projekte</liliac>"
+      }
+    }
+  },
+  "clients": {
+
+  },
+  "about": {
+
+  },
+  "contacts": {
+
+  }
+}

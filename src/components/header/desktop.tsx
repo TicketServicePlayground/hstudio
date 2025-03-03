@@ -1,11 +1,21 @@
 'use client'
 import Tabs from '@/components/tabs'
 import Logo from '@/components/logo'
-import { motion, AnimatePresence } from 'framer-motion'
-import { usePathname } from 'next/navigation'
+import { motion } from 'framer-motion'
+import { usePathname, useRouter } from 'next/navigation'
+import { useLocale, useTranslations } from 'next-intl'
 
+//@ts-ignore
 const DesktopNav = ({ showHeader, onLeftTabsReady, onRightTabsReady }) => {
   const pathname = usePathname()
+  const locale = useLocale()
+  const router = useRouter()
+
+  const handleLocaleChange = (newLocale: typeof locale) => {
+    router.push(`/${newLocale}${pathname.substring(3)}`, { scroll: false })
+  }
+
+  const t = useTranslations('global.nav')
 
   return (
     <div className="z-[10]">
@@ -23,24 +33,24 @@ const DesktopNav = ({ showHeader, onLeftTabsReady, onRightTabsReady }) => {
       >
         <Tabs
           items={[
-            // { text: 'home', type: 'link', href: '/', active: pathname === '/' },
+            // { text: t('home'),, type: 'link', href: '/', active: pathname === '/' },
             {
-              text: 'clients',
+              text: t('clients'),
               type: 'link',
-              href: '/clients',
-              active: pathname === '/clients',
+              href: `/clients`,
+              active: pathname === `/${locale}/clients`,
             },
             {
-              text: 'about us',
+              text: t('about'),
               type: 'link',
-              href: '/about',
-              active: pathname === '/about',
+              href: `/about`,
+              active: pathname === `/${locale}/about`,
             },
             {
-              text: 'contacts',
+              text: t('contacts'),
               type: 'link',
-              href: '/contacts',
-              active: pathname === '/contacts',
+              href: `/contacts`,
+              active: pathname === `/${locale}/contacts`,
             },
           ]}
           onReady={onLeftTabsReady}
@@ -48,8 +58,8 @@ const DesktopNav = ({ showHeader, onLeftTabsReady, onRightTabsReady }) => {
         <div className="flex flex-row-reverse">
           <Tabs
             items={[
-              { text: 'eng', type: 'btn', onClick: () => {}, active: true },
-              { text: 'deu', type: 'btn', onClick: () => {} },
+              { text: 'eng', type: 'btn', onClick: () => handleLocaleChange('en'), active: locale === 'en' },
+              { text: 'deu', type: 'btn', onClick: () => handleLocaleChange('de'), active: locale === 'de' },
             ]}
             onReady={onRightTabsReady}
             selectedBgColor="[#E4E9EF]"

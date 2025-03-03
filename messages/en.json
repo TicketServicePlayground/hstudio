@@ -1,0 +1,112 @@
+{
+  "global": {
+    "nav": {
+      "home": "home",
+      "clients": "clients",
+      "about": "about",
+      "contacts": "contacts"
+    },
+    "contactus": "contact us"
+  },
+  "footer": {
+    "title1": "Bringing your digital",
+    "title2": "vision to life",
+    "services": {
+      "s1": "Backend Solutions\nDevelopment",
+      "s2": "Web & Mobile Application\nDevelopment",
+      "s3": "Design & User\nExperience",
+      "s4": "DevOps\n& Automation",
+      "s5": "Game & Web3\nPlatform Development",
+      "s6": "Seamless Integration\nAcross All Systems"
+    },
+    "links": {
+      "about": "About us",
+      "terms": "Terms of Service",
+      "blog": "Blog",
+      "privacy": "Privacy Policy"
+    }
+  },
+  "home": {
+    "title1": "We build scalable",
+    "title2": "backend systems",
+    "heroText": "designed to handle millions of messages per second, while ensuring seamless real-time data processing for high-demand industries",
+    "cardsBtn": "explore the case study",
+    "benefits": "Key Benefits",
+    "tech": "Technology Stack",
+    "cards": {
+      "liliac": {
+        "title": "Backend\u200B Solutions\u200B Development",
+        "heading": "We specialize in building high-performance, scalable backend systems designed to handle heavy workloads and large-scale traffic.",
+        "benefits1": "Capacity: Processes up to 5 million messages per second, ensuring smooth operation during peak loads.",
+        "benefits2": "Big Data Handling: Efficiently manages billions of records."
+      },
+      "orange": {
+        "title": "Web\u00A0&\u00A0Mobile\u200B Application\u200B Development",
+        "heading": "Designed for optimal user experience, modern web and mobile applications combine intuitive interfaces with high performance",
+        "benefits1": "PWA & Responsive Design: App-like performance on all devices.",
+        "benefits2": "SSR with Next.js: Faster loads and better SEO.",
+        "benefits3": "API-first Development: Seamless system integration.",
+        "benefits4": "Real-time Features: Live chats, notifications, and updates via WebSockets and GraphQL.",
+        "benefits5": "Big Data Handling: Efficiently manages billions of records."
+      },
+      "card": {
+        "title": "Design\u00A0&\u00A0User\u200B Experience",
+        "heading": "We create clean, intuitive designs that enhance user experience. From websites to apps, we focus on aesthetics, functionality, and accessibility for a seamless user journey."
+      },
+      "blue": {
+        "title": "DevOps\u200B &\u00A0Automation",
+        "heading": "Full-cycle DevOps services ensure automated deployment and streamlined development processes.",
+        "benefits1": "Automation & CI/CD: Streamlined deployment with continuous integration and delivery.",
+        "benefits2": "Scalability & Security: Efficiently managing high-load systems with robust security practices throughout the deployment pipeline.",
+        "benefits3": "Reliability: Continuous monitoring and quick recovery to minimize downtime"
+      },
+      "lime": {
+        "title": "Game\u00A0&\u00A0Web3\u200B Platform\u200B Development",
+        "heading": "Solutions for blockchain platforms and the gaming industry provide Web3 integration and real-time transactions, ensuring a decentralized experience",
+        "benefits1": "Web3 & Smart Contracts: Decentralized gaming with secure, automated transactions.",
+        "benefits2": "Real-time Transactions: Instant blockchain-powered payments.",
+        "benefits3": "Scalability & Security: Built for growth with strong security."
+      },
+      "cardDark": {
+        "title": "Seamless\u200B Integration\u200B Across\u200B All\u00A0Systems",
+        "heading": "Ensuring efficient integration across any platform, service, or technology stack. From legacy systems to modern APIs, cloud services, and third-party tools, we cover all your business needs"
+      }
+    },
+    "ray": {
+      "desktop": {
+        "row1": "We are <blue>flexible and collaborate</blue> with trusted",
+        "row2": "partners to bring your <lime>vision to life</lime>. While we",
+        "row3": "specialize in key areas, we’re open to exploring",
+        "row4": "<orange>new challenges</orange> and delivering tailored solutions",
+        "row5": "to meet your <liliac>unique project needs</liliac>",
+        "row6": " ",
+        "row7": " ",
+        "row8": " "
+      },
+      "mobile": {
+        "row1": "We are <blue>flexible and</blue>",
+        "row2": "<blue>collaborate</blue> with trusted",
+        "row3": "partners to bring your",
+        "row4": "<lime>vision to life</lime>. While we",
+        "row5": "specialize in key areas,",
+        "row6": "we’re open to exploring",
+        "row7": "<orange>new challenges</orange> and",
+        "row8": "delivering tailored",
+        "row9": "solutions to meet your",
+        "row10": "<liliac>unique project needs</liliac>",
+        "row11": " ",
+        "row12": " ",
+        "row13": " "
+      }
+    }
+  },
+  "clients": {
+
+  },
+  "about": {
+
+  },
+  "contacts": {
+
+  }
+}

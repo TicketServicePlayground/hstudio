@@ -1,7 +1,8 @@
 'use client'
-import React from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import React, { Fragment } from 'react'
+import { motion } from 'framer-motion'
 import { useIsMobile } from '@/hooks'
+import { useLocale, useTranslations } from 'next-intl'
 
 interface RayProps {
   angle: number
@@ -67,9 +68,18 @@ const Ray: React.FC<RayProps> = ({ angle, isOdd }) => {
   )
 }
 
+const desktop_de = ["row1", "row2", "row3", "row4", "row5", "row6", "row7", "row8"]
+const mobile_de = ["row1", "row2", "row3", "row4", "row5", "row6", "row7", "row8", "row9", "row10", "row11", "row12", "row13"]
+const desktop_en = ["row1", "row2", "row3", "row4", "row5"]
+const mobile_en = ["row1", "row2", "row3", "row4", "row5", "row6", "row7", "row8", "row9", "row10"]
+
 const RayBackground: React.FC = () => {
   const angles: number[] = Array.from({ length: 16 }, (_, i) => i * (360 / 16))
 
+  const t = useTranslations('home.ray')
+  const locale = useLocale()
+
+  // @ts-ignore
   return (
     <div className="relative w-full h-[808px] flex items-center justify-center overflow-hidden">
       {/*
@@ -115,44 +125,35 @@ const RayBackground: React.FC = () => {
       </motion.div>
 
       <p className="block lg:hidden text-black font-medium font-host text-[24px] md:text-[42px] leading-none text-center z-[2]">
-        We are{' '}
-        <span className="text-blue">
-          flexible and
-          <br />
-          collaborate
-        </span>{' '}
-        with trusted
-        <br />
-        partners to bring your
-        <br />
-        <span className="text-lime">vision to life</span>
-        . While we
-        <br />
-        specialize in key areas,
-        <br />
-        we’re open to exploring
-        <br />
-        <span className="text-orange">new challenges</span> and
-        <br />
-        delivering tailored
-        <br />
-        solutions to meet your
-        <br />
-        <span className="text-liliac">unique project needs</span>
+        {(locale === 'en' ? mobile_en : mobile_de).map((row, index) => (
+          <Fragment key={index}>
+            <span>{
+              t.rich(`mobile.${row}`, {
+                blue: (chunks) => <span className="text-blue">{chunks}</span>,
+                lime: (chunks) => <span className="text-lime">{chunks}</span>,
+                orange: (chunks) => <span className="text-orange">{chunks}</span>,
+                liliac: (chunks) => <span className="text-liliac">{chunks}</span>
+              }
+            )}</span>
+            {index !== (locale === 'en' ? mobile_en : mobile_de).length - 1 && <br />}
+          </Fragment>
+        ))}
       </p>
+
       <p className="hidden lg:block text-black font-medium font-host text-[48px] leading-none text-center z-[2]">
-        We are <span className="text-blue">flexible and collaborate</span> with
-        trusted
-        <br />
-        partners to bring your <span className="text-lime">vision to life</span>
-        . While we
-        <br />
-        specialize in key areas, we’re open to exploring
-        <br />
-        <span className="text-orange">new challenges</span> and delivering
-        tailored solutions
-        <br />
-        to meet your <span className="text-liliac">unique project needs</span>
+        {(locale === 'en' ? desktop_en : desktop_de).map((row, index) => (
+          <Fragment key={index}>
+            <span>{
+              t.rich(`desktop.${row}`, {
+                blue: (chunks) => <span className="text-blue">{chunks}</span>,
+                lime: (chunks) => <span className="text-lime">{chunks}</span>,
+                orange: (chunks) => <span className="text-orange">{chunks}</span>,
+                liliac: (chunks) => <span className="text-liliac">{chunks}</span>
+              }
+            )}</span>
+            {index !== (locale === 'en' ? desktop_en : desktop_de).length - 1 && <br />}
+          </Fragment>
+        ))}
       </p>
     </div>
   )

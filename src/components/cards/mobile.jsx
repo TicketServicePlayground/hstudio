@@ -4,6 +4,7 @@ import React, { useRef, useState, useEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Label, CTA, CardNumber } from '@/components/home/solution-card'
+import { useTranslations } from 'next-intl'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -107,12 +108,14 @@ function Cards({ cards = [] }) {
 }
 
 export const InnerCard = ({ card, title, isDark }) => {
+  const t = useTranslations('home.cards')
+  const t1 = useTranslations('home')
   return (
     <div className={`relative bg-${card.bg} w-full h-auto pt-[500px] z-20`}>
       <div
         className={`font-medium not-italic leading-none font-host w-5/6 ${isDark ? 'text-white' : 'text-black'} text-[42px] h-auto p-[25px]`}
       >
-        {title}
+        {t(title)}
       </div>
       <div
         className={`flex flex-col card _blur-card _backdrop-blur-[150px] rounded-[20px] w-full p-[25px] gap-y-[40px] pb-[120px] h-auto ${isDark ? 'card--dark' : ''} ${isDark ? 'bg-[#FFFFFF05] text-white' : 'bg-[#FFFFFF20] text-black'}`}
@@ -124,18 +127,18 @@ export const InnerCard = ({ card, title, isDark }) => {
       >
         <div className={'flex flex-col gap-y-[40px] relative h-auto'}>
           <span className="font-host font-[500] text-[24px] leading-none">
-            {card.heading}
+            {t(card.heading)}
           </span>
           {card.benefits && (
             <div className="flex flex-col gap-y-[12px]">
-              <Label>Key Benefits</Label>
+              <Label>{t1('benefits')}</Label>
               <div className="flex flex-col gap-y-[8px]">
                 {card.benefits.map((benefitItem) => (
                   <span
                     className="font-host text-[14px] font-[500] leading-none"
                     key={benefitItem}
                   >
-                    {benefitItem}
+                    {t(benefitItem)}
                   </span>
                 ))}
               </div>
@@ -143,7 +146,7 @@ export const InnerCard = ({ card, title, isDark }) => {
           )}
           {card.stack && (
             <div className="flex flex-col gap-y-[16px]">
-              <Label>Technology Stack</Label>
+              <Label>{t1('tech')}</Label>
               <div className="flex flex-wrap gap-[4px]">
                 {card.stack.map((stackItem) => (
                   <span

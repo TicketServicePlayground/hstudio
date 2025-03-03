@@ -3,10 +3,22 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import Tabs from '@/components/tabs'
+import { usePathname, useRouter } from 'next/navigation'
+import { useLocale, useTranslations } from 'next-intl'
 
 const MotionLink = motion(Link)
 
 const MobileNav = () => {
+  const pathname = usePathname()
+  const locale = useLocale()
+  const router = useRouter()
+
+  const handleLocaleChange = (newLocale: typeof locale) => {
+    router.push(`/${newLocale}${pathname.substring(3)}`, { scroll: false })
+  }
+  const t = useTranslations('global.nav')
+  const t1 = useTranslations('global')
+
   const [isOpen, setIsOpen] = useState(false)
   const [isVisible, setIsVisible] = useState(true)
   const [lastScrollY, setLastScrollY] = useState(0)
@@ -78,6 +90,7 @@ const MobileNav = () => {
         duration: 0.2,
       },
     },
+    //@ts-ignore
     open: (i) => ({
       opacity: 1,
       x: 0,
@@ -127,7 +140,7 @@ const MobileNav = () => {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            contact us
+            {t1('contactus')}
           </MotionLink>
 
           <motion.button
@@ -198,10 +211,10 @@ const MobileNav = () => {
                 >
                   <div className="h-full w-full flex flex-col pt-[31px] pl-[27px] gap-y-[40px]">
                     {[
-                      { title: 'home', type: 'link', href: '/' },
-                      { title: 'clients', type: 'link', href: '/clients' },
-                      { title: 'about us', type: 'link', href: '/about' },
-                      { title: 'contacts', type: 'link', href: '/contacts' },
+                      // { title: t('home'), type: 'link', href: '/' },
+                      { title: t('clients'), type: 'link', href: '/clients' },
+                      { title: t('about'), type: 'link', href: '/about' },
+                      { title: t('contacts'), type: 'link', href: '/contacts' },
                     ].map((item, i) => (
                       <MotionLink
                         key={item.href}
@@ -228,11 +241,16 @@ const MobileNav = () => {
                         {
                           text: 'eng',
                           type: 'btn',
-                          onClick: () => {},
-                          active: true,
+                          onClick: () => handleLocaleChange('en'),
+                          active: locale === 'en',
                         },
-                        { text: 'deu', type: 'btn', onClick: () => {} },
+                        {
+                          text: 'deu',
+                          type: 'btn',
+                          onClick: () => handleLocaleChange('de'),
+                          active: locale === 'de', },
                       ]}
+                      onReady={null}
                       selectedBgColor="[#E4E9EF]"
                       selectedTextColor="[#000000]"
                     />
