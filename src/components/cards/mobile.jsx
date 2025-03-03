@@ -89,13 +89,13 @@ function Cards({ cards = [] }) {
                 ${isDark ? 'text-white' : 'text-black'}
               `}
               style={{
-                overflow: 'hidden'
+                overflow: 'hidden',
               }}
             >
               <img
                 src={`/img/mobile-covers/${card.pic}`}
                 alt={card.title}
-                className="absolute top-0 w-full z-10"
+                className={`absolute ${index === cards.length - 1 ? 'top-20' : 'top-0'} w-full z-10`}
               />
               <CardNumber number={index + 1} />
               <InnerCard card={card.card} title={card.title} isDark={isDark} />
