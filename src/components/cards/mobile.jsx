@@ -7,6 +7,10 @@ import { Label, CTA, CardNumber } from '@/components/home/solution-card'
 
 gsap.registerPlugin(ScrollTrigger)
 
+ScrollTrigger.config({
+  smoothTouch: true,
+})
+
 function Cards({ cards = [] }) {
   const containerRef = useRef(null)
   const [heights, setHeights] = useState([])
@@ -35,6 +39,8 @@ function Cards({ cards = [] }) {
 
     let currentOffset = 0
 
+    gsap.set(cardsRef.current, { willChange: 'transform' })
+
     cardsRef.current.forEach((cardEl, index) => {
       if (!cardEl) return
 
@@ -49,15 +55,16 @@ function Cards({ cards = [] }) {
 
       gsap.fromTo(
         cardEl,
-        { y: fromY },
+        { y: fromY, force3D: true },
         {
           y: toY,
           ease: 'none',
           scrollTrigger: {
             trigger: containerRef.current,
-            start: `top+=${startValue} top`,
-            end: `top+=${endValue} top`,
+            start: `top+=${startValue}px top`,
+            end: `top+=${endValue}px top`,
             scrub: true,
+            toggleActions: 'restart pause resume pause',
           },
         }
       )
@@ -82,8 +89,7 @@ function Cards({ cards = [] }) {
                 ${isDark ? 'text-white' : 'text-black'}
               `}
               style={{
-                overflow: 'hidden',
-                willChange: 'transform'
+                overflow: 'hidden'
               }}
             >
               <img
@@ -103,7 +109,7 @@ function Cards({ cards = [] }) {
 
 export const InnerCard = ({ card, title, isDark }) => {
   return (
-    <div className={`relative bg-${card.bg} w-full h-auto pt-[450px] z-20`}>
+    <div className={`relative bg-${card.bg} w-full h-auto pt-[500px] z-20`}>
       <div
         className={`font-medium not-italic leading-none font-host ${isDark ? 'text-white' : 'text-black'} text-[42px] h-auto p-[25px]`}
       >
