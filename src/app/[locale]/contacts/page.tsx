@@ -161,11 +161,11 @@ const Address = () => (
     </div>
     <div className="flex flex-col gap-y-[12px]">
       <Label>Call us</Label>
-      <Value>+49 157 54892281</Value>
+      <Link className="font-medium font-host text-[24px] leading-none" href={'tel:+4915754892281'}>+49 157 54892281</Link>
     </div>
     <div className="flex flex-col gap-y-[12px]">
       <Label>Say Hello</Label>
-      <Value>hello@h2.studio</Value>
+      <Link className="font-medium font-host text-[24px] leading-none" href={'mailto:Hello@h-studio.io'}>Hello@h-studio.io</Link>
     </div>
     <div className="flex flex-col items-center lg:flex-row gap-y-[30px] gap-x-[30px]">
       <Link
