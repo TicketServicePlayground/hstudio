@@ -83,8 +83,7 @@ function Cards({ cards = [] }) {
               key={`${card.title}-${index}`}
               ref={(el) => (cardsRef.current[index] = el)}
               className={`
-                absolute left-0 right-0 top-0
-                ${index !== cards.length - 1 ? 'rounded-[20px]' : 'rounded-t-[20px]'}
+                absolute left-0 right-0 top-0 rounded-[20px]
                 bg-${card.bg} 
                 ${isDark ? 'text-white' : 'text-black'}
               `}
