@@ -36,7 +36,10 @@ export const cards: SolutionCardData[] = [
       heading:
         'Designed for optimal user experience, modern web and mobile applications combine intuitive interfaces with high performance',
       benefits: [
-        'PWA & Responsive Design: App-like performance on all devices SSR with Next.js: Faster loads and better SEO API-first Development: Seamless system integration Real-time Features: Live chats, notifications, and updates via WebSockets and GraphQL.',
+        'PWA & Responsive Design: App-like performance on all devices.',
+        'SSR with Next.js: Faster loads and better SEO.',
+        'API-first Development: Seamless system integration.',
+        'Real-time Features: Live chats, notifications, and updates via WebSockets and GraphQL.',
         'Big Data Handling: Efficiently manages billions of records.',
       ],
       stack: ['React', 'Next.js', 'Vue', 'TypeScript'],
