@@ -5,7 +5,7 @@ export const cards: SolutionCardData[] = [
     bg: 'liliac',
     pic: './cover.png',
     backgroundImage: `url('/img/desktop-covers/cover.png') lightgray 108.299px -37.448px / 75.428% 110.699% no-repeat`,
-    title: 'Backend       Solutions Development',
+    title: 'Backend      Solutions Development',
     card: {
       heading:
         'We specialize in building high-performance, scalable backend systems designed to handle heavy workloads and large-scale traffic.',
