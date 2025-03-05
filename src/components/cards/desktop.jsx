@@ -11,8 +11,6 @@ import {
 } from '@/components/home/solution-card'
 import { useTranslations } from 'next-intl'
 
-const VIEWPORT = 0.05
-
 const Cards = ({ cards }) => {
   const containerRef = React.useRef(null)
 
@@ -109,13 +107,13 @@ const CardContent = ({ card, index }) => {
 
   return (
     <div className="w-full h-full border_border-white flex items-center justify-center relative">
-      <img src={`/img/desktop-covers/${card.pic}`} />
+      <img src={`/img/desktop-covers/${card.pic}`} alt={''} />
       <CardNumber number={index + 1} />
       <Title isDark={isDark} mobileTitleOffset={card.mobileTitleOffset}>
         {t(card.title)}
       </Title>
       <div className="absolute bottom-[27px] right-[27px] hidden md:block">
-        <CTA />
+        <CTA category={card.category} />
       </div>
       <InnerCard card={card} isDark={isDark} />
     </div>

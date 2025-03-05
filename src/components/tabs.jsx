@@ -94,6 +94,7 @@ const Tabs = ({
             setActiveTab(item.text)
           }}
           className={commonClasses}
+          autoFocus={isActive}
         >
           {item.text}
         </Link>
@@ -110,6 +111,7 @@ const Tabs = ({
           item.onClick?.()
         }}
         className={commonClasses}
+        autoFocus={isActive}
       >
         {item.text}
       </button>

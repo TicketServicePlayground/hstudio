@@ -29,6 +29,7 @@
   "home": {
     "title1": "We build scalable",
     "title2": "backend systems",
+    "title3": " ",
     "heroText": "designed to handle millions of messages per second, while ensuring seamless real-time data processing for high-demand industries",
     "cardsBtn": "explore the case study",
     "benefits": "Key Benefits",
@@ -36,7 +37,7 @@
     "cards": {
       "liliac": {
         "title": "Backend\u200B Solutions\u200B Development",
-        "heading": "We specialize in building high-performance, scalable backend systems designed to handle heavy workloads and large-scale traffic.",
+        "heading": "We specialize in building high-performance, scalable backend systems designed to handle heavy workloads and large-scale traffic",
         "benefits1": "Capacity: Processes up to 5 million messages per second, ensuring smooth operation during peak loads.",
         "benefits2": "Big Data Handling: Efficiently manages billions of records."
       },
@@ -51,14 +52,14 @@
       },
       "card": {
         "title": "Design\u00A0&\u00A0User\u200B Experience",
-        "heading": "We create clean, intuitive designs that enhance user experience. From websites to apps, we focus on aesthetics, functionality, and accessibility for a seamless user journey."
+        "heading": "We create clean, intuitive designs that enhance user experience. From websites to apps, we focus on aesthetics, functionality, and accessibility for a seamless user journey"
       },
       "blue": {
         "title": "DevOps\u200B &\u00A0Automation",
-        "heading": "Full-cycle DevOps services ensure automated deployment and streamlined development processes.",
+        "heading": "Full-cycle DevOps services ensure automated deployment and streamlined development processes",
         "benefits1": "Automation & CI/CD: Streamlined deployment with continuous integration and delivery.",
         "benefits2": "Scalability & Security: Efficiently managing high-load systems with robust security practices throughout the deployment pipeline.",
-        "benefits3": "Reliability: Continuous monitoring and quick recovery to minimize downtime"
+        "benefits3": "Reliability: Continuous monitoring and quick recovery to minimize downtime."
       },
       "lime": {
         "title": "Game\u00A0&\u00A0Web3\u200B Platform\u200B Development",

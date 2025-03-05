@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { X } from 'lucide-react'
 import { clients, ClientT } from '@/data/clients'
@@ -8,9 +8,20 @@ import { useIsMobile } from '@/hooks'
 import Tabs from '@/components/tabs'
 import Footer from '@/components/footer'
 import { useTranslations } from 'next-intl'
+import { useRouter, useSearchParams } from 'next/navigation'
 
 const ClientsPage: React.FC = () => {
+  const searchParams = useSearchParams()
+  const router = useRouter()
   const [activeFilter, setActiveFilter] = useState('all')
+
+  useEffect(() => {
+    const filter = searchParams.get('filter')
+    if (filter) {
+      setActiveFilter(filter || 'all')
+      router.replace("/clients", { scroll: false })
+    }
+  }, [searchParams, router])
 
 
   const categories = [
@@ -72,6 +83,7 @@ const ClientsPage: React.FC = () => {
             type: 'button',
             active: activeFilter === i.text,
           }))}
+          onReady={null}
         />
       </div>
       {/*

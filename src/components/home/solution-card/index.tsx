@@ -1,5 +1,7 @@
 import { useTranslations } from 'next-intl'
 import { SolutionCardData } from '@/types'
+import Link from 'next/link'
+import { FC } from 'react'
 
 export const InnerCard = ({
   card,
@@ -65,7 +67,7 @@ export const InnerCard = ({
         </div>
       )}
       <div className="block md:hidden">
-        <CTA />
+        <CTA category={card.category} />
       </div>
     </div>
   )
@@ -143,30 +145,18 @@ export const Label = ({ children }: { children?: string }) => (
   </span>
 )
 
-export const CTA = () => {
+export const CTA: FC<{category: string}> = ({ category }) => {
   const t = useTranslations('home')
   return (
-    <button
-      className={`
-    px-[35px] py-[21px]
-    font-host text-[20px] leading-none font-medium
-    bg-black rounded-[32px]
-    
-    bg-black
-    rounded-full
-    shadow-none
-    transition-all duration-300 ease-in-out
-    hover:bg-white hover:text-black
-    hover:shadow-lg hover:-translate-y-2
-    hover:shadow-black/20
-    text-white
-
-    w-full
-    md:w-[unset]
-  `}
-    >
+    <Link
+      href={`/clients?filter=${category}`}
+      className={`block px-[35px] py-[21px] font-host text-[20px] leading-none font-medium
+    bg-black rounded-full shadow-none transition-all duration-300 ease-in-out
+    hover:bg-white hover:text-black hover:shadow-lg hover:-translate-y-2
+    hover:shadow-black/20 text-white w-full md:w-[unset]
+    `}>
       {t('cardsBtn')}
-    </button>
+    </Link>
   )
 }
 

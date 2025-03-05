@@ -17,7 +17,7 @@ const redirectToLocalizedPath = (req: NextRequest): NextResponse | null => {
   const userLocale = req.cookies.get(LOCALE_COOKIE)?.value || DEFAULT_LOCALE
 
   if (!hasLocalePrefix && pathname !== '/' && !pathname.startsWith('/api')) {
-    const res = NextResponse.redirect(new URL(`/${userLocale}${pathname}`, req.url))
+    const res = NextResponse.redirect(new URL(`/${userLocale}${pathname}${req.nextUrl.search}`, req.url))
     res.cookies.set(LOCALE_COOKIE, userLocale, { path: '/' })
     return res
   }
@@ -39,7 +39,7 @@ export default function middleware(req: NextRequest): NextResponse {
   let locale = req.cookies.get(LOCALE_COOKIE)?.value || DEFAULT_LOCALE
 
   if (!req.cookies.has(LOCALE_COOKIE)) {
-    const res = NextResponse.redirect(new URL(`/${locale}${pathname}`, req.url))
+    const res = NextResponse.redirect(new URL(`/${locale}${pathname}${req.nextUrl.search}`, req.url))
     res.cookies.set(LOCALE_COOKIE, locale, { path: '/' })
     return res
   }

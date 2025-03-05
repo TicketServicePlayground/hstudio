@@ -3,10 +3,7 @@ export interface SolutionCardData {
   pic: string
   title: string
   card: CardData
-  mobileTitleOffset: number
-  backgroundImage: string
-  innerBlockHeight: number
-  blockHeightMobile: number
+  category: string
 }
 
 export interface CardData {

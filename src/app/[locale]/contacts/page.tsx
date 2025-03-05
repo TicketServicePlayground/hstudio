@@ -188,7 +188,7 @@ const Address = () => {
         <Link
           href="https://calendly.com/hstudio"
           target="_blank"
-          className="block py-[21px] px-[72px] font-host text-[20px] whitespace-nowrap font-medium leading-none bg-black rounded-full text-white w-full lg:w-max"
+          className="text-center block py-[21px] px-[72px] font-host text-[20px] whitespace-nowrap font-medium leading-none bg-black rounded-full text-white w-full lg:w-max"
         >
           {t('schedule')}
         </Link>

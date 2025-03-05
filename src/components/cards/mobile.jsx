@@ -98,7 +98,7 @@ function Cards({ cards = [] }) {
                 className={`absolute ${index === cards.length - 1 ? 'top-20' : 'top-0'} w-full z-10`}
               />
               <CardNumber number={index + 1} />
-              <InnerCard card={card.card} title={card.title} isDark={isDark} />
+              <InnerCard card={card} title={card.title} isDark={isDark} />
             </div>
           )
         })}
@@ -111,7 +111,7 @@ export const InnerCard = ({ card, title, isDark }) => {
   const t = useTranslations('home.cards')
   const t1 = useTranslations('home')
   return (
-    <div className={`relative bg-${card.bg} w-full h-auto pt-[500px] z-20`}>
+    <div className={`relative bg-${card.card.bg} w-full h-auto pt-[500px] z-20`}>
       <div
         className={`font-medium not-italic leading-none font-host w-5/6 ${isDark ? 'text-white' : 'text-black'} text-[42px] h-auto p-[25px]`}
       >
@@ -127,13 +127,13 @@ export const InnerCard = ({ card, title, isDark }) => {
       >
         <div className={'flex flex-col gap-y-[40px] relative h-auto'}>
           <span className="font-host font-[500] text-[24px] leading-none">
-            {t(card.heading)}
+            {t(card.card.heading)}
           </span>
-          {card.benefits && (
+          {card.card.benefits && (
             <div className="flex flex-col gap-y-[12px]">
               <Label>{t1('benefits')}</Label>
               <div className="flex flex-col gap-y-[8px]">
-                {card.benefits.map((benefitItem) => (
+                {card.card.benefits.map((benefitItem) => (
                   <span
                     className="font-host text-[14px] font-[500] leading-none"
                     key={benefitItem}
@@ -144,11 +144,11 @@ export const InnerCard = ({ card, title, isDark }) => {
               </div>
             </div>
           )}
-          {card.stack && (
+          {card.card.stack && (
             <div className="flex flex-col gap-y-[16px]">
               <Label>{t1('tech')}</Label>
               <div className="flex flex-wrap gap-[4px]">
-                {card.stack.map((stackItem) => (
+                {card.card.stack.map((stackItem) => (
                   <span
                     className="flex items-center justify-center h-[24px] font-space text-[12px] font-[500] leading-none bg-white rounded-[9px] px-[12px]"
                     key={stackItem}
@@ -160,7 +160,7 @@ export const InnerCard = ({ card, title, isDark }) => {
             </div>
           )}
           <div className="block md:hidden">
-            <CTA />
+            <CTA category={card.category} />
           </div>
         </div>
       </div>

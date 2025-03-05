@@ -103,22 +103,11 @@ const MobileNav = () => {
 
   return (
     <>
-      {/* Logo with animation */}
-      <motion.div
-        className="w-full flex justify-center top-[26.4px] absolute"
-        animate={{
-          y: isVisible ? 0 : -100,
-          opacity: isVisible ? 1 : 0,
-        }}
-        transition={{
-          duration: 0.4,
-          ease: 'circOut',
-        }}
-      >
+      <div className="w-full flex justify-center top-[26.4px] absolute z-50">
         <Link href="/" className="text-[20px] cursor-pointer font-climate">
           H.STUDIO
         </Link>
-      </motion.div>
+      </div>
 
       <motion.div
         className="fixed bottom-[0px] right-[0px] w-screen flex flex-col z-40 min-w-screen"

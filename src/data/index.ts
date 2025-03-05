@@ -4,7 +4,6 @@ export const cards: SolutionCardData[] = [
   {
     bg: 'liliac',
     pic: './cover.png',
-    backgroundImage: `url('/img/desktop-covers/cover.png') lightgray 108.299px -37.448px / 75.428% 110.699% no-repeat`,
     title: 'liliac.title',
     card: {
       heading:
@@ -22,15 +21,11 @@ export const cards: SolutionCardData[] = [
         'ClickHouse',
       ],
     },
-    mobileTitleOffset: 400,
-    innerBlockHeight: 700,
-    blockHeightMobile: 1245
+    category: 'backend',
   },
   {
     bg: 'orange',
     pic: './cover-1.png',
-    // background: url(<path-to-image>) lightgray 204.734px -43.244px / 61.452% 99.827% no-repeat;
-    backgroundImage: './cover-1.png',
     title: 'orange.title',
     card: {
       heading:
@@ -44,30 +39,21 @@ export const cards: SolutionCardData[] = [
       ],
       stack: ['React', 'Next.js', 'Vue', 'TypeScript'],
     },
-    mobileTitleOffset: 390,
-    // innerBlockHeight: 649,
-    innerBlockHeight: 700,
-    blockHeightMobile: 1259
+    category: 'web',
   },
   {
     bg: 'card',
     pic: './cover-2.png',
-    // background: url(<path-to-image>) lightgray 62.841px -17.547px / 78.85% 107.772% no-repeat;
-    backgroundImage: './cover-2.png',
     title: 'card.title',
     card: {
       heading:
         'card.heading',
     },
-    mobileTitleOffset: 632,
-    innerBlockHeight: 550,
-    blockHeightMobile: 1019
+    category: 'design',
   },
   {
     bg: 'blue',
     pic: './cover-3.png',
-    // background: url(<path-to-image>) lightgray 335.445px -152.007px / 54.734% 107.905% no-repeat;
-    backgroundImage: './cover-3.png',
     title: 'blue.title',
     card: {
       heading:
@@ -79,15 +65,11 @@ export const cards: SolutionCardData[] = [
       ],
       stack: ['Jenkins', 'Kubernetes', 'Docker', 'GitHub Actions'],
     },
-    mobileTitleOffset: 432,
-    innerBlockHeight: 700,
-    blockHeightMobile: 1281
+    category: 'devops',
   },
   {
     bg: 'lime',
     pic: './cover-4.png',
-    // background: url(<path-to-image>) lightgray 79.31px -36.072px / 82.958% 126.712% no-repeat;
-    backgroundImage: './cover-4.png',
     title: 'lime.title',
     card: {
       heading:
@@ -99,23 +81,17 @@ export const cards: SolutionCardData[] = [
       ],
       stack: ['Kotlin', 'Blockchain', 'TON', 'Web3'],
     },
-    mobileTitleOffset: 390,
-    innerBlockHeight: 700,
-    blockHeightMobile: 1263
+    category: 'game',
   },
   {
     bg: 'cardDark',
     pic: './cover-5.png',
-    backgroundImage: './cover-5.png',
-    // background: url(<path-to-image>) lightgray 335.164px -31.448px / 51.425% 108.985% no-repeat;
     title: 'cardDark.title',
     card: {
       heading:
         'cardDark.heading',
     },
-    mobileTitleOffset: 348,
-    innerBlockHeight: 530,
-    blockHeightMobile: 938
+    category: 'seamless',
   },
 ]
 

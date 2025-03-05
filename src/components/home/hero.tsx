@@ -42,6 +42,8 @@ const Hero = () => {
         {t('title1')}
         <br />
         {t('title2')}
+        <br/>
+        {t('title3')}
       </HeroHeading>
 
       <div

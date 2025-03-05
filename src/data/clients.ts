@@ -1,40 +1,5 @@
 export const clients = [
   {
-    logo: '/img/clients/logos_x2/logo-0.png',
-    name: 'EventStripe',
-    bgImg: '/img/clients/gradients/1.jpeg',
-    mobileBgImg: '/card-eventstripe-mobile.png',
-    bgStyle: '',
-    cardDesktop: '/img/clients/bg/EventStripeCardInside.png',
-    bgStyleMobile: '',
-    categories: ['web', 'devops'],
-    contentImg: '',
-    tags: [
-      {
-        text: 'web',
-        bgColor: 'orange',
-        textColor: 'black',
-      },
-      {
-        text: 'devops',
-        bgColor: 'blue',
-        textColor: 'black',
-      },
-    ],
-    bio: 'EventStripe',
-    stats: [
-      {
-        label: 'Team Size',
-        value: '3 people',
-      },
-      {
-        label: 'Duration',
-        value: '12 months',
-      },
-    ],
-    href: 'https://eventstripe.com/en', // defines whethere there's cta
-  },
-  {
     logo: '/img/clients/logos_x2/logo-1.png',
     name: 'VTB — Data Streaming System',
     bgImg: '/img/clients/gradients/2.jpeg',
@@ -311,6 +276,41 @@ export const clients = [
     ],
     bio: 'Ntainers',
     href: 'https://ntainers.co',
+  },
+  {
+    logo: '/img/clients/logos_x2/logo-0.png',
+    name: 'EventStripe',
+    bgImg: '/img/clients/gradients/1.jpeg',
+    mobileBgImg: '/card-eventstripe-mobile.png',
+    bgStyle: '',
+    cardDesktop: '/img/clients/bg/EventStripeCardInside.png',
+    bgStyleMobile: '',
+    categories: ['web', 'devops'],
+    contentImg: '',
+    tags: [
+      {
+        text: 'web',
+        bgColor: 'orange',
+        textColor: 'black',
+      },
+      {
+        text: 'devops',
+        bgColor: 'blue',
+        textColor: 'black',
+      },
+    ],
+    bio: 'EventStripe',
+    stats: [
+      {
+        label: 'Team Size',
+        value: '3 people',
+      },
+      {
+        label: 'Duration',
+        value: '12 months',
+      },
+    ],
+    href: 'https://eventstripe.com/en', // defines whethere there's cta
   },
 ]
 

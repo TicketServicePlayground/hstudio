@@ -28,7 +28,8 @@
   },
   "home": {
     "title1": "Wir entwickeln",
-    "title2": "skalierbare Backend-\u200BSysteme",
+    "title2": "skalierbare Backend-",
+    "title3": "Systeme",
     "heroText": "Entwickelt, um Millionen von Nachrichten pro Sekunde zu verarbeiten und dabei eine nahtlose Echtzeit-Datenverarbeitung für anspruchsvolle Branchen zu gewährleisten",
     "cardsBtn": "Fallstudie ansehen",
     "benefits": "Hauptvorteile",
@@ -43,15 +44,15 @@
       "orange": {
         "title": "Web-und\u200B Mobile-App\u200B Entwicklung",
         "heading": "Entwickelt für eine optimale Benutzererfahrung kombinieren moderne Web- und Mobile-Anwendungen intuitive Schnittstellen mit hoher Leistung",
-        "benefits1": "PWA & Responsives Design: App-ähnliche Leistung auf allen Geräten",
-        "benefits2": "SSR mit Next.js: Schnellere Ladezeiten und besseres SEO",
-        "benefits3": "API-first Entwicklung: Nahtlose Systemintegration",
-        "benefits4": "Echtzeit-Funktionen: Live-Chats, Benachrichtigungen und Updates über WebSockets und GraphQL",
+        "benefits1": "PWA & Responsives Design: App-ähnliche Leistung auf allen Geräten.",
+        "benefits2": "SSR mit Next.js: Schnellere Ladezeiten und besseres SEO.",
+        "benefits3": "API-first Entwicklung: Nahtlose Systemintegration.",
+        "benefits4": "Echtzeit-Funktionen: Live-Chats, Benachrichtigungen und Updates über WebSockets und GraphQL.",
         "benefits5": "Big Data Verarbeitung: Effiziente Verwaltung von Milliarden von Datensätzen."
       },
       "card": {
         "title": "Design\u00A0& Benutzererfahrung",
-        "heading": "Wir erstellen saubere, intuitive Designs, die die Benutzererfahrung verbessern. Vom Webdesign bis zu Apps konzentrieren wir uns auf Ästhetik, Funktionalität und Barrierefreiheit für eine nahtlose Nutzererfahrung."
+        "heading": "Wir erstellen saubere, intuitive Designs, die die Benutzererfahrung verbessern. Vom Webdesign bis zu Apps konzentrieren wir uns auf Ästhetik, Funktionalität und Barrierefreiheit für eine nahtlose Nutzererfahrung"
       },
       "blue": {
         "title": "DevOps\u00A0&\u200B Automatisierung",
