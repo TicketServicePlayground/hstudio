@@ -150,7 +150,7 @@ export const CTA: FC<{category: string}> = ({ category }) => {
   return (
     <Link
       href={`/clients?filter=${category}`}
-      className={`block px-[35px] py-[21px] font-host text-[20px] leading-none font-medium
+      className={`text-center block px-[35px] py-[21px] font-host text-[20px] leading-none font-medium
     bg-black rounded-full shadow-none transition-all duration-300 ease-in-out
     hover:bg-white hover:text-black hover:shadow-lg hover:-translate-y-2
     hover:shadow-black/20 text-white w-full md:w-[unset]

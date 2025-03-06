@@ -193,7 +193,7 @@ const ImageCarousel = () => {
         <h2 className="text-[24px] md:text-[30px] lg:text-[36px] font-medium font-host leading-none mb-[16px] lg:mb-[24px]">
           {activeMember.name}
         </h2>
-        <p className="text-[14px] md:text-[20px] lg:text-[24px] font-medium font-host leading-none pb-2 max-w-[240px] md:max-w-[300px] lg:max-w-[580px] mx-auto">
+        <p className="text-[14px] md:text-[20px] lg:text-[24px] font-medium font-host leading-none pb-2 max-w-[240px] md:max-w-[380px] mx-auto">
           {t(`person.${activeMember.experience}`)}
         </p>
       </motion.div>

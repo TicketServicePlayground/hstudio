@@ -106,7 +106,7 @@ const CardContent = ({ card, index }) => {
   const t = useTranslations('home.cards')
 
   return (
-    <div className="w-full h-full border_border-white flex items-center justify-center relative">
+    <div className="w-full h-full border_border-white flex items-center justify-center relative overflow-hidden">
       <img src={`/img/desktop-covers/${card.pic}`} alt={''} />
       <CardNumber number={index + 1} />
       <Title isDark={isDark} mobileTitleOffset={card.mobileTitleOffset}>
