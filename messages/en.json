@@ -167,5 +167,22 @@
       "hello": "Say Hello",
       "schedule": "schedule a call"
     }
+  },
+  "cookie": {
+    "title1": "By continuing to use this site, you consent to the processing of",
+    "title2": ".",
+    "all": "Accept all",
+    "reject": "Reject",
+    "customize": "Customize",
+    "selection": "Allow selection",
+    "more": "Learn more in the",
+    "policy": "Privacy Policy",
+    "fully1": "We use",
+    "fully2": " to personalise content and ads, to provide social media features and to analyse our traffic. We also share information about your use of our site with our social media, advertising and analytics partners who may combine it with other information that you've provided to them or that they've collected from your use of their services.",
+    "necessary": "Necessary",
+    "preferences": "Preferences",
+    "statistics": "Statistics",
+    "marketing": "Marketing",
+    "manage": "Manage Cookie"
   }
 }

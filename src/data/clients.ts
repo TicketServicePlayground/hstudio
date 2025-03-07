@@ -130,7 +130,7 @@ export const clients = [
   },
   {
     logo: '/img/clients/logos_x2/logo-4.png',
-    name: 'Architectural bureau MIR',
+    name: 'Architectural bureau MIR',
     bgImg: '/img/clients/gradients/5.jpeg',
     bgStyle: '',
     cardDesktop: '/img/clients/bg/MirBackgroundCard.png',

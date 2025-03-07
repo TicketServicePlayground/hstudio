@@ -167,5 +167,22 @@
       "hello": "Sag Hallo",
       "schedule": "Call buchen"
     }
+  },
+  "cookie": {
+    "title1": "Durch die weitere Nutzung dieser Website stimmen Sie der Verarbeitung von",
+    "title2": " zu.",
+    "all": "Alle akzeptieren",
+    "reject": "Ablehnen",
+    "customize": "Einstellungen",
+    "selection": "Auswahl erlauben",
+    "more": "Mehr erfahren in der",
+    "policy": "Datenschutzerklärung",
+    "fully1": "Wir verwenden",
+    "fully2": ", um Inhalte und Anzeigen zu personalisieren, Funktionen für soziale Medien bereitzustellen und unseren Datenverkehr zu analysieren. Außerdem geben wir Informationen über Ihre Nutzung unserer Website an unsere Partner für soziale Medien, Werbung und Analysen weiter, die diese mit anderen Informationen kombinieren können, die Sie ihnen bereitgestellt haben oder die sie im Rahmen Ihrer Nutzung ihrer Dienste gesammelt haben.",
+    "necessary": "Notwendig",
+    "preferences": "Präferenzen",
+    "statistics": "Statistiken",
+    "marketing": "Marketing",
+    "manage": "Cookies verwalten"
   }
 }

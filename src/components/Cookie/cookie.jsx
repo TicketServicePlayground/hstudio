@@ -1,72 +1,111 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from 'react'
+import Link from 'next/link'
+import { useTranslations } from 'next-intl'
+import CookieModal from '@/components/Cookie/cookie-modal'
+import { clearCookies } from '@/utils/clearCookie'
+import Cookies from 'js-cookie'
 
+export default function Cookie() {
+  const [isVisible, setIsVisible] = useState(false)
+  const [modal, setModal] = useState(false)
+  const t = useTranslations('cookie')
 
-export default function Cookie () {
+  useEffect(() => {
+    const cookiesAccepted = Cookies.get('cookiesAccepted')
+    if (cookiesAccepted === 'Rejected' || !cookiesAccepted) {
+      setIsVisible(true)
+    }
+  }, [])
 
-    const [isVisible, setIsVisible] = useState(false);
+  const acceptAllCookies = () => {
+    Cookies.set('cookiesAccepted', 'All', { expires: 365 })
+    Cookies.remove('customCookies')
+    setIsVisible(false)
+  }
 
-    useEffect(() => {
-        const hasAcceptedCookies = localStorage.getItem("cookiesAccepted");
-        if (!hasAcceptedCookies) {
-            setIsVisible(true);
-        }
-    }, []);
+  const rejectAllCookies = () => {
+    clearCookies()
+    Cookies.set('cookiesAccepted', 'Rejected', { expires: 365 })
+    Cookies.remove('customCookies')
+    setIsVisible(false)
+  }
 
-    const acceptCookies = () => {
-        localStorage.setItem("cookiesAccepted", "true");
-        setIsVisible(false);
-    };
+  const openSettings = () => {
+    setModal(true)
+  }
 
-    if (!isVisible) return null;
+  if (!isVisible) return null
 
-    return (
-
-    <div
+  return (
+    <>
+      <div
         className={`
-              fixed bottom-[30px] left-[30px]
-              bg-white cookies-container
+              fixed bg-white cookies-container
+              flex flex-col gap-4
+              
+              p-[20px]
 
-              bottom-[50px] w-[calc(100vw-46px)] left-[23px]
-              justify-between lg:justify-start
-
-
-              lg:w-[330px] py-[20px] px-[20px]
-              pr-[20px] lg:pr-[28px]
-              gap-x-[14px]
-              flex
+              bottom-[100px] w-[calc(100vw-46px)] left-[23px] right-[23px]
+              md:bottom-[50px] md:w-[400px] md:right-auto
             `}
-    >
-    <span className="font-host text-[14px] font-medium leading-none lg:w-[256px] w-[240px]">
-      By continuing to use this site, you consent to the processing of
-        {` `}
-        <a
-            href="google.com"
+      >
+        <p className="font-host text-[14px] font-medium leading-none w-[90%]">
+          {t('title1')}
+          {` `}
+          <Link
+            href="/privacy"
             target="_blank"
             className="text-orange hover:opacity-70"
-        >
-        cookies
-      </a>
-      .
-    </span>
-        <div className="p-[3px] cursor-pointer hover:opacity-60" onClick={()=> acceptCookies()}>
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width={16}
-                height={16}
-                viewBox="0 0 16 16"
-                fill="none"
-                className="w-[14px] h-[14px] mt-[3px]"
-            >
-                <path d="M1 15L15 1" stroke="black" strokeWidth={2} />
-                <path d="M1 15L15 1" stroke="black" strokeWidth={2} />
-                <path d="M1 15L15 1" stroke="black" strokeWidth={2} />
-                <path d="M1 15L15 1" stroke="black" strokeWidth={2} />
-                <path d="M15 15L0.999999 1" stroke="black" strokeWidth={2} />
-                <path d="M15 15L0.999999 1" stroke="black" strokeWidth={2} />
-                <path d="M15 15L0.999999 1" stroke="black" strokeWidth={2} />
-                <path d="M15 15L0.999999 1" stroke="black" strokeWidth={2} />
-            </svg>
+          >
+            cookies
+          </Link>
+          {t('title2')}
+        </p>
+        <div className="flex flex-wrap gap-y-2 gap-x-2 font-host font-semibold md:gap-x-6">
+          <button
+            onClick={acceptAllCookies}
+            className={
+              'bg-white rounded-[33px] py-[10px] px-[14px] leading-none hover:bg-black hover:text-white active:bg-black/80 active:text-white transition-colors duration-200 ease-in-out'
+            }
+          >
+            {t('all')}
+          </button>
+          <button
+            onClick={rejectAllCookies}
+            className={
+              'bg-white rounded-[33px] py-[10px] px-[14px] leading-none hover:bg-black hover:text-white active:bg-black/80 active:text-white transition-colors duration-200 ease-in-out'
+            }
+          >
+            {t('reject')}
+          </button>
+          <button
+            onClick={openSettings}
+            className={
+              'bg-white rounded-[33px] py-[10px] px-[14px] leading-none hover:bg-black hover:text-white active:bg-black/80 active:text-white transition-colors duration-200 ease-in-out'
+            }
+          >
+            {t('customize')}
+          </button>
         </div>
-    </div>
-    )
+        <p className="font-host text-[14px] font-medium leading-none w-[90%]">
+          {t('more')}
+          {` `}
+          <Link
+            href="/privacy"
+            target="_blank"
+            className="text-orange hover:opacity-70"
+          >
+            {t('policy')}
+          </Link>
+        </p>
+      </div>
+      <CookieModal
+        isOpen={modal}
+        onClose={() => {
+          setModal(false)
+          setIsVisible(false)
+        }}
+      />
+    </>
+  )
 }

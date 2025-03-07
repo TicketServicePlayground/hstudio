@@ -1,57 +1,63 @@
-import createMiddleware from 'next-intl/middleware'
 import { NextRequest, NextResponse } from 'next/server'
+import createMiddleware from 'next-intl/middleware'
 import { routing } from './i18n/routing'
 
 const LOCALE_COOKIE = 'NEXT_LOCALE'
 const DEFAULT_LOCALE = 'en'
+const VALID_LOCALES = ['en', 'de']
 
-const routes = {
-  locales: ['en', 'de']
-}
-
-const redirectToLocalizedPath = (req: NextRequest): NextResponse | null => {
+export default function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl
-  const { locales } = routes
-
-  const hasLocalePrefix = locales.some(locale => pathname.startsWith(`/${locale}`))
-  const userLocale = req.cookies.get(LOCALE_COOKIE)?.value || DEFAULT_LOCALE
-
-  if (!hasLocalePrefix && pathname !== '/' && !pathname.startsWith('/api')) {
-    const res = NextResponse.redirect(new URL(`/${userLocale}${pathname}${req.nextUrl.search}`, req.url))
-    res.cookies.set(LOCALE_COOKIE, userLocale, { path: '/' })
-    return res
-  }
-
-  return null
-}
-
-export default function middleware(req: NextRequest): NextResponse {
-  const { pathname } = req.nextUrl
-
   if (
     pathname.startsWith('/_next/') ||
-    pathname.startsWith('/api') ||
+    pathname.startsWith('/api/') ||
     pathname.match(/\.(png|jpg|jpeg|svg|ico|webp|css|js|json|woff2?)$/)
   ) {
     return NextResponse.next()
   }
 
-  let locale = req.cookies.get(LOCALE_COOKIE)?.value || DEFAULT_LOCALE
+  const cookiesAccepted = req.cookies.get('cookiesAccepted')?.value
+  const customCookies = req.cookies.get('customCookies')
+  let canSetLocale = false
 
-  if (!req.cookies.has(LOCALE_COOKIE)) {
-    const res = NextResponse.redirect(new URL(`/${locale}${pathname}${req.nextUrl.search}`, req.url))
-    res.cookies.set(LOCALE_COOKIE, locale, { path: '/' })
-    return res
+  if (cookiesAccepted === 'All') {
+    canSetLocale = true
+  } else if (cookiesAccepted === 'Custom' && customCookies) {
+    try {
+      const parsed = JSON.parse(customCookies.value)
+      canSetLocale = parsed?.preferences === true
+    } catch (error) {
+      console.error('Ошибка парсинга customCookies:', error)
+    }
   }
 
-  const response = redirectToLocalizedPath(req)
-  if (response) {
-    return response
+  const hasLocalePrefix = VALID_LOCALES.some(locale => pathname.startsWith(`/${locale}`))
+  const userLocaleCookie = req.cookies.get(LOCALE_COOKIE)?.value
+
+  if (hasLocalePrefix) {
+    const currentLocale = VALID_LOCALES.find(locale => pathname.startsWith(`/${locale}`))
+
+    if (currentLocale && canSetLocale) {
+      const res = NextResponse.next()
+      res.cookies.set(LOCALE_COOKIE, currentLocale, { path: '/' })
+      return res
+    }
+
+    return NextResponse.next()
   }
 
-  return createMiddleware(routing)(req)
+  const targetLocale = userLocaleCookie || DEFAULT_LOCALE
+  const redirectUrl = new URL(`/${targetLocale}${pathname}${req.nextUrl.search}`, req.url)
+
+  const res = NextResponse.redirect(redirectUrl)
+  if (canSetLocale) {
+    res.cookies.set(LOCALE_COOKIE, targetLocale, { path: '/' })
+  }
+  return res
 }
 
 export const config = {
   matcher: ['/((?!_next|api|favicon.ico).*)']
 }
+
+export const internalMiddleware = createMiddleware(routing)

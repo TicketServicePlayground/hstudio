@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
+import CookieManage from '@/components/Cookie/cookie-manage'
 
 const Footer = () => {
   const services = [
@@ -140,13 +141,7 @@ const Footer = () => {
         >
           {t('links.terms')}
         </Link>
-        <Link
-          href="/#"
-          className="text-black hover:text-black/50 hover:underline text-[14px] font-host font-medium leading-none hover:no-underline"
-        >
-          {t('links.blog')}
-        </Link>
-
+        <CookieManage />
         <Link
           href="/privacy"
           className="text-black hover:text-black/50 hover:underline text-[14px] font-host font-medium leading-none hover:no-underline"
