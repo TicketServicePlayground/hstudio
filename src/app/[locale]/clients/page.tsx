@@ -52,7 +52,7 @@ const ClientsPage: React.FC = () => {
     },
     {
       text: 'game',
-      bgColor: 'orange',
+      bgColor: 'lime',
       textColor: 'black',
     },
     {
@@ -159,8 +159,8 @@ const ClientCard = ({ client }: { client: ClientT }) => {
             />
 
             {/* Bottom Content */}
-            <div className="absolute left-[12px] bottom-[14px] md:left-[40px] md:bottom-[48px]">
-              <h3 className="font-host font-medium text-[24px] md:text-[42px] leading-none mb-[30px]">
+            <div className="absolute left-[12px] bottom-[14px] md:left-[40px] md:bottom-[48px] w-full">
+              <h3 className="font-host font-medium text-[24px] md:text-[42px] leading-none mb-[30px] max-w-[80%]">
                 {client.name}
               </h3>
               <div className="flex flex-wrap gap-[4px]">

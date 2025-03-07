@@ -1,12 +1,13 @@
 'use client'
 
 import Footer from '@/components/footer'
-import { ChangeEventHandler, FC, FocusEventHandler, ReactNode, useEffect } from 'react'
+import { ChangeEventHandler, FC, FocusEventHandler, ReactNode, useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useForm } from '@formspree/react'
 import { useFormik } from 'formik'
 import { toast } from 'react-toastify'
 import { useTranslations } from 'next-intl'
+import Switch from '@/components/ui/Switch/switch'
 
 const ContactsPage = () => {
   return (
@@ -30,6 +31,7 @@ const ContactsPage = () => {
 
 const ContactForm = () => {
   const [state, handleSubmit, reset] = useForm('xbldnrpn')
+  const [agree, setAgree] = useState(false)
   
   const t = useTranslations('contacts')
 
@@ -46,6 +48,7 @@ const ContactForm = () => {
   useEffect(() => {
     if (state.succeeded) {
       toast.success('Sent')
+      reset()
       form.resetForm()
     }
   }, [state.succeeded])
@@ -102,7 +105,14 @@ const ContactForm = () => {
         />
       </div>
 
-      <Button disabled={state.submitting}>{t('form.send')}</Button>
+      <div className={'ml-[20px] mb-[40px] flex gap-5'}>
+        <p className={'font-host font-semibold text-base'}>
+          {t('form.agree')} <a href="/privacy" className={'text-orange'}>{t('form.policy')}</a>
+        </p>
+        <Switch value={agree} onClick={(newValue) => setAgree(newValue)} />
+      </div>
+
+      <Button disabled={state.submitting || !agree}>{t('form.send')}</Button>
     </form>
   )
 }
@@ -137,7 +147,10 @@ const Button = ({
   <button
     disabled={disabled}
     type="submit"
-    className="py-[21px] px-[117.5px] font-host text-[20px] font-medium leading-none bg-black rounded-full text-white w-full lg:w-max"
+    className={`
+      py-[21px] px-[117.5px] font-host text-[20px] font-medium leading-none rounded-full text-white w-full lg:w-max
+      ${disabled ? 'bg-black/80' : 'bg-black'}
+    `}
   >
     {children}
   </button>

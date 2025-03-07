@@ -118,6 +118,7 @@
       "visit": "visit the website"
     },
     "cards": {
+      "PlayDeck": "PlayDeck is a toolkit that helps game developers integrate Telegram’s features, leveraging its 700+ million users. It enables in-game interactions, automated community management, and seamless social sharing. Built for scalability, it ensures high performance and flexibility for growing gaming ecosystems.",
       "EventStripe": "The company developed a SaaS platform, EventStripe, designed for ticket sales at events, supporting high burst loads of up to 10,000 sessions. The project leverages modern technologies such as Next.js, Java 20, Spring, Docker, Kubernetes, and monitoring tools like Jenkins, ELK, and Grafana. The primary focus was to ensure system stability under high loads and provide scalability flexibility.",
       "VTB": "A real-time data streaming system was developed for VTB Bank, capable of processing millions of messages per second. The project utilizes a tech stack based on Java 17, Spring, Kafka, PostgreSQL, as well as containerization and orchestration through Docker and Kubernetes. The solution enables real-time processing of vast amounts of data and ensures high performance for financial sector tasks.",
       "Sber": "A microservice architecture, including a biometric authorization system, was designed and implemented for Sber. The solution covers key client functions such as document generation, session tracking, and asynchronous integration with data spaces and other systems. The project is built using Spring, Java 17, Oracle, Docker, and Kubernetes for container management and scalability.",
@@ -156,7 +157,9 @@
       "company": "company",
       "email": "email",
       "request": "describe your request",
-      "send": "send"
+      "send": "send",
+      "agree": "I agree to the",
+      "policy": "Privacy Policy"
     },
     "info": {
       "address": "Correspondence Address",
