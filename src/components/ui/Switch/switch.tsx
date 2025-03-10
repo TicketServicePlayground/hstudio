@@ -13,6 +13,7 @@ const Switch: React.FC<SwitchProps> = ({
 }) => {
   return (
     <button
+      type={'button'}
       onClick={() => !disabled && onClick(!value)}
       className={`relative w-12 h-6 flex items-center rounded-full transition ${
         value ? 'bg-gray-300' : 'bg-gray-100'

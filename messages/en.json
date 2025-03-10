@@ -20,7 +20,7 @@
       "s6": "Seamless Integration\nAcross All Systems"
     },
     "links": {
-      "about": "About us",
+      "notice": "Legal Notice",
       "terms": "Terms of Service",
       "blog": "Blog",
       "privacy": "Privacy Policy"
@@ -143,7 +143,7 @@
       "person": {
         "desc1": "A web and UI/UX design expert, bringing bold and engaging digital experiences to life for clients through creative and impactful solutions.",
         "desc2": "Kotlin Backend Developer with a strong background in blockchain and Web3 technologies, focusing on scalable solutions for the gaming industry.",
-        "desc3": "Full-Stack Developer with 6 years of experience in web applications. Skilled in Python, Flask, .NET, CargoWise, AWS, and specializing in e-commerce, blockchain, and secure, user-friendly solutions.",
+        "desc3": "Product & Strategy Lead building efficient and growth-oriented solutions.",
         "desc4": "Over 7 years of experience in fintech, specializing in high-load system development.",
         "desc5": "Programming since 1988, expert in DevOps since its emergence in 2009.",
         "desc6": "6 years of experience in frontend development with a focus on progressive web applications (PWA)."
@@ -159,7 +159,7 @@
       "request": "describe your request",
       "send": "send",
       "agree": "I agree to the",
-      "policy": "Privacy Policy"
+      "policy": "<orange>Privacy Policy</orange>"
     },
     "info": {
       "address": "Correspondence Address",

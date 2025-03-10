@@ -105,11 +105,15 @@ const ContactForm = () => {
         />
       </div>
 
-      <div className={'ml-[20px] mb-[40px] flex gap-5'}>
+      <div className={'ml-[20px] mb-[40px] flex items-center gap-5'}>
         <p className={'font-host font-semibold text-base'}>
-          {t('form.agree')} <a href="/privacy" className={'text-orange'}>{t('form.policy')}</a>
+          {t('form.agree')} {t.rich('form.policy', {
+          orange: (chunks) => <a href="/privacy" className={'text-orange'}>{chunks}</a>,
+        })}
         </p>
-        <Switch value={agree} onClick={(newValue) => setAgree(newValue)} />
+        <div>
+          <Switch value={agree} onClick={(newValue) => setAgree(newValue)} />
+        </div>
       </div>
 
       <Button disabled={state.submitting || !agree}>{t('form.send')}</Button>
@@ -139,7 +143,7 @@ const Input: FC<InputProps> = (props) => {
 
 const Button = ({
   children,
-  disabled,
+  disabled
 }: {
   children: ReactNode
   disabled: boolean

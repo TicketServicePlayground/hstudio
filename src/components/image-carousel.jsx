@@ -65,7 +65,7 @@ const ImageCarousel = () => {
       image: '/img/team/photo-4.png',
     },
     {
-      name: 'Albert',
+      name: 'Anna',
       experience:
         'desc3',
       image: '/img/team/photo-3.png',

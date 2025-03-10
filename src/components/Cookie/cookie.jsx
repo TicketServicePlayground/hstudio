@@ -61,7 +61,7 @@ export default function Cookie() {
           </Link>
           {t('title2')}
         </p>
-        <div className="flex flex-wrap gap-y-2 gap-x-2 font-host font-semibold md:gap-x-6">
+        <div className="flex flex-wrap gap-y-2 gap-x-2 font-host text-sm font-semibold md:gap-x-6">
           <button
             onClick={acceptAllCookies}
             className={

@@ -14,7 +14,7 @@ const CookieManage = () => {
     <>
       <button
         onClick={() => setModal(true)}
-        className="text-black hover:text-black/50 hover:underline text-[14px] font-host font-medium leading-none hover:no-underline"
+        className="block text-left text-black hover:text-black/50 text-[14px] font-host font-medium leading-none hover:no-underline"
       >
         {t('manage')}
       </button>

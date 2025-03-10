@@ -20,7 +20,7 @@
       "s6": "Nahtlose\nSystemintegration"
     },
     "links": {
-      "about": "Über uns",
+      "notice": "Impressum",
       "terms": "Nutzungsbedingungen",
       "blog": "Blog",
       "privacy": "Datenschutzrichtlinie"
@@ -143,7 +143,7 @@
       "person": {
         "desc1": "Alex ist unser kreativer Kopf, der mit seinem Gespür für UI/UX-Design digitale Erlebnisse erschafft, die nicht nur gut aussehen, sondern auch begeistern. Mit mutigen Ideen und durchdachten Konzepten macht er aus Komplexität intuitive Lösungen.",
         "desc2": "Als Kotlin-Backend-Experte entwickelt Artem hochskalierbare Lösungen für die Gaming-Industrie.\n Seine Erfahrung mit Blockchain und Web3-Technologien sorgt für nahtlose, sichere und zukunftssichere Systeme.",
-        "desc3": "Albert bringt 6 Jahre Erfahrung in der Entwicklung leistungsstarker Webanwendungen mit. \nOb Python, Flask oder AWS –\n er weiß, wie man sichere, benutzerfreundliche und skalierbare Lösungen\n für E-Commerce und Blockchain realisiert.",
+        "desc3": "Product- und Strategieleiter, der effiziente und wachstumsorientierte Lösungen entwickelt.",
         "desc4": "Alexander kennt sich aus, wenn es um Hochlastsysteme geht. Mit über 7 Jahren Erfahrung im Fintech-Bereich entwickelt er robuste, sichere und performante Lösungen für Finanzplattformen und Zahlungsabwicklungen.",
         "desc5": "George ist ein Veteran in der Welt der Technologie. Seit 1988 in der Softwareentwicklung tätig, war er von Anfang an in DevOps involviert.\n Heute sorgt er für reibungslose\nAutomatisierung und Skalierbarkeit.",
         "desc6": "Ian ist Frontend-Entwickler mit einem klaren Fokus: Progressive Web Apps (PWA). Mit 6 Jahren Erfahrung sorgt er für blitzschnelle, reaktionsfähige und nahtlose Nutzererlebnisse auf jedem Gerät."
@@ -158,8 +158,8 @@
       "email": "email",
       "request": "anfrage beschreiben",
       "send": "Senden",
-      "agree": "Ich stimme der",
-      "policy": "Datenschutzrichtlinie zu"
+      "agree": "Ich stimme",
+      "policy": "der <orange>Datenschutzrichtlinie zu</orange>"
     },
     "info": {
       "address": "Europäische Adresse",

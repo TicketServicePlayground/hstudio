@@ -130,21 +130,21 @@ const Footer = () => {
 
         {/* Links */}
         <Link
-            href="/about"
-            className="text-black hover:text-black/50 hover:underline text-[14px] font-host font-medium leading-none hover:no-underline"
+            href="/notice"
+            className="block text-left text-black hover:text-black/50 text-[14px] font-host font-medium leading-none hover:no-underline"
         >
-          {t('links.about')}
+          {t('links.notice')}
         </Link>
         <Link
           href="/terms"
-          className="text-black hover:text-black/50 hover:underline text-[14px] font-host font-medium leading-none hover:no-underline"
+          className="block text-left text-black hover:text-black/50 text-[14px] font-host font-medium leading-none hover:no-underline"
         >
           {t('links.terms')}
         </Link>
         <CookieManage />
         <Link
           href="/privacy"
-          className="text-black hover:text-black/50 hover:underline text-[14px] font-host font-medium leading-none hover:no-underline"
+          className="block text-left text-black hover:text-black/50 text-[14px] font-host font-medium leading-none hover:no-underline"
         >
           {t('links.privacy')}
         </Link>
