@@ -70,6 +70,22 @@ body {
   padding-bottom: 0.2em;
 }
 
+@media (max-width: 768px) {
+  .gradient-text {
+    background: linear-gradient(
+            140deg,
+            #dcff1e 35.5%,
+            #ff6e00 56.5%,
+            #e6d2ff 66.5%,
+            #96c8ff 91%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding-bottom: 0.2em;
+  }
+}
+
 @keyframes marquee {
   0% {
     transform: translateX(0);

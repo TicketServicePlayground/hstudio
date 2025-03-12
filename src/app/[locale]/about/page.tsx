@@ -113,7 +113,7 @@ const AnimatedText = ({ text, scroller }: AnimatedTextProps) => {
     <div
       ref={elRef}
       className={
-        'w-full max-w-[90vw] text-center gradient-text text-[58px] md:text-[96px] leading-[43.68px] md:leading-[79.68px] font-extrabold font-host'
+        'w-full max-w-[300px] md:max-w-[90vw] text-center gradient-text text-[58px] md:text-[96px] leading-[44.14px] md:leading-[79.68px] font-medium font-host'
       }
     >
       {t(text)}
