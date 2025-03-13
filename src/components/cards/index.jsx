@@ -4,8 +4,8 @@ import CardsMobile from '@/components/cards/mobile'
 import CardsDesktop from '@/components/cards/desktop'
 
 import { useIsMobile } from '@/hooks'
+import { cards } from '../../data'
 
-import { cards } from '@/data'
 
 const Cards = () => {
   const isMobile = useIsMobile()

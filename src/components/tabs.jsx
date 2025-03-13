@@ -36,8 +36,6 @@ const Tabs = ({
     }
 
     const activeItem = items.find((item) => item.active)
-    console.log('activeItem')
-    console.log(activeItem)
     if (!activeItem) {
       setActiveTab(null)
     } else {
@@ -96,6 +94,7 @@ const Tabs = ({
             setActiveTab(item.text)
           }}
           className={commonClasses}
+          autoFocus={isActive}
         >
           {item.text}
         </Link>
@@ -112,6 +111,7 @@ const Tabs = ({
           item.onClick?.()
         }}
         className={commonClasses}
+        autoFocus={isActive}
       >
         {item.text}
       </button>

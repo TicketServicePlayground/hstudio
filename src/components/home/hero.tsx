@@ -3,9 +3,12 @@ import React, { useState, useEffect } from 'react'
 import LogoMarquee from '@/components/logo-marquee'
 import { useIsMobile } from '@/hooks'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 
 const Hero = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const t = useTranslations('home')
+  const t1 = useTranslations('global')
 
   // useEffect(() => {
   //   const handleMouseMove = (e) => {
@@ -19,6 +22,7 @@ const Hero = () => {
   // }, [])
 
   useEffect(() => {
+    //@ts-ignore
     const handleMouseMove = (e) => {
       setMousePosition({
         x: e.clientX,
@@ -35,9 +39,11 @@ const Hero = () => {
       <Circle mousePosition={mousePosition} />
 
       <HeroHeading>
-        We build scalable
+        {t('title1')}
         <br />
-        backend systems
+        {t('title2')}
+        <br/>
+        {t('title3')}
       </HeroHeading>
 
       <div
@@ -51,11 +57,10 @@ const Hero = () => {
       `}
       >
         <HeroText>
-          designed to handle millions of messages per second, while ensuring
-          seamless real-time data processing for high-demand industries
+          {t('heroText')}
         </HeroText>
         <div className="hidden lg:block">
-          <HeroCTA>contact us</HeroCTA>
+          <HeroCTA>{t1('contactus')}</HeroCTA>
         </div>
       </div>
 
@@ -142,13 +147,8 @@ const Hero = () => {
   )
 }
 
-const HeroTag = ({
-  children,
-  className,
-  mousePosition,
-  parallaxIntensity = 0.03,
-  index = 0,
-}) => {
+//@ts-ignore
+const HeroTag = ({ children, className, mousePosition, parallaxIntensity = 0.03, index = 0 }) => {
   // Reduced multiplier for more subtle movement
   const x = ((mousePosition.x - window.innerWidth / 2) / window.innerWidth) * 30 // reduced from 100
   const y =
@@ -194,6 +194,7 @@ const HeroTag = ({
   )
 }
 
+//@ts-ignore
 const Circle = ({ mousePosition }) => {
   // Increase the movement multiplier for more noticeable effect
   const x = -mousePosition.x * 0.03
@@ -235,12 +236,14 @@ const Circle = ({ mousePosition }) => {
 }
 
 // Other components remain unchanged
+//@ts-ignore
 const HeroText = ({ children }) => (
   <p className="max-w-[166px] lg:max-w-[432px] font-host font-medium text-[16px] lg:text-[20px] leading-none">
     {children}
   </p>
 )
 
+//@ts-ignore
 const HeroCTA = ({ children }) => (
   <Link
     href="/contacts"
@@ -250,6 +253,7 @@ const HeroCTA = ({ children }) => (
   </Link>
 )
 
+//@ts-ignore
 const HeroHeading = ({ children }) => {
   const isMobile = useIsMobile()
 

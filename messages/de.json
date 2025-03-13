@@ -1,0 +1,188 @@
+{
+  "global": {
+    "nav": {
+      "home": "home",
+      "clients": "kunden",
+      "about": "über uns",
+      "contacts": "kontakte"
+    },
+    "contactus": "Kontaktiere uns"
+  },
+  "footer": {
+    "title1": "Ihre digitale Vision",
+    "title2": "zum Leben erwecken",
+    "services": {
+      "s1": "Entwicklung von \nBackend-Lösungen",
+      "s2": "Web- & Mobile-\nEntwicklung",
+      "s3": "Design und \nBenutzererfahrung",
+      "s4": "DevOps \nund Automatisierung",
+      "s5": "Entwicklung von\n Game- und Web3-Plattformen",
+      "s6": "Nahtlose\nSystemintegration"
+    },
+    "links": {
+      "notice": "Impressum",
+      "terms": "Nutzungsbedingungen",
+      "blog": "Blog",
+      "privacy": "Datenschutzrichtlinie"
+    }
+  },
+  "home": {
+    "title1": "Wir entwickeln",
+    "title2": "skalierbare Backend-",
+    "title3": "Systeme",
+    "heroText": "Entwickelt, um Millionen von Nachrichten pro Sekunde zu verarbeiten und dabei eine nahtlose Echtzeit-Datenverarbeitung für anspruchsvolle Branchen zu gewährleisten",
+    "cardsBtn": "Fallstudie ansehen",
+    "benefits": "Hauptvorteile",
+    "tech": "Technologie-Stack",
+    "cards": {
+      "liliac": {
+        "title": "Backend-\u200BLösungen\u200B entwickeln",
+        "heading": "Wir sind auf leistungsstarke und skalierbare Backend-Systeme spezialisiert, die für hohe Lasten und großen Datenverkehr optimiert sind",
+        "benefits1": "Kapazität: Verarbeitung von bis zu 5 Millionen Nachrichten pro Sekunde – reibungsloser Betrieb auch bei Spitzenlasten.",
+        "benefits2": "Big Data Verarbeitung: Verwalten Milliarden von Datensätzen effizient."
+      },
+      "orange": {
+        "title": "Web-und\u200B Mobile-App\u200B Entwicklung",
+        "heading": "Entwickelt für eine optimale Benutzererfahrung kombinieren moderne Web- und Mobile-Anwendungen intuitive Schnittstellen mit hoher Leistung",
+        "benefits1": "PWA & Responsives Design: App-ähnliche Leistung auf allen Geräten.",
+        "benefits2": "SSR mit Next.js: Schnellere Ladezeiten und besseres SEO.",
+        "benefits3": "API-first Entwicklung: Nahtlose Systemintegration.",
+        "benefits4": "Echtzeit-Funktionen: Live-Chats, Benachrichtigungen und Updates über WebSockets und GraphQL.",
+        "benefits5": "Big Data Verarbeitung: Effiziente Verwaltung von Milliarden von Datensätzen."
+      },
+      "card": {
+        "title": "Design\u00A0& Benutzererfahrung",
+        "heading": "Wir erstellen saubere, intuitive Designs, die die Benutzererfahrung verbessern. Vom Webdesign bis zu Apps konzentrieren wir uns auf Ästhetik, Funktionalität und Barrierefreiheit für eine nahtlose Nutzererfahrung"
+      },
+      "blue": {
+        "title": "DevOps\u00A0&\u200B Automatisierung",
+        "heading": "Vollständige DevOps-Dienste gewährleisten automatisierte Bereitstellung und optimierte Entwicklungsprozesse",
+        "benefits1": "Automatisierung & CI/CD: Optimierte Bereitstellung mit kontinuierlicher Integration und Lieferung.",
+        "benefits2": "Skalierbarkeit & Sicherheit: Effizientes Management von Hochlastsystemen mit robusten Sicherheitspraktiken entlang der Bereitstellungspipeline.",
+        "benefits3": "Zuverlässigkeit: Kontinuierliche Überwachung und schnelle Wiederherstellung zur Minimierung von Ausfallzeiten."
+      },
+      "lime": {
+        "title": "Game\u00A0&\u200B Web3\u200B Plattform\u200B Entwicklung",
+        "heading": "Lösungen für Blockchain-Plattformen und die Gaming-Industrie bieten Web3-Integration und Echtzeit-Transaktionen, um ein dezentrales Erlebnis zu gewährleisten",
+        "benefits1": "Web3 & Smart Contracts: Dezentrales Gaming mit sicheren, automatisierten Transaktionen.",
+        "benefits2": "Echtzeit-Transaktionen: Sofortige Blockchain-gestützte Zahlungen.",
+        "benefits3": "Skalierbarkeit & Sicherheit: Für Wachstum gebaut mit starker Sicherheit."
+      },
+      "cardDark": {
+        "title": "Nahtlose\u200B Integration in\u200B alle Systeme",
+        "heading": "Sicherstellung einer effizienten Integration über alle Plattformen, Dienste und Technologiestacks hinweg. Vom Legacy-System bis zu modernen APIs, Cloud-Diensten und Drittanbieter-Tools decken wir alle Ihre Geschäftsanforderungen ab"
+      }
+    },
+    "ray": {
+      "desktop": {
+        "row1": "Wir sind <blue>flexibel und arbeiten</blue> mit",
+        "row2": "starken Partnern zusammen, um Ihre",
+        "row3": "<lime>Vision zum Leben</lime> zu erwecken.",
+        "row4": "Wir haben unsere Spezialgebiete,",
+        "row5": "sind aber stets offen für <orange>neue</orange>",
+        "row6": "<orange>Herausforderungen</orange> und entwickeln",
+        "row7": "maßgeschneiderte Lösungen für Ihre",
+        "row8": "<liliac>individuellen Projekte</liliac>"
+      },
+      "mobile": {
+        "row1": "Wir sind <blue>flexibel und</blue>",
+        "row2": "<blue>arbeiten</blue> mit starken",
+        "row3": "Partnern zusammen, um",
+        "row4": "Ihre <lime>Vision zum Leben</lime> zu",
+        "row5": "erwecken.",
+        "row6": "Wir haben unsere",
+        "row7": "Spezialgebiete, sind",
+        "row8": "aber stets offen für <orange>neue</orange>",
+        "row9": "<orange>Herausforderungen</orange> und",
+        "row10": "entwickeln",
+        "row11": "maßgeschneiderte",
+        "row12": "Lösungen für Ihre",
+        "row13": "<liliac>individuellen Projekte</liliac>"
+      }
+    }
+  },
+  "clients": {
+    "title1": "Einblick in unsere",
+    "title2": "Projekte",
+    "categories": {
+      "all": "Alle",
+      "backend": "Backend-Lösungen",
+      "web": "Web- & Mobile-App",
+      "design": "Design & Benutzererfahrung",
+      "devops": "DevOps & Automatisierung",
+      "game": "Spiele & Web3",
+      "seamless": "Nahtlose Integration"
+    },
+    "card": {
+      "tech": "Technologie-Stack",
+      "visit": "Zur Website"
+    },
+    "cards": {
+      "PlayDeck": "PlayDeck ist ein Toolkit, das Spieleentwicklern hilft, die Funktionen von Telegram zu integrieren und von seinen über 700 Millionen Nutzern zu profitieren. Es ermöglicht In-Game-Interaktionen, automatisierte Community-Verwaltung und nahtloses soziales Teilen. Entwickelt für Skalierbarkeit, gewährleistet es hohe Leistung und Flexibilität für wachsende Gaming-Ökosysteme.",
+      "EventStripe": "Das Unternehmen hat die SaaS-Plattform EventStripe für den Ticketverkauf entwickelt, die Spitzenlasten von bis zu 10.000 gleichzeitigen Sitzungen bewältigt. Das System basiert auf modernen Technologien wie Next.js, Java 20, Spring, Docker und Kubernetes und nutzt Monitoring-Tools wie Jenkins, ELK und Grafana. Der Fokus lag auf Stabilität unter hoher Last und flexibler Skalierbarkeit.",
+      "VTB": "Für die VTB Bank haben wir ein Echtzeit-Datenstreaming-System entwickelt, das Millionen von Nachrichten pro Sekunde verarbeiten kann. Das Projekt basiert auf einem modernen Technologie-Stack mit Java 17, Spring, Kafka und PostgreSQL sowie Containerisierung und Orchestrierung durch Docker und Kubernetes. Die Lösung ermöglicht die Echtzeitverarbeitung großer Datenmengen und gewährleistet eine hohe Leistungsfähigkeit für Finanzanwendungen.",
+      "Sber": "Für Sber wurde eine Microservice-Architektur mit einem biometrischen Authentifizierungssystem entwickelt.\nDie Lösung umfasst Funktionen wie die Erstellung von Dokumenten, Sitzungsverfolgung sowie die asynchrone Integration mit anderen Systemen.\nDas Projekt basiert auf Spring, Java 17, Oracle, Docker und Kubernetes und gewährleistet eine hohe Skalierbarkeit.",
+      "Societe": "Für die Societe Generale Bank wurde ein personalisiertes Werbesystem für Kreditprodukte entwickelt.\nDas System umfasst einen Banner-Service, eine Kreditpipeline sowie eine API zur Integration externer Systeme.\nDie Haupttechnologien sind Java 11, Spring, Oracle, Docker, Kubernetes und Jenkins für CI/CD-Prozesse \nZiel des Projekts ist es, die Kundenbindung zu stärken und Kreditprozesse zu automatisieren.",
+      "Architectural": "UX/UI-Webdesign für ein Architekturbüro.\nMIR transformiert Räume weltweit und prägt den kulturellen Code, um eine neue Welt zu erschaffen.",
+      "KClub": "Für ein Unternehmen aus dem Freizeit- und Tourismussektor haben wir eine Website mit Buchungsfunktionen entwickelt. Das Design wurde vom Kunden bereitgestellt. Das Backend haben wir mit Java für die Geschäftslogik entwickelt, während das Frontend mit Next.js realisiert wurde. Unser Fokus lag auf einer schnellen und benutzerfreundlichen Nutzererfahrung mit herausragender Performance.",
+      "Matahari": "Ein Projekt für einen exklusiven Wohnkomplex mit interaktiven Karten und integrierten Multimedia-Inhalten.\nDas Design wurde vom Kunden bereitgestellt. Wir setzten Kotlin und Rust für die Zuverlässigkeit und Sicherheit des Backends ein, während die dynamische Benutzeroberfläche mit React und Vue.js entwickelt wurde.",
+      "Mirage": "Ein Projekt zur Erstellung einzigartiger, dynamischer Websites, die kreatives Design mit modernster Technologie verbinden.\nDas Design wurde vom Kunden bereitgestellt. Wir verwendeten Java, Kotlin und Go für das Backend sowie React für das Frontend, um eine hohe Benutzerinteraktion und eine schnelle Datenverarbeitung zu gewährleisten.",
+      "Frigate": "Entwicklung einer E-Commerce-Website für einen Surfbretthersteller mit Fokus auf schnelle Ladezeiten und eine benutzerfreundliche Oberfläche.\nDas Design wurde vom Kunden bereitgestellt. Das Backend haben wir mit Go und Rust entwickelt, während das Frontend mit Vue und TypeScript realisiert wurde. Zudem haben wir Lösungen für Skalierbarkeit und Prozessautomatisierung implementiert.",
+      "Ntainers": "Ein australisches Start-up-Projekt zur Verwaltung und Optimierung der Containerlogistik. Das Design wurde vom Kunden bereitgestellt. Das Backend haben wir mit Go entwickelt, um hohe Leistung und Skalierbarkeit zu gewährleisten.\nDas Frontend wurde mit React realisiert und bietet eine nahtlose Benutzererfahrung sowie eine effiziente Verwaltung und Verfolgung der Container."
+    }
+  },
+  "about": {
+    "lyrics": {
+      "l1": "Unser Fokus: Skalierbare, sichere und innovative Lösungen",
+      "l2": "Über Web-, Mobile- und Blockchain-Plattformen hinweg",
+      "l3": "Dank unserer Expertise in nahtloser Integration, DevOps-Automatisierung und UX/UI-Design",
+      "l4": "verwandeln wir komplexe Herausforderungen in effiziente digitale Produkte"
+    },
+    "team": {
+      "title": "Unser Team",
+      "person": {
+        "desc1": "Alex ist unser kreativer Kopf, der mit seinem Gespür für UI/UX-Design digitale Erlebnisse erschafft, die nicht nur gut aussehen, sondern auch begeistern. Mit mutigen Ideen und durchdachten Konzepten macht er aus Komplexität intuitive Lösungen.",
+        "desc2": "Als Kotlin-Backend-Experte entwickelt Artem hochskalierbare Lösungen für die Gaming-Industrie.\n Seine Erfahrung mit Blockchain und Web3-Technologien sorgt für nahtlose, sichere und zukunftssichere Systeme.",
+        "desc3": "Product- und Strategieleiter, der effiziente und wachstumsorientierte Lösungen entwickelt.",
+        "desc4": "Alexander kennt sich aus, wenn es um Hochlastsysteme geht. Mit über 7 Jahren Erfahrung im Fintech-Bereich entwickelt er robuste, sichere und performante Lösungen für Finanzplattformen und Zahlungsabwicklungen.",
+        "desc5": "George ist ein Veteran in der Welt der Technologie. Seit 1988 in der Softwareentwicklung tätig, war er von Anfang an in DevOps involviert.\n Heute sorgt er für reibungslose\nAutomatisierung und Skalierbarkeit.",
+        "desc6": "Ian ist Frontend-Entwickler mit einem klaren Fokus: Progressive Web Apps (PWA). Mit 6 Jahren Erfahrung sorgt er für blitzschnelle, reaktionsfähige und nahtlose Nutzererlebnisse auf jedem Gerät."
+      }
+    }
+  },
+  "contacts": {
+    "title": "Lassen Sie uns über Ihr Projekt <orange>sprechen</orange>!",
+    "form": {
+      "name": "name",
+      "company": "firma",
+      "email": "email",
+      "request": "anfrage beschreiben",
+      "send": "Senden",
+      "agree": "Ich stimme",
+      "policy": "der <orange>Datenschutzrichtlinie zu</orange>"
+    },
+    "info": {
+      "address": "Europäische Adresse",
+      "callus": "Anrufen",
+      "hello": "Sag Hallo",
+      "schedule": "Call buchen"
+    }
+  },
+  "cookie": {
+    "title1": "Durch die weitere Nutzung dieser Website stimmen Sie der Verarbeitung von",
+    "title2": " zu.",
+    "all": "Alle akzeptieren",
+    "reject": "Ablehnen",
+    "customize": "Einstellungen",
+    "selection": "Auswahl erlauben",
+    "more": "Mehr erfahren in der",
+    "policy": "Datenschutzerklärung",
+    "fully1": "Wir verwenden",
+    "fully2": ", um Inhalte und Anzeigen zu personalisieren, Funktionen für soziale Medien bereitzustellen und unseren Datenverkehr zu analysieren. Außerdem geben wir Informationen über Ihre Nutzung unserer Website an unsere Partner für soziale Medien, Werbung und Analysen weiter, die diese mit anderen Informationen kombinieren können, die Sie ihnen bereitgestellt haben oder die sie im Rahmen Ihrer Nutzung ihrer Dienste gesammelt haben.",
+    "necessary": "Notwendig",
+    "preferences": "Präferenzen",
+    "statistics": "Statistiken",
+    "marketing": "Marketing",
+    "manage": "Cookies verwalten"
+  }
+}

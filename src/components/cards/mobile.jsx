@@ -1,220 +1,170 @@
 'use client'
 
-import React from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { useMediaQuery } from '@/hooks'
-import { cards } from '@/data'
+import React, { useRef, useState, useEffect } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { Label, CTA, CardNumber } from '@/components/home/solution-card'
+import { useTranslations } from 'next-intl'
 
-import { Label, CTA, Title, CardNumber } from '@/components/home/solution-card'
+gsap.registerPlugin(ScrollTrigger)
 
-const Cards = ({ cards }) => {
-  const containerRef = React.useRef(null)
+ScrollTrigger.config({
+  smoothTouch: true,
+})
 
-  const metricsFunc = () => {
-    let sections = []
-    let totalHeight = 0
-    const viewportHeight = window.innerHeight
+function Cards({ cards = [] }) {
+  const containerRef = useRef(null)
+  const [heights, setHeights] = useState([])
+  const cardsRef = useRef([])
 
-    const cardMetrics = cards.map((card) => {
-      const contentScrollHeight = Math.max(
-          0,
-          card.innerBlockHeight + viewportHeight
+  useEffect(() => {
+    if (!cards.length) return
+
+    const newHeights = cardsRef.current.map((el) => {
+      if (!el) return 0
+      return el.offsetHeight
+    })
+    setHeights(newHeights)
+  }, [cards])
+
+  useEffect(() => {
+    if (!heights.length) return
+
+    ScrollTrigger.getAll().forEach((t) => t.kill())
+
+    const totalHeight = heights.reduce((sum, h) => sum + h, 0)
+
+    if (containerRef.current) {
+      containerRef.current.style.height = `${totalHeight}px`
+    }
+
+    let currentOffset = 0
+
+    gsap.set(cardsRef.current, { willChange: 'transform' })
+
+    cardsRef.current.forEach((cardEl, index) => {
+      if (!cardEl) return
+
+      const cardHeight = heights[index]
+
+      const startValue = currentOffset - window.innerHeight
+      const endValue = currentOffset + cardHeight - window.innerHeight
+
+      const vh = window.innerHeight
+      const fromY = vh + 250
+      const toY = -(cardHeight - vh)
+
+      gsap.fromTo(
+        cardEl,
+        { y: fromY, force3D: true },
+        {
+          y: toY,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: `top+=${startValue}px top`,
+            end: `top+=${endValue}px top`,
+            scrub: true,
+            toggleActions: 'restart pause resume pause',
+          },
+        }
       )
 
-      return {
-        card,
-        contentScrollHeight,
-        scrollHeight: contentScrollHeight + viewportHeight  ,
-      }
+      currentOffset += cardHeight
     })
-
-    totalHeight = cardMetrics.reduce((sum, m) => sum + m.scrollHeight , 0)
-
-    let accumulatedHeight = 0
-    cardMetrics.forEach((metric, index) => {
-      const sectionStart = accumulatedHeight / totalHeight
-      const contentScrollEnd =
-          (accumulatedHeight + metric.contentScrollHeight) / totalHeight
-
-      accumulatedHeight += metric.scrollHeight
-      const sectionEnd = accumulatedHeight / totalHeight
-
-      sections.push({
-        start: sectionStart,
-        contentScrollEnd,
-        end: sectionEnd,
-        contentScrollHeight: metric.contentScrollHeight,
-      })
-    })
-    console.log("sections: ",sections)
-    return { sections, totalHeight }
-  }
-  const metrics = metricsFunc()
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start start', 'end end'],
-  })
+  }, [heights])
 
   return (
-      <div
-          ref={containerRef}
-          className="relative -mt-[100vh]"
-          style={{
-            height: `${metrics.totalHeight}px`,
-          }}
-      >
-        <div className="sticky top-0 h-screen overflow-hidden rounded-b-[20px]">
-          {cards.map((card, index) => (
-              <MobileCard
-                  key={`${index}.${card.bg}`}
-                  card={card}
-                  scrollYProgress={scrollYProgress}
-                  metrics={metrics.sections[index]}
-                  index={index}
-                  length={cards.length}
-              />
-          ))}
-        </div>
-      </div>
-  )
-}
-
-const MobileCard = ({ card, scrollYProgress, metrics, index, length }) => {
-  const { start, contentScrollEnd, end, contentScrollHeight } = metrics
-
-  const viewportHeight = window.innerHeight
-
-  const stop = 13;
-
-  const isLast = index === length - 1
-
-  // Карточка будет двигаться с прокруткой страницы
-  const y = useTransform(
-    scrollYProgress,
-      [start  * 0.8, end  * 0.8],
-      ['100vh', !isLast ? `-${stop}vh` : `0vh`]
-  ) //index === 0 ? '0vh' :
-
-  // Прокрутка контента внутри карточки
-  // const contentY = useTransform(
-  //     scrollYProgress,
-  //     [start, contentScrollEnd],
-  //     [570, `-${contentScrollHeight - 570 - window.innerHeight}px`]
-  // )
-
-  const cardY = useTransform(
-      scrollYProgress,
-      [start, contentScrollEnd],
-      [570, -contentScrollHeight - window.innerHeight -570 ]
-  )
-
-  const isDark = card.bg === 'cardDark'
-
-  return (
-      <motion.div
-          className={`bg-${card.bg} absolute inset-0 rounded-t-[20px] rounded-b-[20px]`}
-          style={{ y: y, height: card.blockHeightMobile, willChange: 'transform' }}
-      >
-        <motion.img
-            src={`/img/mobile-covers/${card.pic}`}
-            className="absolute top-0 w-full"
-            alt={card.title}
-        />
-        <CardNumber number={index + 1} />
-        <motion.div
-            className="w-full h-max"
-            // style={{ y: cardY }}
-        >
-          <div
+    <div ref={containerRef} className="relative w-full -mt-[250px]">
+      <div className="sticky top-0 h-screen overflow-hidden">
+        {cards.map((card, index) => {
+          const isDark = card.bg === 'cardDark'
+          return (
+            <div
+              key={`${card.title}-${index}`}
+              ref={(el) => (cardsRef.current[index] = el)}
               className={`
-            flex flex-col
-            card
-            _blur-card
-            _backdrop-blur-[150px]
-            w-full absolute inset-0
-            ${isDark ? 'card--dark' : ''}
-            flex flex-col
-            md:absolute md:top-0 md:right-0
-            rounded-[20px]
-            md:rounded-[32px]
-            w-full
-            md:w-[494px]
-            p-[25px]
-            md:p-[46px]
-            gap-y-[40px]
-            pb-[120px]
-            md:pb-[46px]
-            ${isDark ? 'bg-[#FFFFFF05] text-white' : 'bg-[#FFFFFF20] text-black'}
-          `}
+                absolute left-0 right-0 top-0 rounded-[20px]
+                bg-${card.bg} 
+                ${isDark ? 'text-white' : 'text-black'}
+              `}
               style={{
-                height: card.innerBlockHeight,
-                top: `calc(100vh - ${card.innerBlockHeight}px + 20vh)`,
-                background: isDark
-                    ? 'hsla(0, 0%, 100%, .05)'
-                    : 'hsla(0, 0%, 100%, .2)',
+                overflow: 'hidden',
               }}
-          >
-            <InnerCard card={card.card} title={card.title} isDark={isDark} />
-          </div>
-        </motion.div>
-      </motion.div>
+            >
+              <img
+                src={`/img/mobile-covers/${card.pic}`}
+                alt={card.title}
+                className={`absolute ${index === cards.length - 1 ? 'top-20' : 'top-0'} w-full z-10`}
+              />
+              <CardNumber number={index + 1} />
+              <InnerCard card={card} title={card.title} isDark={isDark} />
+            </div>
+          )
+        })}
+      </div>
+    </div>
   )
 }
 
 export const InnerCard = ({ card, title, isDark }) => {
+  const t = useTranslations('home.cards')
+  const t1 = useTranslations('home')
   return (
-      <div className="flex flex-col gap-y-[40px] relative h-auto overflow-hidden">
-        <div
-            className={`
-          absolute
-          font-medium not-italic leading-none font-host 
-          ${isDark ? 'text-white' : 'text-black'} 
-          text-[42px]
-          flex flex-col justify-end
-          h-auto
-          top-[-237px]
-        `}
-        >
-          {title}
-        </div>
-        <span className="font-host font-[500] text-[24px] leading-none">
-        {card.heading}
-        </span>
-        {card.benefits && (
+    <div className={`relative bg-${card.card.bg} w-full h-auto pt-[500px] z-20`}>
+      <div
+        className={`font-medium not-italic leading-none font-host w-5/6 ${isDark ? 'text-white' : 'text-black'} text-[42px] h-auto p-[25px]`}
+      >
+        {t(title)}
+      </div>
+      <div
+        className={`flex flex-col card _blur-card _backdrop-blur-[150px] rounded-[20px] w-full p-[25px] gap-y-[40px] pb-[120px] h-auto ${isDark ? 'card--dark' : ''} ${isDark ? 'bg-[#FFFFFF05] text-white' : 'bg-[#FFFFFF20] text-black'}`}
+        style={{
+          background: isDark
+            ? 'hsla(0, 0%, 100%, .05)'
+            : 'hsla(0, 0%, 100%, .2)',
+        }}
+      >
+        <div className={'flex flex-col gap-y-[40px] relative h-auto'}>
+          <span className="font-host font-[500] text-[24px] leading-none">
+            {t(card.card.heading)}
+          </span>
+          {card.card.benefits && (
             <div className="flex flex-col gap-y-[12px]">
-              <Label>Key Benefits</Label>
+              <Label>{t1('benefits')}</Label>
               <div className="flex flex-col gap-y-[8px]">
-                {card.benefits.map((benefitItem) => (
-                    <span
-                        className="font-host text-[14px] font-[500] leading-none"
-                        key={benefitItem}
-                    >
-                {benefitItem}
-              </span>
+                {card.card.benefits.map((benefitItem) => (
+                  <span
+                    className="font-host text-[14px] font-[500] leading-none"
+                    key={benefitItem}
+                  >
+                    {t(benefitItem)}
+                  </span>
                 ))}
               </div>
             </div>
-        )}
-        {card.stack && (
+          )}
+          {card.card.stack && (
             <div className="flex flex-col gap-y-[16px]">
-              <Label>Technology Stack</Label>
+              <Label>{t1('tech')}</Label>
               <div className="flex flex-wrap gap-[4px]">
-                {card.stack.map((stackItem) => (
-                    <span
-                        className="flex items-center justify-center h-[24px] font-space text-[12px] font-[500] leading-none bg-white rounded-[9px] px-[12px]"
-                        key={stackItem}
-                    >
-                {stackItem}
-              </span>
+                {card.card.stack.map((stackItem) => (
+                  <span
+                    className="flex items-center justify-center h-[24px] font-space text-[12px] font-[500] leading-none bg-white rounded-[9px] px-[12px]"
+                    key={stackItem}
+                  >
+                    {stackItem}
+                  </span>
                 ))}
               </div>
             </div>
-        )}
-        <div className="block md:hidden">
-          <CTA />
+          )}
+          <div className="block md:hidden">
+            <CTA category={card.category} />
+          </div>
         </div>
       </div>
+    </div>
   )
 }
 

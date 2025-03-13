@@ -1,0 +1,188 @@
+{
+  "global": {
+    "nav": {
+      "home": "home",
+      "clients": "clients",
+      "about": "about",
+      "contacts": "contacts"
+    },
+    "contactus": "contact us"
+  },
+  "footer": {
+    "title1": "Bringing your digital",
+    "title2": "vision to life",
+    "services": {
+      "s1": "Backend Solutions\nDevelopment",
+      "s2": "Web & Mobile Application\nDevelopment",
+      "s3": "Design & User\nExperience",
+      "s4": "DevOps\n& Automation",
+      "s5": "Game & Web3\nPlatform Development",
+      "s6": "Seamless Integration\nAcross All Systems"
+    },
+    "links": {
+      "notice": "Legal Notice",
+      "terms": "Terms of Service",
+      "blog": "Blog",
+      "privacy": "Privacy Policy"
+    }
+  },
+  "home": {
+    "title1": "We build scalable",
+    "title2": "backend systems",
+    "title3": " ",
+    "heroText": "designed to handle millions of messages per second, while ensuring seamless real-time data processing for high-demand industries",
+    "cardsBtn": "explore the case study",
+    "benefits": "Key Benefits",
+    "tech": "Technology Stack",
+    "cards": {
+      "liliac": {
+        "title": "Backend\u200B Solutions\u200B Development",
+        "heading": "We specialize in building high-performance, scalable backend systems designed to handle heavy workloads and large-scale traffic",
+        "benefits1": "Capacity: Processes up to 5 million messages per second, ensuring smooth operation during peak loads.",
+        "benefits2": "Big Data Handling: Efficiently manages billions of records."
+      },
+      "orange": {
+        "title": "Web\u00A0&\u00A0Mobile\u200B Application\u200B Development",
+        "heading": "Designed for optimal user experience, modern web and mobile applications combine intuitive interfaces with high performance",
+        "benefits1": "PWA & Responsive Design: App-like performance on all devices.",
+        "benefits2": "SSR with Next.js: Faster loads and better SEO.",
+        "benefits3": "API-first Development: Seamless system integration.",
+        "benefits4": "Real-time Features: Live chats, notifications, and updates via WebSockets and GraphQL.",
+        "benefits5": "Big Data Handling: Efficiently manages billions of records."
+      },
+      "card": {
+        "title": "Design\u00A0&\u00A0User\u200B Experience",
+        "heading": "We create clean, intuitive designs that enhance user experience. From websites to apps, we focus on aesthetics, functionality, and accessibility for a seamless user journey"
+      },
+      "blue": {
+        "title": "DevOps\u200B &\u00A0Automation",
+        "heading": "Full-cycle DevOps services ensure automated deployment and streamlined development processes",
+        "benefits1": "Automation & CI/CD: Streamlined deployment with continuous integration and delivery.",
+        "benefits2": "Scalability & Security: Efficiently managing high-load systems with robust security practices throughout the deployment pipeline.",
+        "benefits3": "Reliability: Continuous monitoring and quick recovery to minimize downtime."
+      },
+      "lime": {
+        "title": "Game\u00A0&\u00A0Web3\u200B Platform\u200B Development",
+        "heading": "Solutions for blockchain platforms and the gaming industry provide Web3 integration and real-time transactions, ensuring a decentralized experience",
+        "benefits1": "Web3 & Smart Contracts: Decentralized gaming with secure, automated transactions.",
+        "benefits2": "Real-time Transactions: Instant blockchain-powered payments.",
+        "benefits3": "Scalability & Security: Built for growth with strong security."
+      },
+      "cardDark": {
+        "title": "Seamless\u200B Integration\u200B Across\u200B All\u00A0Systems",
+        "heading": "Ensuring efficient integration across any platform, service, or technology stack. From legacy systems to modern APIs, cloud services, and third-party tools, we cover all your business needs"
+      }
+    },
+    "ray": {
+      "desktop": {
+        "row1": "We are <blue>flexible and collaborate</blue> with trusted",
+        "row2": "partners to bring your <lime>vision to life</lime>. While we",
+        "row3": "specialize in key areas, we’re open to exploring",
+        "row4": "<orange>new challenges</orange> and delivering tailored solutions",
+        "row5": "to meet your <liliac>unique project needs</liliac>",
+        "row6": " ",
+        "row7": " ",
+        "row8": " "
+      },
+      "mobile": {
+        "row1": "We are <blue>flexible and</blue>",
+        "row2": "<blue>collaborate</blue> with trusted",
+        "row3": "partners to bring your",
+        "row4": "<lime>vision to life</lime>. While we",
+        "row5": "specialize in key areas,",
+        "row6": "we’re open to exploring",
+        "row7": "<orange>new challenges</orange> and",
+        "row8": "delivering tailored",
+        "row9": "solutions to meet your",
+        "row10": "<liliac>unique project needs</liliac>",
+        "row11": " ",
+        "row12": " ",
+        "row13": " "
+      }
+    }
+  },
+  "clients": {
+    "title1": "Examples of our",
+    "title2": "expertise in action",
+    "categories": {
+      "all": "All",
+      "backend": "Backend Solutions",
+      "web": "Web & Mobile Application",
+      "design": "Design & User Experience",
+      "devops": "DevOps & Automation",
+      "game": "Game & Web3",
+      "seamless": "Seamless Integration"
+    },
+    "card": {
+      "tech": "Technology Stack",
+      "visit": "visit the website"
+    },
+    "cards": {
+      "PlayDeck": "PlayDeck is a toolkit that helps game developers integrate Telegram’s features, leveraging its 700+ million users. It enables in-game interactions, automated community management, and seamless social sharing. Built for scalability, it ensures high performance and flexibility for growing gaming ecosystems.",
+      "EventStripe": "The company developed a SaaS platform, EventStripe, designed for ticket sales at events, supporting high burst loads of up to 10,000 sessions. The project leverages modern technologies such as Next.js, Java 20, Spring, Docker, Kubernetes, and monitoring tools like Jenkins, ELK, and Grafana. The primary focus was to ensure system stability under high loads and provide scalability flexibility.",
+      "VTB": "A real-time data streaming system was developed for VTB Bank, capable of processing millions of messages per second. The project utilizes a tech stack based on Java 17, Spring, Kafka, PostgreSQL, as well as containerization and orchestration through Docker and Kubernetes. The solution enables real-time processing of vast amounts of data and ensures high performance for financial sector tasks.",
+      "Sber": "A microservice architecture, including a biometric authorization system, was designed and implemented for Sber. The solution covers key client functions such as document generation, session tracking, and asynchronous integration with data spaces and other systems. The project is built using Spring, Java 17, Oracle, Docker, and Kubernetes for container management and scalability.",
+      "Societe": "A personalized advertising system for credit products was developed for Societe Generale Bank. The system includes a banner service, credit conveyor, and API for integration with external systems. The core technologies used include Java 11, Spring, Oracle, Docker, Kubernetes, and Jenkins for CI/CD processes. The project aims to improve customer engagement and automate credit operations.",
+      "Architectural": "UX/UI website design for an architectural bureau. MIR globally transforms space and influences the cultural code, forming a new world.",
+      "KClub": "A company in the leisure and tourism sector, for which we created a website with booking functionalities. The design was provided by the client, and we used Java for the backend logic and Next.js for the frontend, allowing us to create a fast and user-friendly service with excellent performance.",
+      "Matahari": "A project for an upscale residential complex with integrated interactive maps and multimedia content. The design was provided by the client, and we used Kotlin and Rust for backend reliability and security, while the dynamic interface was created with React and Vue.js.",
+      "Mirage": "A project for creating unique dynamic websites that combine creative design with cutting-edge technology. The design was provided by the client, and we used Java/Kotlin and Go for the backend, and React for the frontend, ensuring a high level of user interaction and fast data processing.",
+      "Frigate": "Development of an e-commerce site for a surfboard manufacturer, focusing on fast page load times and an intuitive user interface. The design was provided by the client, and the backend was built with Go and Rust, while the frontend was developed with Vue and TypeScript. We also implemented solutions for scalability and process automation.",
+      "Ntainers": "An Australia StartUp project designed to manage and streamline container logistics. The design was provided by the client, and the backend was built with Go for performance and scalability. The frontend was developed using React for a seamless user experience, ensuring efficient management and tracking of containers."
+    }
+  },
+  "about": {
+    "lyrics": {
+      "l1": "We focus on delivering scalable, secure, and innovative solutions",
+      "l2": "across web, mobile, and blockchain platforms",
+      "l3": "With expertise in seamless integration, DevOps automation, and UX/UI design",
+      "l4": "we transform complex challenges into efficient digital products"
+    },
+    "team": {
+      "title": "Meet the team",
+      "person": {
+        "desc1": "A web and UI/UX design expert, bringing bold and engaging digital experiences to life for clients through creative and impactful solutions.",
+        "desc2": "Kotlin Backend Developer with a strong background in blockchain and Web3 technologies, focusing on scalable solutions for the gaming industry.",
+        "desc3": "Product & Strategy Lead building efficient and growth-oriented solutions.",
+        "desc4": "Over 7 years of experience in fintech, specializing in high-load system development.",
+        "desc5": "Programming since 1988, expert in DevOps since its emergence in 2009.",
+        "desc6": "6 years of experience in frontend development with a focus on progressive web applications (PWA)."
+      }
+    }
+  },
+  "contacts": {
+    "title": "Let's <orange>talk</orange> about your project!",
+    "form": {
+      "name": "name",
+      "company": "company",
+      "email": "email",
+      "request": "describe your request",
+      "send": "send",
+      "agree": "I agree to the",
+      "policy": "<orange>Privacy Policy</orange>"
+    },
+    "info": {
+      "address": "Correspondence Address",
+      "callus": "Call us",
+      "hello": "Say Hello",
+      "schedule": "schedule a call"
+    }
+  },
+  "cookie": {
+    "title1": "By continuing to use this site, you consent to the processing of",
+    "title2": ".",
+    "all": "Accept all",
+    "reject": "Reject",
+    "customize": "Customize",
+    "selection": "Allow selection",
+    "more": "Learn more in the",
+    "policy": "Privacy Policy",
+    "fully1": "We use",
+    "fully2": " to personalise content and ads, to provide social media features and to analyse our traffic. We also share information about your use of our site with our social media, advertising and analytics partners who may combine it with other information that you've provided to them or that they've collected from your use of their services.",
+    "necessary": "Necessary",
+    "preferences": "Preferences",
+    "statistics": "Statistics",
+    "marketing": "Marketing",
+    "manage": "Manage Cookie"
+  }
+}

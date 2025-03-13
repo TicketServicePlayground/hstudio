@@ -1,18 +1,22 @@
 import React from 'react'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
+import CookieManage from '@/components/Cookie/cookie-manage'
 
 const Footer = () => {
   const services = [
-    { title: 'Backend Solutions\nDevelopment', className: 'bg-liliac' },
-    { title: 'Web & Mobile Application\nDevelopment', className: 'bg-orange' },
-    { title: 'Design & User\nExperience', className: 'bg-card' },
-    { title: 'DevOps\n& Automation', className: 'bg-blue' },
-    { title: 'Game & Web3\nPlatform Development', className: 'bg-lime' },
+    { title: 'services.s1', className: 'bg-liliac' },
+    { title: 'services.s2', className: 'bg-orange' },
+    { title: 'services.s3', className: 'bg-card' },
+    { title: 'services.s4', className: 'bg-blue' },
+    { title: 'services.s5', className: 'bg-lime' },
     {
-      title: 'Seamless Integration\nAcross All Systems',
+      title: 'services.s6',
       className: 'bg-cardDark text-white',
     },
   ]
+
+  const t = useTranslations('footer')
 
   return (
     <footer
@@ -63,9 +67,9 @@ const Footer = () => {
       </div>
       <div className="mb-[48px] md:mb-[60px] flex w-full justify-between">
         <h2 className="leading-none font-host text-[50px] md:text-[96px] font-medium">
-          Bringing your digital
+          {t('title1')}
           <br />
-          vision to life
+          {t('title2')}
         </h2>
 
         {/* Social Icons */}
@@ -107,7 +111,7 @@ const Footer = () => {
             key={index}
             className={`px-[16px] py-[10px] rounded-[12px] rounded-tl-[0px] text-[16px] font-medium font-space leading-none whitespace-pre-wrap ${service.className} w-max`}
           >
-            {service.title}
+            {t(service.title)}
           </span>
         ))}
       </div>
@@ -126,29 +130,23 @@ const Footer = () => {
 
         {/* Links */}
         <Link
-            href="/about"
-            className="text-black hover:text-black/50 hover:underline text-[14px] font-host font-medium leading-none hover:no-underline"
+            href="/notice"
+            className="block text-left text-black hover:text-black/50 text-[14px] font-host font-medium leading-none hover:no-underline"
         >
-          About us
+          {t('links.notice')}
         </Link>
         <Link
           href="/terms"
-          className="text-black hover:text-black/50 hover:underline text-[14px] font-host font-medium leading-none hover:no-underline"
+          className="block text-left text-black hover:text-black/50 text-[14px] font-host font-medium leading-none hover:no-underline"
         >
-          Terms of Service
+          {t('links.terms')}
         </Link>
-        <Link
-          href="/#"
-          className="text-black hover:text-black/50 hover:underline text-[14px] font-host font-medium leading-none hover:no-underline"
-        >
-          Blog
-        </Link>
-
+        <CookieManage />
         <Link
           href="/privacy"
-          className="text-black hover:text-black/50 hover:underline text-[14px] font-host font-medium leading-none hover:no-underline"
+          className="block text-left text-black hover:text-black/50 text-[14px] font-host font-medium leading-none hover:no-underline"
         >
-          Privacy Policy
+          {t('links.privacy')}
         </Link>
       </div>
     </footer>

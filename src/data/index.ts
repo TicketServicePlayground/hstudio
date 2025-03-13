@@ -4,14 +4,13 @@ export const cards: SolutionCardData[] = [
   {
     bg: 'liliac',
     pic: './cover.png',
-    backgroundImage: `url('/img/desktop-covers/cover.png') lightgray 108.299px -37.448px / 75.428% 110.699% no-repeat`,
-    title: 'Backend Solutions Development',
+    title: 'liliac.title',
     card: {
       heading:
-        'We specialize in building high-performance, scalable backend systems designed to handle heavy workloads and large-scale traffic.',
+        'liliac.heading',
       benefits: [
-        `Capacity: Processes up to 5 million messages per second, ensuring smooth operation during peak loads.`,
-        `Big Data Handling: Efficiently manages billions of records.`,
+        `liliac.benefits1`,
+        `liliac.benefits2`,
       ],
       stack: [
         'Java / Kotlin',
@@ -22,97 +21,77 @@ export const cards: SolutionCardData[] = [
         'ClickHouse',
       ],
     },
-    mobileTitleOffset: 400,
-    innerBlockHeight: 700,
-    blockHeightMobile: 1190
+    category: 'backend',
   },
   {
     bg: 'orange',
     pic: './cover-1.png',
-    // background: url(<path-to-image>) lightgray 204.734px -43.244px / 61.452% 99.827% no-repeat;
-    backgroundImage: './cover-1.png',
-    title: 'Web & Mobile Application Development',
+    title: 'orange.title',
     card: {
       heading:
-        'Designed for optimal user experience, modern web and mobile applications combine intuitive interfaces with high performance',
+        'orange.heading',
       benefits: [
-        'PWA & Responsive Design: App-like performance on all devices SSR with Next.js: Faster loads and better SEO API-first Development: Seamless system integration Real-time Features: Live chats, notifications, and updates via WebSockets and GraphQL.',
-        'Big Data Handling: Efficiently manages billions of records.',
+        'orange.benefits1',
+        'orange.benefits2',
+        'orange.benefits3',
+        'orange.benefits4',
+        'orange.benefits5',
       ],
       stack: ['React', 'Next.js', 'Vue', 'TypeScript'],
     },
-    mobileTitleOffset: 390,
-    // innerBlockHeight: 649,
-    innerBlockHeight: 700,
-    blockHeightMobile: 1200
+    category: 'web',
   },
   {
     bg: 'card',
     pic: './cover-2.png',
-    // background: url(<path-to-image>) lightgray 62.841px -17.547px / 78.85% 107.772% no-repeat;
-    backgroundImage: './cover-2.png',
-    title: 'Design & User Experience',
+    title: 'card.title',
     card: {
       heading:
-        'We create clean, intuitive designs that enhance user experience. From websites to apps, we focus on aesthetics, functionality, and accessibility for a seamless user journey.',
+        'card.heading',
     },
-    mobileTitleOffset: 632,
-    innerBlockHeight: 550,
-    blockHeightMobile: 1200
+    category: 'design',
   },
   {
     bg: 'blue',
     pic: './cover-3.png',
-    // background: url(<path-to-image>) lightgray 335.445px -152.007px / 54.734% 107.905% no-repeat;
-    backgroundImage: './cover-3.png',
-    title: 'DevOps & Automation',
+    title: 'blue.title',
     card: {
       heading:
-        'Full-cycle DevOps services ensure automated deployment and streamlined development processes.',
+        'blue.heading',
       benefits: [
-        'Automation & CI/CD: Streamlined deployment with continuous integration and delivery.',
-        'Scalability & Security: Efficiently managing high-load systems with robust security practices throughout the deployment pipeline.',
-        'Reliability: Continuous monitoring and quick recovery to minimize downtime',
+        'blue.benefits1',
+        'blue.benefits2',
+        'blue.benefits3',
       ],
       stack: ['Jenkins', 'Kubernetes', 'Docker', 'GitHub Actions'],
     },
-    mobileTitleOffset: 432,
-    innerBlockHeight: 700,
-    blockHeightMobile: 1200
+    category: 'devops',
   },
   {
     bg: 'lime',
     pic: './cover-4.png',
-    // background: url(<path-to-image>) lightgray 79.31px -36.072px / 82.958% 126.712% no-repeat;
-    backgroundImage: './cover-4.png',
-    title: 'Game & Web3 Platform Development',
+    title: 'lime.title',
     card: {
       heading:
-        'Solutions for blockchain platforms and the gaming industry provide Web3 integration and real-time transactions, ensuring a decentralized experience',
+        'lime.heading',
       benefits: [
-        'Web3 & Smart Contracts: Decentralized gaming with secure, automated transactions.',
-        'Real-time Transactions: Instant blockchain-powered payments.',
-        'Scalability & Security: Built for growth with strong security.',
+        'lime.benefits1',
+        'lime.benefits2',
+        'lime.benefits3',
       ],
       stack: ['Kotlin', 'Blockchain', 'TON', 'Web3'],
     },
-    mobileTitleOffset: 390,
-    innerBlockHeight: 700,
-    blockHeightMobile: 1225
+    category: 'game',
   },
   {
     bg: 'cardDark',
     pic: './cover-5.png',
-    backgroundImage: './cover-5.png',
-    // background: url(<path-to-image>) lightgray 335.164px -31.448px / 51.425% 108.985% no-repeat;
-    title: 'Seamless Integration Across All Systems',
+    title: 'cardDark.title',
     card: {
       heading:
-        'Ensuring efficient integration across any platform, service, or technology stack. From legacy systems to modern APIs, cloud services, and third-party tools, we cover all your business needs',
+        'cardDark.heading',
     },
-    mobileTitleOffset: 348,
-    innerBlockHeight: 530,
-    blockHeightMobile: 1300
+    category: 'seamless',
   },
 ]
 

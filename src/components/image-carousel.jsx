@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react'
 import { motion, useAnimation } from 'motion/react'
 import Image from 'next/image'
+import { useTranslations } from 'next-intl'
 
 const ImageCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(3)
@@ -10,6 +11,7 @@ const ImageCarousel = () => {
   const [dragStartX, setDragStartX] = useState(0)
   const [isDragging, setIsDragging] = useState(false)
   const controls = useAnimation()
+  const t = useTranslations('about.team')
 
   useEffect(() => {
     const checkMobile = () => {
@@ -53,37 +55,37 @@ const ImageCarousel = () => {
     {
       name: 'Alex',
       experience:
-        'A web and UI/UX design expert, bringing bold and engaging digital experiences to life for clients through creative and impactful solutions.',
+        'desc1',
       image: '/img/team/photo-5.png',
     },
     {
       name: 'Artem',
       experience:
-        'Kotlin Backend Developer with a strong background in blockchain and Web3 technologies, focusing on scalable solutions for the gaming industry.',
+        'desc2',
       image: '/img/team/photo-4.png',
     },
     {
-      name: 'Albert',
+      name: 'Anna',
       experience:
-        'Full-Stack Developer with 6 years of experience in web applications. Skilled in Python, Flask, .NET, CargoWise, AWS, and specializing in e-commerce, blockchain, and secure, user-friendly solutions.',
+        'desc3',
       image: '/img/team/photo-3.png',
     },
     {
       name: 'Alexander',
       experience:
-        'Over 7 years of experience in fintech, specializing in high-load system development.',
+        'desc4',
       image: '/img/team/photo-0.png',
     },
     {
       name: 'George',
       experience:
-        'Programming since 1988, expert in DevOps since its emergence in 2009.',
+        'desc5',
       image: '/img/team/photo-1.png',
     },
     {
       name: 'Ian',
       experience:
-        '6 years of experience in frontend development with a focus on progressive web applications (PWA).',
+        'desc6',
       image: '/img/team/photo-2.png',
     },
   ]
@@ -108,10 +110,11 @@ const ImageCarousel = () => {
     return isMobile ? 220 : 350 // Restored original spacing
   }
 
+
   return (
     <div className="w-full px-4 overflow-hidden">
       <h1 className="text-center text-[24px] md:text-[28px] md:mb-[40px] lg:text-[48px] font-medium leading-[83%] font-host mb-[60px] lg:mb-[40px]">
-        Meet the team
+        {t('title')}
       </h1>
 
       <motion.div
@@ -190,8 +193,8 @@ const ImageCarousel = () => {
         <h2 className="text-[24px] md:text-[30px] lg:text-[36px] font-medium font-host leading-none mb-[16px] lg:mb-[24px]">
           {activeMember.name}
         </h2>
-        <p className="text-[14px] md:text-[20px] lg:text-[24px] font-medium font-host leading-none pb-2 max-w-[240px] md:max-w-[300px] lg:max-w-[580px] mx-auto">
-          {activeMember.experience}
+        <p className="text-[14px] md:text-[20px] lg:text-[24px] font-medium font-host leading-none pb-2 max-w-[240px] md:max-w-[380px] mx-auto">
+          {t(`person.${activeMember.experience}`)}
         </p>
       </motion.div>
     </div>
