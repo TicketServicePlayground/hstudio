@@ -13,7 +13,7 @@ const PrivacyPage = () => {
                 <p className={'mb-12 md:text-xl'}>
                     This Privacy Policy (“Policy”) explains how H-Studio (“H-Studio,” “we,” “us,” or “our”) collects,
                     protects, and uses personally identifiable information (“Personal Information”) that you (“User,”
-                    “you,” or “your”) may provide when using our website h2.studio (the “Website”) or in the course of
+                    “you,” or “your”) may provide when using our website h-studio.io (the “Website”) or in the course of
                     purchasing our services. This Policy also describes your rights regarding your Personal Information
                     and how you can manage it.
                     <br/><br/>
@@ -57,8 +57,8 @@ const PrivacyPage = () => {
                     • Request <span className={'font-bold'}>deletion</span> of your Personal Information (note: this may
                     prevent access to purchased services). <br/>
                     <br/>
-                    To make any requests, email us at <a href="mailto:hello@h2.studio"><span
-                        className={'font-bold'}>hello@h2.studio</span></a>.<br/>
+                    To make any requests, email us at <a href="mailto:hello@h-studio.io"><span
+                        className={'font-bold'}>hello@h-studio.io</span></a>.<br/>
                     <br/>
                     We retain data for as long as necessary to fulfill business and legal obligations. Once the
                     retention period expires, Personal Information is permanently deleted.
@@ -89,8 +89,8 @@ const PrivacyPage = () => {
                     • Request data deletion under certain conditions.<br/>
                     • Object to data processing for direct marketing purposes.<br/>
                     <br/>
-                    To exercise these rights, contact us at <a href="mailto:hello@h2.studio"><span
-                        className={'font-bold hover:text-black/50'}>hello@h2.studio</span></a>.
+                    To exercise these rights, contact us at <a href="mailto:hello@h-studio.io"><span
+                        className={'font-bold hover:text-black/50'}>hello@h-studio.io</span></a>.
 
                 </p>
                 <h2 className={'font-host mb-3 text-[20px] md:text-[40px] font-bold'}>8. Privacy of Children</h2>
@@ -133,7 +133,7 @@ const PrivacyPage = () => {
                     Pärnu mnt 18, 10141 Tallinn, Estonia<br/> <br/>
                     <span className={'font-bold'}>📞 Call us: </span> <a href="tel:+49 157 54892281" className={'hover:text-black/50'}>+49 157 54892281</a><br/>
                     <br/>
-                    <span className={'font-bold'}>✉ Email: </span> <a href="mailto:hello@h2.studio" className={'hover:text-black/50'}>hello@h2.studio</a>
+                    <span className={'font-bold'}>✉ Email: </span> <a href="mailto:hello@h-studio.io" className={'hover:text-black/50'}>hello@h-studio.io</a>
                 </p>
 
             </div>
