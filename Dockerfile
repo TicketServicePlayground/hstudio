@@ -4,7 +4,6 @@ FROM node:18
 # Установка рабочей директории внутри контейнера
 WORKDIR /app
 
-# Копирование package.json и package-lock.json в контейнер
 COPY package*.json ./
 
 # Установка зависимостей
