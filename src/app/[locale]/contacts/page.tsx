@@ -178,7 +178,7 @@ const Address = () => {
   const t = useTranslations('contacts.info')
 
   return (
-    <div className="flex flex-col gap-y-[40px] md:max-w-[400px] lg:max-w-[460px] md:absolute md:right-[calc(36.33vw-401.24px)]">
+    <div className="flex flex-col gap-y-[40px] md:max-w-[400px] lg:max-w-[460px] md:absolute md:right-[calc(36.33vw-386.24px)]">
       <div className="flex flex-col gap-y-[12px]">
         <Label>{t('address')}</Label>
         <Value>Pärnu mnt 18, 10141 Tallinn, Estonia</Value>
