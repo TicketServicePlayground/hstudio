@@ -113,7 +113,7 @@ const ImageCarousel = () => {
 
   return (
     <div className="w-full px-4 overflow-hidden">
-      <h1 className="text-center text-[24px] md:text-[28px] md:mb-[40px] lg:text-[48px] font-medium leading-[83%] font-host mb-[60px] lg:mb-[40px]">
+      <h1 className="text-center text-[24px] md:text-[28px] md:mb-[80px] lg:text-[48px] font-medium leading-[83%] font-host mb-[60px] lg:mb-[80px]">
         {t('title')}
       </h1>
 

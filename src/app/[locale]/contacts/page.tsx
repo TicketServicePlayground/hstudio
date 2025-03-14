@@ -15,10 +15,10 @@ const ContactsPage = () => {
       <div
         className={`
           flex flex-col gap-x-[100px] xl:gap-x-[260px] gap-y-[140px] mb-[140px]
-          lg:flex-row lg:justify-between lg:items-center lg:mb-[80x] lg:gap-y-[0px]
-          lg:pl-[30px] lg:pr-[64px]
+          md:flex-row md:justify-between md:items-center md:mb-[80x] md:gap-y-[0px]
+          md:pl-[30px] md:pr-[73px]
           pl-[25px] pr-[25px]
-          pt-[100px] lg:pt-[120px]
+          pt-[100px] md:pt-[120px]
         `}
       >
         <ContactForm />
@@ -32,7 +32,7 @@ const ContactsPage = () => {
 const ContactForm = () => {
   const [state, handleSubmit, reset] = useForm('xbldnrpn')
   const [agree, setAgree] = useState(false)
-  
+
   const t = useTranslations('contacts')
 
   const form = useFormik({
@@ -56,7 +56,7 @@ const ContactForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="relative flex flex-col px-[20px] lg:px-[65px] lg:py-[40px] py-[55px] bg-white rounded-[20px] lg:rounded-[60px] shadow-contact mr-[0px] lg:mr-[20px]"
+      className="relative flex flex-col px-[20px] md:px-[65px] md:py-[20px] py-[40px] bg-white rounded-[20px] lg:rounded-[60px] shadow-contact mr-[0px] lg:mr-[20px] md:max-w-[50%]"
     >
       <h1 className="text-[42px] lg:text-[64px] font-host leading-none font-medium mb-[40px]">
         {t.rich('title', {
@@ -178,7 +178,7 @@ const Address = () => {
   const t = useTranslations('contacts.info')
 
   return (
-    <div className="flex flex-col gap-y-[40px] max-w-[400px]">
+    <div className="flex flex-col gap-y-[40px] md:max-w-[400px] lg:max-w-[460px] md:absolute md:right-[calc(36.33vw-401.24px)]">
       <div className="flex flex-col gap-y-[12px]">
         <Label>{t('address')}</Label>
         <Value>Pärnu mnt 18, 10141 Tallinn, Estonia</Value>
