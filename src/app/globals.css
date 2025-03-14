@@ -7,10 +7,12 @@ body {
 }
 
 @keyframes float {
+
   0%,
   100% {
     transform: translate3d(0, 0, 0);
   }
+
   50% {
     transform: translate3d(0, -5px, 0);
   }
@@ -37,33 +39,35 @@ body {
 /* } */
 
 @keyframes scalePrimary {
+
   0%,
   100% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(0.9);
   }
 }
 
 @keyframes scaleSecondary {
+
   0%,
   100% {
     transform: scale(0.9);
   }
+
   50% {
     transform: scale(1);
   }
 }
 
 .gradient-text {
-  background: linear-gradient(
-    90deg,
-    #dcff1e 6.5%,
-    #ff6e00 35.5%,
-    #e6d2ff 62.5%,
-    #96c8ff 91%
-  );
+  background: linear-gradient(90deg,
+      #dcff1e 6.5%,
+      #ff6e00 35.5%,
+      #e6d2ff 62.5%,
+      #96c8ff 91%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -72,13 +76,11 @@ body {
 
 @media (max-width: 768px) {
   .gradient-text {
-    background: linear-gradient(
-            140deg,
-            #dcff1e 35.5%,
-            #ff6e00 56.5%,
-            #e6d2ff 66.5%,
-            #96c8ff 91%
-    );
+    background: linear-gradient(140deg,
+        #dcff1e 25.5%,
+        #ff6e00 56.5%,
+        #e6d2ff 66.5%,
+        #96c8ff 91%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -90,6 +92,7 @@ body {
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-100%);
   }
@@ -99,6 +102,7 @@ body {
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-100%);
   }
@@ -165,7 +169,8 @@ body {
 
 /* Dark theme variation */
 .blur-card.card--dark::before {
-  background: rgba(0, 0, 0, 0.01); /* Dark version */
+  background: rgba(0, 0, 0, 0.01);
+  /* Dark version */
 }
 
 /* /1* Ensure content stays above the blur *1/ */

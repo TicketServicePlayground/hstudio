@@ -13,7 +13,7 @@ const TermsPage = () => {
                 <p className={'mb-12 md:text-xl'}>
                     This Terms of Service Agreement (“Agreement”) constitutes a legally binding agreement between
                     H-Studio (“Company,” “we,” “us,” or “our”) and the client (“Client,” “you,” or “your”) regarding the
-                    access and use of our website: h2.studio (the “Website”) and any related media, applications, or
+                    access and use of our website: h-studio.io (the “Website”) and any related media, applications, or
                     services. By using the Website, you agree to comply with these Terms of Service. If you do not
                     agree, you must discontinue use immediately.
                 </p>
@@ -106,7 +106,7 @@ const TermsPage = () => {
                     <span className={'font-bold hover:text-black/50'} >📍 Correspondence Address:</span><br/>
                     Pärnu mnt 18, 10141 Tallinn, Estonia<br/> <br/>
                     <span className={'font-bold hover:text-black/50'}>📞 Call us: </span> <a href="tel:+49 157 54892281">+49 157 54892281</a><br/> <br/>
-                    <span className={'font-bold hover:text-black/50'}>✉ Email: </span> <a href="mailto:hello@h2.studio">hello@h2.studio</a>
+                    <span className={'font-bold hover:text-black/50'}>✉ Email: </span> <a href="mailto:hello@h-studio.io">hello@h-studio.io</a>
                 </p>
 
             </div>
