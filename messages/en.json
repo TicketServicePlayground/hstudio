@@ -132,12 +132,18 @@
     }
   },
   "about": {
-    "lyrics": {
-      "l1": "We focus on delivering scalable, secure, and innovative solutions",
-      "l2": "across web, mobile, and blockchain platforms",
-      "l3": "With expertise in seamless integration, DevOps automation, and UX/UI design",
-      "l4": "we transform complex challenges into efficient digital products"
-    },
+      "desktop": {
+        "l1": "We focus on delivering scalable,\nsecure, and innovative solutions",
+        "l2": "across web, mobile, and\nblockchain platforms",
+        "l3": "With expertise in seamless\nintegration, DevOps automation,\nand UX/UI design",
+        "l4": "we transform complex\nchallenges into efficient digital\nproducts"
+      },
+      "mobile": {
+        "l1": "We focus\non\ndelivering\nscalable,\nsecure,\nand innovative\nsolutions",
+        "l2": "across\nweb,\nmobile,\nand\nblockchain\nplatforms",
+        "l3": "With expertise in\nseamless\nintegration,\nDevOps\nautomation,\nand UX/UI\ndesign",
+        "l4": "we\ntransform\ncomplex\nchallenges\ninto\nefficient\ndigital\nproducts"
+      },
     "team": {
       "title": "Meet the team",
       "person": {

@@ -132,12 +132,18 @@
     }
   },
   "about": {
-    "lyrics": {
-      "l1": "Unser Fokus: Skalierbare, sichere und innovative Lösungen",
-      "l2": "Über Web-, Mobile- und Blockchain-Plattformen hinweg",
-      "l3": "Dank unserer Expertise in nahtloser Integration, DevOps-Automatisierung und UX/UI-Design",
-      "l4": "verwandeln wir komplexe Herausforderungen in effiziente digitale Produkte"
-    },
+   "desktop": {
+    "l1": "Unser Fokus: Skalierbare, sichere\nund innovative Lösungen",
+    "l2": "Über Web-, Mobile-\nund Blockchain-Plattformen hinweg",
+    "l3": "Dank unserer Expertise\nin nahtloser Integration,\nDevOps-Automatisierung\nund UX/UI-Design",
+    "l4": "verwandeln wir komplexe\nHerausforderungen in effiziente\ndigitale Produkte"
+  },
+  "mobile": {
+    "l1": "Unser Fokus:\nSkalierbare,\nsichere\nund\ninnovative\nLösungen",
+    "l2": "Über\nWeb-,\nMobile-\nund\nBlockchain-\nPlattformen\nhinweg",
+    "l3": "Dank unserer\nExpertise\nin\nnahtloser\nIntegration,\nDevOps-\nAutomatisierung\nund\nUX/UI-\nDesign",
+    "l4": "verwandeln\nwir\nkomplexe\nHerausforderungen\nin\neffiziente\ndigitale\nProdukte"
+  },
     "team": {
       "title": "Unser Team",
       "person": {

@@ -5,20 +5,49 @@ import ImageCarousel from '@/components/image-carousel';
 import Footer from "@/components/footer";
 import { useTranslations } from 'next-intl';
 
+
 const AboutPage = () => {
   const [index, setIndex] = useState(0);
   const [isCarouselVisible, setIsCarouselVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false); // Добавлено для определения мобильной версии
 
-  const t = useTranslations('about.lyrics');
+  const t = useTranslations('about.lyrics') ?? (() => '');
 
-  const texts = [
-    t('l1'),
-    t('l2'),
-    t('l3'),
-    t('l4')
+  // Массивы текстов для десктопа и мобильной версии
+const tDesktop = useTranslations('about.desktop');
+const tMobile = useTranslations('about.mobile');
+  const textsDesktop = [
+    tDesktop('l1'),
+    tDesktop('l2'),
+    tDesktop('l3'),
+    tDesktop('l4')
+  ];
+  
+  const textsMobile = [
+    tMobile('l1'),
+    tMobile('l2'),
+    tMobile('l3'),
+    tMobile('l4')
   ];
 
+  // Отслеживание изменения размеров окна
+  const handleResize = useCallback(() => {
+    if (typeof window !== 'undefined') {
+      setIsMobile(window.innerWidth <= 768); // Мобильный вид, если ширина окна <= 768px
+    }
+  }, []);
+
+  useEffect(() => {
+    handleResize(); // Запуск функции при первом рендере
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [handleResize]);
+
+  const texts = isMobile ? textsMobile : textsDesktop; // Выбор текстов в зависимости от ширины экрана
+
   const handleScroll = useCallback(() => {
+    if (typeof window === 'undefined') return;
+
     const scrollY = window.scrollY;
     const windowHeight = window.innerHeight;
     const threshold = windowHeight * 0.8;
@@ -32,6 +61,8 @@ const AboutPage = () => {
   }, [texts.length]);
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
@@ -63,12 +94,16 @@ const AboutPage = () => {
                   text-[58px] leading-[83%] 
                   md:text-[96px] md:leading-[83%] 
                   font-medium font-host text-center 
-                  break-words 
-                  w-full md:max-w-[1369px] max-w-[350px]
+                  break-words hyphens-auto
+                  w-full md:max-w-[1369px] max-w-[calc(100%-50px)] 
                   min-h-[384px] md:min-h-[240px]
                   px-8 md:px-0
                 "
-                style={{ wordBreak: 'break-word', whiteSpace: 'pre-line' }}
+                style={{
+                  wordBreak: 'keep-all',
+                  whiteSpace: 'pre-wrap',
+                  overflowWrap: 'break-word'
+                }}
               >
                 {texts[index]}
               </motion.div>
@@ -76,7 +111,6 @@ const AboutPage = () => {
           </AnimatePresence>
         </div>
       </div>
-      {/* Отступ сверху у карусели теперь 400px */}
       <div id="carousel-section" className="h-max w-full snap-start pb-20 pt-[400px]">
         <ImageCarousel />
       </div>
@@ -86,3 +120,4 @@ const AboutPage = () => {
 };
 
 export default AboutPage;
+
