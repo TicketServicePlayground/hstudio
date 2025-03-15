@@ -1,124 +1,88 @@
 'use client'
-import React, { useEffect, useRef, useState } from 'react'
-import { gsap } from 'gsap'
-import ImageCarousel from '@/components/image-carousel'
-import Footer from '@/components/footer'
-import { useTranslations } from 'next-intl'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-gsap.registerPlugin(ScrollTrigger)
+import { useEffect, useState, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import ImageCarousel from '@/components/image-carousel';
+import Footer from "@/components/footer";
+import { useTranslations } from 'next-intl';
 
 const AboutPage = () => {
-  const lyrics = ['l1', 'l2', 'l3', 'l4']
-  const containerRef = useRef<HTMLDivElement | null>(null)
-  const [scroller, setScroller] = useState<HTMLElement | null>(null)
+  const [index, setIndex] = useState(0);
+  const [isCarouselVisible, setIsCarouselVisible] = useState(false);
+
+  const t = useTranslations('about.lyrics');
+
+  const texts = [
+    t('l1'),
+    t('l2'),
+    t('l3'),
+    t('l4')
+  ];
+
+  const handleScroll = useCallback(() => {
+    const scrollY = window.scrollY;
+    const windowHeight = window.innerHeight;
+    const threshold = windowHeight * 0.8;
+    setIndex(Math.min(Math.floor(scrollY / threshold), texts.length - 1));
+
+    const carouselElement = document.getElementById("carousel-section");
+    if (carouselElement) {
+      const rect = carouselElement.getBoundingClientRect();
+      setIsCarouselVisible(rect.top < windowHeight * 0.5);
+    }
+  }, [texts.length]);
 
   useEffect(() => {
-    if (containerRef.current) {
-      setScroller(containerRef.current)
-      ScrollTrigger.defaults({
-        scroller: containerRef.current,
-      })
-      ScrollTrigger.refresh()
-    }
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [handleScroll]);
 
   return (
-    <main>
-      <div
-        ref={containerRef}
-        className={
-          'snap-y snap-mandatory overflow-y-auto h-screen scroll-smooth'
-        }
-        style={{
-          scrollSnapStop: 'always',
-          willChange: 'scroll-position',
-        }}
-      >
-        <section
-          className={
-            'h-screen w-full flex items-center justify-center snap-start'
-          }
-        >
-          <AnimatedText text={lyrics[0]} scroller={scroller} />
-        </section>
-
-        {lyrics.slice(1).map((text, index) => (
-          <section
-            key={index + 1}
-            className={
-              'h-screen w-full flex items-center justify-center snap-start'
-            }
-          >
-            <AnimatedText text={text} scroller={scroller} />
-          </section>
-        ))}
-
-        <section
-          className={
-            'h-max w-full snap-start pb-20 pt-28 lg:pt-22 md:pt-24 2xl:pt-20'
-          }
-        >
-          <ImageCarousel />
-        </section>
-
-        <section className={'snap-start'}>
-          <Footer />
-        </section>
+    <div className="w-full overflow-y-auto relative" style={{ minHeight: `${texts.length * 100}vh` }}>
+      <div className="relative w-full flex flex-col items-center justify-center" style={{ height: `${texts.length * 100}vh` }}>
+        <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full flex justify-center items-center pointer-events-none mb-[400px]">
+          <AnimatePresence mode="wait">
+            {index < texts.length && (
+              <motion.div
+                key={index}
+                initial={{ scale: 0.5, opacity: 0, y: 20 }}
+                animate={{
+                  scale: isCarouselVisible ? 0.8 : 1,
+                  opacity: isCarouselVisible ? 0 : 1,
+                  y: isCarouselVisible ? -20 : 0
+                }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{
+                  duration: 0.5,
+                  type: 'spring',
+                  stiffness: 150,
+                  damping: 15,
+                  mass: 1
+                }}
+                className="
+                  gradient-text 
+                  text-[58px] leading-[83%] 
+                  md:text-[96px] md:leading-[83%] 
+                  font-medium font-host text-center 
+                  break-words 
+                  w-full md:max-w-[1369px] max-w-[350px]
+                  min-h-[384px] md:min-h-[240px]
+                  px-8 md:px-0
+                "
+                style={{ wordBreak: 'break-word', whiteSpace: 'pre-line' }}
+              >
+                {texts[index]}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </div>
-    </main>
-  )
-}
-
-interface AnimatedTextProps {
-  text: string
-  scroller: HTMLElement | null
-}
-
-const AnimatedText = ({ text, scroller }: AnimatedTextProps) => {
-  const elRef = useRef<HTMLDivElement | null>(null)
-  useEffect(() => {
-    if (!elRef.current) return
-
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        elRef.current,
-        {
-          scale: 0.5,
-          opacity: 0,
-        },
-        {
-          scale: 1,
-          opacity: 1,
-          duration: 0.2,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: elRef.current,
-            scroller: scroller,
-            start: 'top center',
-            toggleActions: 'play reverse play reverse',
-          },
-        }
-      )
-    }, elRef)
-
-    return () => {
-      ctx.revert()
-    }
-  }, [scroller])
-
-  const t = useTranslations('about.lyrics')
-
-  return (
-    <div
-      ref={elRef}
-      className={
-        'w-full max-w-[300px] md:max-w-[90vw] text-center gradient-text text-[58px] md:text-[96px] leading-[44.14px] md:leading-[79.68px] font-medium font-host'
-      }
-    >
-      {t(text)}
+      {/* Отступ сверху у карусели теперь 400px */}
+      <div id="carousel-section" className="h-max w-full snap-start pb-20 pt-[400px]">
+        <ImageCarousel />
+      </div>
+      <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default AboutPage
+export default AboutPage;
